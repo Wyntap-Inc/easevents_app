@@ -2,6 +2,8 @@ import 'package:easevents_app/screens/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'screens/login.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -65,10 +67,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      initialRoute: '/',
-      routes: {
-        '/': (context) => const RegisterScreen(),
-      },
+      home: const LoginPage(),
     );
   }
 }

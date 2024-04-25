@@ -46,9 +46,21 @@ class AppThemes {
           contentPadding: const EdgeInsets.symmetric(
             horizontal: 16,
           ),
+          labelStyle: TextStyle(
+            fontSize: 13,
+            color: AppColors.textPrimary,
+          ),
           hintStyle: TextStyle(
             fontSize: 13,
             color: AppColors.textPrimary,
+          ),
+          counterStyle: TextStyle(
+            fontSize: 13,
+            color: AppColors.textPrimary,
+          ),
+          errorStyle: TextStyle(
+            fontSize: 13,
+            color: AppColors.errorBorderSideColor,
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8),
@@ -98,7 +110,7 @@ class AppThemes {
             foregroundColor: AppColors.textPrimary,
             textStyle: const TextStyle(fontSize: 13),
             shape: RoundedRectangleBorder(
-              side: BorderSide(color: AppColors.errorBorderSideColor),
+              side: BorderSide(color: AppColors.enabledBorderSideColor),
               borderRadius: const BorderRadius.all(
                 Radius.circular(8),
               ),

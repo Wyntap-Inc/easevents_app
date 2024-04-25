@@ -37,6 +37,7 @@ class RegisterScreen extends StatelessWidget {
               ),
               const SizedBox(height: 32),
               TextField(
+                style: const TextStyle(fontSize: 13),
                 controller: emailController,
                 decoration: const InputDecoration(
                   hintText: 'Enter your email address',
@@ -58,6 +59,11 @@ class RegisterScreen extends StatelessWidget {
                   width: 24,
                 ),
                 label: const Text('Sign up with Google'),
+                style: OutlinedButton.styleFrom(
+                  side: BorderSide(
+                    color: AppColors.enabledBorderSideColor,
+                  ),
+                ),
               ),
               const SizedBox(height: 32),
               RichText(

@@ -1,5 +1,4 @@
-import 'package:easevents_app/constants/styles.dart';
-import 'package:flutter/material.dart';
+import '../exports.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AppThemes {

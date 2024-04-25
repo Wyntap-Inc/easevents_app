@@ -1,8 +1,4 @@
-import 'package:easevents_app/constants/styles.dart';
-import 'package:easevents_app/screens/login_screen.dart';
-import 'package:easevents_app/widgets/divider_widget.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/material.dart';
+import '../exports.dart';
 
 class RegisterScreen extends StatelessWidget {
   const RegisterScreen({super.key});

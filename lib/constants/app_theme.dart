@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 class AppThemes {
   static ThemeData get lightTheme => ThemeData(
         useMaterial3: true,
-        scaffoldBackgroundColor: AppColors.primaryWhite,
+        // scaffoldBackgroundColor: AppColors.primaryColor,
         colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primaryColor)
             .copyWith(primary: AppColors.primaryColor),
         primaryColorLight: AppColors.primaryColor,
@@ -106,10 +106,10 @@ class AppThemes {
         outlinedButtonTheme: OutlinedButtonThemeData(
           style: OutlinedButton.styleFrom(
             minimumSize: const Size(double.infinity, 44),
-            foregroundColor: AppColors.textPrimary,
+            foregroundColor: AppColors.primaryColor,
             textStyle: const TextStyle(fontSize: 13),
             shape: RoundedRectangleBorder(
-              side: BorderSide(color: AppColors.enabledBorderSideColor),
+              side: BorderSide(color: AppColors.primaryWhite),
               borderRadius: const BorderRadius.all(
                 Radius.circular(8),
               ),

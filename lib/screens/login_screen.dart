@@ -1,73 +1,68 @@
-import 'package:flutter/material.dart';
-
 import '../exports.dart';
 
 class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+  LoginScreen({super.key});
+
+  final _formKey = GlobalKey<FormState>();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: SafeArea(
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
+      appBar: AppBar(),
+      body: SafeArea(
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+            child: Form(
+              key: _formKey,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
+                mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child: Container(
-                      width: 60,
-                      height: 60,
-                      decoration: BoxDecoration(
-                        color: Theme.of(context).colorScheme.primary,
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                    ),
+                  Text(
+                    'Let\'s sign you in',
+                    style: Theme.of(context)
+                        .textTheme
+                        .headlineLarge!
+                        .copyWith(fontWeight: FontWeight.bold),
                   ),
-                  const SizedBox(height: 24),
-                  const Text('Welcome back, Please enter your details'),
-                  const SizedBox(height: 16),
-                  Text('Login',
-                      style: Theme.of(context)
-                          .textTheme
-                          .titleLarge!
-                          .copyWith(fontWeight: FontWeight.bold)),
-                  const SizedBox(height: 16),
-                  Text('Email address',
-                      style: Theme.of(context).textTheme.bodyMedium!),
-                  const SizedBox(height: 5),
+                  const SizedBox(height: 8),
+                  Text('Welcome back.\nYou\'ve been missed!',
+                      style: Theme.of(context).textTheme.titleLarge),
+                  const Spacer(),
                   TextFormField(
-                    decoration:
-                        const InputDecoration(hintText: 'username@gmail.com'),
+                    controller: _emailController,
+                    decoration: const InputDecoration(hintText: 'Email'),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Email is required';
+                      }
+                      return null;
+                    },
                   ),
                   const SizedBox(height: 12),
-                  Text('Password',
-                      style: Theme.of(context).textTheme.bodyMedium!),
-                  const SizedBox(height: 5),
                   TextFormField(
+                    controller: _passwordController,
                     obscureText: true,
-                    decoration: const InputDecoration(
-                      hintText: '********',
-                    ),
+                    decoration: const InputDecoration(hintText: 'Password'),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Password is required';
+                      }
+                      return null;
+                    },
                   ),
                   const SizedBox(height: 12),
-                  RichText(
-                    textAlign: TextAlign.end,
-                    text: TextSpan(
-                      text: 'Forgot password?',
-                      style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                            color: AppColors.primaryColor,
-                            fontWeight: FontWeight.w600,
-                          ),
-                      recognizer: TapGestureRecognizer()..onTap = () {},
-                    ),
-                  ),
-                  const SizedBox(height: 32),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      if (_formKey.currentState!.validate()) {
+                        print(
+                          'form is validated you may continue onto the next screen',
+                        );
+                      }
+                    },
                     child: const Text('Sign in'),
                   ),
                   const SizedBox(height: 12),
@@ -83,33 +78,65 @@ class LoginScreen extends StatelessWidget {
                       side: BorderSide(color: AppColors.enabledBorderSideColor),
                     ),
                   ),
-                  const SizedBox(height: 12),
-                  RichText(
-                    textAlign: TextAlign.center,
-                    text: TextSpan(
-                      children: [
-                        TextSpan(
-                          text: 'Don\'t have an account? ',
-                          style:
-                              Theme.of(context).textTheme.bodySmall!.copyWith(
-                                    color: AppColors.textPrimary,
-                                  ),
-                        ),
-                        TextSpan(
-                          text: 'Sign up',
+                  const SizedBox(height: 16),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      RichText(
+                        textAlign: TextAlign.end,
+                        text: TextSpan(
+                          text: 'Forgot password?',
                           style:
                               Theme.of(context).textTheme.bodySmall!.copyWith(
                                     color: AppColors.primaryColor,
                                     fontWeight: FontWeight.w600,
+                                    fontSize: 11,
                                   ),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              Navigator.of(context).pop();
-                            },
+                          recognizer: TapGestureRecognizer()..onTap = () {},
                         ),
-                      ],
-                    ),
-                  )
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 8),
+                        child: Text('.'),
+                      ),
+                      RichText(
+                        textAlign: TextAlign.center,
+                        text: TextSpan(
+                          children: [
+                            TextSpan(
+                              text: 'Don\'t have an account? ',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodySmall!
+                                  .copyWith(
+                                    color: AppColors.textPrimary,
+                                    fontSize: 11,
+                                  ),
+                            ),
+                            TextSpan(
+                              text: 'Sign up',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodySmall!
+                                  .copyWith(
+                                    color: AppColors.primaryColor,
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 11,
+                                  ),
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = () {
+                                  Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                      builder: (context) => RegisterScreen(),
+                                    ),
+                                  );
+                                },
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ],
               ),
             ),

@@ -1,6 +1,5 @@
-import 'package:easevents_app/constants/styles.dart';
 import 'package:easevents_app/exports.dart';
-import 'package:easevents_app/widgets/app_outlinedButton.dart';
+import 'package:easevents_app/widgets/app_outlined_btn_plain.dart';
 import 'package:easevents_app/widgets/custom_clip_path.dart';
 
 class WelcomeScreen extends StatelessWidget {
@@ -13,67 +12,72 @@ class WelcomeScreen extends StatelessWidget {
         child: Column(
           children: [
             Expanded(
-              flex: 4,
+              flex: 2,
               child: ClipPath(
                 clipper: CustomClipPath(),
-                child: Container(
-                  color: AppColors.primaryColor,
-                  width: double.infinity,
-                  child: Center(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text(
-                          'Welcome to Easevents',
-                          style: Theme.of(context)
-                              .textTheme
-                              .headlineMedium!
-                              .copyWith(
-                                color: AppColors.primaryWhite,
-                                fontWeight: FontWeight.bold,
-                                height: 2,
-                              ),
-                        ),
-                        Text(
-                          'Booking simplified, experiences amplified!',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(color: AppColors.primaryWhite),
-                        ),
-                      ],
+                child: ClipRect(
+                  child: Container(
+                    color: AppStyles.primaryColor,
+                    width: double.infinity,
+                    child: Center(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            'Welcome to Easevents',
+                            style: Theme.of(context)
+                                .textTheme
+                                .headlineMedium!
+                                .copyWith(
+                                  color: AppStyles.primaryWhite,
+                                  fontWeight: FontWeight.bold,
+                                  height: 2,
+                                ),
+                          ),
+                          const Text(
+                            'Booking simplified, experiences amplified!',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: AppStyles.primaryWhite,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
               ),
             ),
-            Expanded(
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 24),
-                child: Column(
-                  children: [
-                    AppOutlinedButton('Login', () {
+            const Spacer(),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+              child: Column(
+                children: [
+                  AppOutlinedButtonPlain(
+                    text: 'Sign in',
+                    onTap: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
                           builder: (context) => LoginScreen(),
                         ),
                       );
-                    }),
-                    const SizedBox(height: 10),
-                    OutlinedButton(
-                      onPressed: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) => RegisterScreen(),
-                          ),
-                        );
-                      },
-                      style: OutlinedButton.styleFrom(
-                        side:
-                            BorderSide(color: AppColors.enabledBorderSideColor),
-                      ),
-                      child: const Text('Create an account'),
-                    ),
-                  ],
-                ),
+                    },
+                  ),
+                  const SizedBox(height: 10),
+                  AppOutlinedButtonPlain(
+                    text: 'Create an account',
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => RegisterScreen(),
+                        ),
+                      );
+                    },
+                    bgColor: AppStyles.primaryWhite,
+                    fgColor: AppStyles.primaryColor,
+                  ),
+                ],
               ),
             ),
           ],

@@ -1,3 +1,6 @@
+import 'package:easevents_app/widgets/app_outlined_btn_icon.dart';
+import 'package:easevents_app/widgets/app_outlined_btn_plain.dart';
+
 import '../exports.dart';
 
 class RegisterScreen extends StatelessWidget {
@@ -16,9 +19,13 @@ class RegisterScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(),
       body: SafeArea(
-        child: Center(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+        child: SingleChildScrollView(
+          child: Container(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 24,
+              vertical: 16,
+            ),
+            height: AppStyles.getUsableHeight(context),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               mainAxisSize: MainAxisSize.min,
@@ -71,21 +78,18 @@ class RegisterScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 12),
-                ElevatedButton(
-                  onPressed: () {},
-                  child: const Text('Sign up'),
+                AppOutlinedButtonPlain(
+                  text: 'Sign up',
+                  onTap: () {},
                 ),
                 const SizedBox(height: 12),
-                OutlinedButton.icon(
-                  onPressed: () {},
-                  icon: Image.asset(
+                AppOutlinedButtonIcon(
+                  text: 'Sign up with Google',
+                  onTap: () {},
+                  iconData: Image.asset(
                     'asset/icon/google.png',
                     height: 24,
                     width: 24,
-                  ),
-                  label: const Text('Sign up with Google'),
-                  style: OutlinedButton.styleFrom(
-                    side: BorderSide(color: AppColors.enabledBorderSideColor),
                   ),
                 ),
                 const SizedBox(height: 16),
@@ -96,14 +100,14 @@ class RegisterScreen extends StatelessWidget {
                       TextSpan(
                         text: 'Already have an account? ',
                         style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                              color: AppColors.textPrimary,
+                              color: AppStyles.textPrimary,
                               fontSize: 11,
                             ),
                       ),
                       TextSpan(
                         text: 'Login',
                         style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                              color: AppColors.primaryColor,
+                              color: AppStyles.primaryColor,
                               fontWeight: FontWeight.w600,
                               fontSize: 11,
                             ),

@@ -12,11 +12,15 @@ class LoginScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(),
       body: SafeArea(
-        child: Center(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-            child: Form(
-              key: _formKey,
+        child: Form(
+          key: _formKey,
+          child: SingleChildScrollView(
+            child: Container(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 24,
+                vertical: 16,
+              ),
+              height: AppStyles.getUsableHeight(context),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 mainAxisSize: MainAxisSize.min,
@@ -55,27 +59,18 @@ class LoginScreen extends StatelessWidget {
                     },
                   ),
                   const SizedBox(height: 12),
-                  ElevatedButton(
-                    onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        print(
-                          'form is validated you may continue onto the next screen',
-                        );
-                      }
-                    },
-                    child: const Text('Sign in'),
+                  AppOutlinedButtonPlain(
+                    text: 'Sign in',
+                    onTap: () {},
                   ),
                   const SizedBox(height: 12),
-                  OutlinedButton.icon(
-                    onPressed: () {},
-                    icon: Image.asset(
+                  AppOutlinedButtonIcon(
+                    text: 'Continue with Google',
+                    onTap: () {},
+                    iconData: Image.asset(
                       'asset/icon/google.png',
                       height: 24,
                       width: 24,
-                    ),
-                    label: const Text('Sign in with Google'),
-                    style: OutlinedButton.styleFrom(
-                      side: BorderSide(color: AppColors.enabledBorderSideColor),
                     ),
                   ),
                   const SizedBox(height: 16),
@@ -88,7 +83,7 @@ class LoginScreen extends StatelessWidget {
                           text: 'Forgot password?',
                           style:
                               Theme.of(context).textTheme.bodySmall!.copyWith(
-                                    color: AppColors.primaryColor,
+                                    color: AppStyles.primaryColor,
                                     fontWeight: FontWeight.w600,
                                     fontSize: 11,
                                   ),
@@ -109,7 +104,7 @@ class LoginScreen extends StatelessWidget {
                                   .textTheme
                                   .bodySmall!
                                   .copyWith(
-                                    color: AppColors.textPrimary,
+                                    color: AppStyles.textPrimary,
                                     fontSize: 11,
                                   ),
                             ),
@@ -119,7 +114,7 @@ class LoginScreen extends StatelessWidget {
                                   .textTheme
                                   .bodySmall!
                                   .copyWith(
-                                    color: AppColors.primaryColor,
+                                    color: AppStyles.primaryColor,
                                     fontWeight: FontWeight.w600,
                                     fontSize: 11,
                                   ),

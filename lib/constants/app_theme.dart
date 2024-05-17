@@ -4,41 +4,41 @@ import 'package:google_fonts/google_fonts.dart';
 class AppThemes {
   static ThemeData get lightTheme => ThemeData(
         useMaterial3: true,
-        // scaffoldBackgroundColor: AppColors.primaryColor,
-        colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primaryColor)
-            .copyWith(primary: AppColors.primaryColor),
-        primaryColorLight: AppColors.primaryColor,
+        appBarTheme: const AppBarTheme(scrolledUnderElevation: 0),
+        colorScheme: ColorScheme.fromSeed(seedColor: AppStyles.primaryColor)
+            .copyWith(primary: AppStyles.primaryColor),
+        primaryColorLight: AppStyles.primaryColor,
         fontFamily: GoogleFonts.poppins().fontFamily,
         textTheme: TextTheme(
           titleSmall: TextStyle(
-            color: AppColors.textPrimary,
+            color: AppStyles.textPrimary,
           ),
           titleMedium: TextStyle(
-            color: AppColors.textPrimary,
+            color: AppStyles.textPrimary,
           ),
           titleLarge: TextStyle(
             fontWeight: FontWeight.w500,
-            color: AppColors.textPrimary,
+            color: AppStyles.textPrimary,
           ),
           labelSmall: TextStyle(
-            color: AppColors.textPrimary,
+            color: AppStyles.textPrimary,
           ),
           labelMedium: TextStyle(
-            color: AppColors.textPrimary,
+            color: AppStyles.textPrimary,
           ),
           labelLarge: TextStyle(
-            color: AppColors.textPrimary,
+            color: AppStyles.textPrimary,
           ),
           bodySmall: TextStyle(
             fontSize: 13,
             fontWeight: FontWeight.normal,
-            color: AppColors.textPrimary,
+            color: AppStyles.textPrimary,
           ),
           bodyMedium: TextStyle(
-            color: AppColors.textPrimary,
+            color: AppStyles.textPrimary,
           ),
           bodyLarge: TextStyle(
-            color: AppColors.textPrimary,
+            color: AppStyles.textPrimary,
           ),
         ),
         inputDecorationTheme: InputDecorationTheme(
@@ -47,45 +47,45 @@ class AppThemes {
           ),
           labelStyle: TextStyle(
             fontSize: 13,
-            color: AppColors.textPrimary,
+            color: AppStyles.textPrimary,
           ),
           hintStyle: TextStyle(
             fontSize: 13,
-            color: AppColors.textPrimary,
+            color: AppStyles.textPrimary,
           ),
           counterStyle: TextStyle(
             fontSize: 13,
-            color: AppColors.textPrimary,
+            color: AppStyles.textPrimary,
           ),
           errorStyle: TextStyle(
             fontSize: 13,
-            color: AppColors.errorBorderSideColor,
+            color: AppStyles.errorBorderSideColor,
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8),
             borderSide: BorderSide(
-              color: AppColors.enabledBorderSideColor,
+              color: AppStyles.enabledBorderSideColor,
               width: 1,
             ),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8),
             borderSide: BorderSide(
-              color: AppColors.primaryColor,
+              color: AppStyles.primaryColor,
               width: 1,
             ),
           ),
           errorBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8),
             borderSide: BorderSide(
-              color: AppColors.errorBorderSideColor,
+              color: AppStyles.errorBorderSideColor,
               width: 1,
             ),
           ),
           focusedErrorBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8),
             borderSide: BorderSide(
-              color: AppColors.errorBorderSideColor,
+              color: AppStyles.errorBorderSideColor,
               width: 1,
             ),
           ),
@@ -93,8 +93,8 @@ class AppThemes {
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
             minimumSize: const Size(double.infinity, 44),
-            backgroundColor: AppColors.primaryColor,
-            foregroundColor: AppColors.primaryWhite,
+            backgroundColor: AppStyles.primaryColor,
+            foregroundColor: AppStyles.primaryWhite,
             textStyle: const TextStyle(fontSize: 13),
             shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.all(
@@ -106,10 +106,10 @@ class AppThemes {
         outlinedButtonTheme: OutlinedButtonThemeData(
           style: OutlinedButton.styleFrom(
             minimumSize: const Size(double.infinity, 44),
-            foregroundColor: AppColors.primaryColor,
+            foregroundColor: AppStyles.primaryColor,
             textStyle: const TextStyle(fontSize: 13),
             shape: RoundedRectangleBorder(
-              side: BorderSide(color: AppColors.primaryWhite),
+              side: BorderSide(color: AppStyles.primaryWhite),
               borderRadius: const BorderRadius.all(
                 Radius.circular(8),
               ),

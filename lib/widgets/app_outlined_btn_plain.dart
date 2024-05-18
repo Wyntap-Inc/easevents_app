@@ -19,11 +19,9 @@ class AppOutlinedButtonPlain extends StatelessWidget {
     return OutlinedButton(
       onPressed: onTap,
       style: OutlinedButton.styleFrom(
-        // side: BorderSide(
-        //   color: bgColor == AppStyles.primaryColor
-        //       ? AppStyles.primaryColor
-        //       : AppStyles.enabledBorderSideColor,
-        // ),
+        side: const BorderSide(
+          color: AppStyles.enabledBorderSideColor,
+        ),
         disabledBackgroundColor: AppStyles.primaryColor.withOpacity(0.9),
         backgroundColor: bgColor,
         foregroundColor: fgColor,

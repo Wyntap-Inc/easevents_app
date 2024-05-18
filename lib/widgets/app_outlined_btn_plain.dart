@@ -10,7 +10,7 @@ class AppOutlinedButtonPlain extends StatelessWidget {
   });
 
   final String text;
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
   final Color bgColor;
   final Color fgColor;
 
@@ -19,11 +19,12 @@ class AppOutlinedButtonPlain extends StatelessWidget {
     return OutlinedButton(
       onPressed: onTap,
       style: OutlinedButton.styleFrom(
-        side: BorderSide(
-          color: bgColor == AppStyles.primaryColor
-              ? AppStyles.primaryColor
-              : AppStyles.enabledBorderSideColor,
-        ),
+        // side: BorderSide(
+        //   color: bgColor == AppStyles.primaryColor
+        //       ? AppStyles.primaryColor
+        //       : AppStyles.enabledBorderSideColor,
+        // ),
+        disabledBackgroundColor: AppStyles.primaryColor.withOpacity(0.9),
         backgroundColor: bgColor,
         foregroundColor: fgColor,
         textStyle: const TextStyle(

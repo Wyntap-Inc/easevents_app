@@ -1,8 +1,9 @@
+import 'package:easevents_app/utils/validator.dart';
+
 import '../exports.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
-
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
@@ -39,29 +40,27 @@ class LoginScreen extends StatelessWidget {
                   TextFormField(
                     controller: _emailController,
                     decoration: const InputDecoration(hintText: 'Email'),
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Email is required';
-                      }
-                      return null;
-                    },
+                    validator: (value) => Validator.validateEmail(
+                      email: _emailController.text,
+                    ),
                   ),
                   const SizedBox(height: 12),
                   TextFormField(
                     controller: _passwordController,
                     obscureText: true,
                     decoration: const InputDecoration(hintText: 'Password'),
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Password is required';
-                      }
-                      return null;
-                    },
+                    validator: (value) => Validator.validatePassword(
+                      password: _passwordController.text,
+                    ),
                   ),
                   const SizedBox(height: 12),
                   AppOutlinedButtonPlain(
                     text: 'Sign in',
-                    onTap: () {},
+                    onTap: () {
+                      if (_formKey.currentState!.validate()) {
+                        print('VALIDATED');
+                      }
+                    },
                   ),
                   const SizedBox(height: 12),
                   AppOutlinedButtonIcon(
@@ -122,7 +121,8 @@ class LoginScreen extends StatelessWidget {
                                 ..onTap = () {
                                   Navigator.of(context).push(
                                     MaterialPageRoute(
-                                      builder: (context) => RegisterScreen(),
+                                      builder: (context) =>
+                                          const RegisterScreen(),
                                     ),
                                   );
                                 },

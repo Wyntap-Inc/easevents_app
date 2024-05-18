@@ -9,7 +9,7 @@ class AppThemes {
             .copyWith(primary: AppStyles.primaryColor),
         primaryColorLight: AppStyles.primaryColor,
         fontFamily: GoogleFonts.poppins().fontFamily,
-        textTheme: TextTheme(
+        textTheme: const TextTheme(
           titleSmall: TextStyle(
             color: AppStyles.textPrimary,
           ),
@@ -45,46 +45,46 @@ class AppThemes {
           contentPadding: const EdgeInsets.symmetric(
             horizontal: 16,
           ),
-          labelStyle: TextStyle(
+          labelStyle: const TextStyle(
             fontSize: 13,
             color: AppStyles.textPrimary,
           ),
-          hintStyle: TextStyle(
+          hintStyle: const TextStyle(
             fontSize: 13,
             color: AppStyles.textPrimary,
           ),
-          counterStyle: TextStyle(
+          counterStyle: const TextStyle(
             fontSize: 13,
             color: AppStyles.textPrimary,
           ),
-          errorStyle: TextStyle(
+          errorStyle: const TextStyle(
             fontSize: 13,
             color: AppStyles.errorBorderSideColor,
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8),
-            borderSide: BorderSide(
+            borderSide: const BorderSide(
               color: AppStyles.enabledBorderSideColor,
               width: 1,
             ),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8),
-            borderSide: BorderSide(
+            borderSide: const BorderSide(
               color: AppStyles.primaryColor,
               width: 1,
             ),
           ),
           errorBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8),
-            borderSide: BorderSide(
+            borderSide: const BorderSide(
               color: AppStyles.errorBorderSideColor,
               width: 1,
             ),
           ),
           focusedErrorBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8),
-            borderSide: BorderSide(
+            borderSide: const BorderSide(
               color: AppStyles.errorBorderSideColor,
               width: 1,
             ),
@@ -108,9 +108,9 @@ class AppThemes {
             minimumSize: const Size(double.infinity, 44),
             foregroundColor: AppStyles.primaryColor,
             textStyle: const TextStyle(fontSize: 13),
-            shape: RoundedRectangleBorder(
+            shape: const RoundedRectangleBorder(
               side: BorderSide(color: AppStyles.primaryWhite),
-              borderRadius: const BorderRadius.all(
+              borderRadius: BorderRadius.all(
                 Radius.circular(8),
               ),
             ),

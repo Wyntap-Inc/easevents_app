@@ -1,0 +1,77 @@
+import 'package:easevents_app/data/dummy_data.dart';
+import 'package:easevents_app/exports.dart';
+import 'package:easevents_app/screens/ev_providers/ev_provider_list_item.dart';
+import 'package:phosphor_flutter/phosphor_flutter.dart';
+
+class EVProvidersScreen extends StatefulWidget {
+  const EVProvidersScreen({super.key});
+
+  @override
+  State<EVProvidersScreen> createState() => _EVProvidersScreenState();
+}
+
+class _EVProvidersScreenState extends State<EVProvidersScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          'Find a provider',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: AppStyles.primaryColor,
+          ),
+        ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 8),
+            child: IconButton(
+              onPressed: () {},
+              icon: const PhosphorIcon(
+                PhosphorIconsBold.user,
+              ),
+            ),
+          ),
+        ],
+      ),
+      body: Center(
+        child: Container(
+          margin: const EdgeInsets.only(
+            top: 8,
+            right: 16,
+            left: 16,
+          ),
+          child: Column(
+            children: [
+              TextField(
+                decoration: InputDecoration(
+                  hintText: 'Search for providers or events',
+                  prefixIcon: Icon(
+                    PhosphorIcons.magnifyingGlass(),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 8),
+              Expanded(
+                child: GridView.builder(
+                  itemCount: dummyData.length,
+                  padding: const EdgeInsets.only(
+                    bottom: 8,
+                  ),
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    childAspectRatio: 0.7,
+                    mainAxisSpacing: 8,
+                    crossAxisSpacing: 8,
+                  ),
+                  itemBuilder: (context, index) =>
+                      EVProviderListItem(dummyData[index]),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

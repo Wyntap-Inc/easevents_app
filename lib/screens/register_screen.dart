@@ -164,7 +164,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     text: 'Sign up with Google',
                     onTap: () {},
                     iconData: Image.asset(
-                      'asset/icon/google.png',
+                      'assets/images/google.png',
                       height: 24,
                       width: 24,
                     ),

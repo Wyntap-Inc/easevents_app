@@ -1,3 +1,5 @@
+import 'package:easevents_app/screens/ev_providers/ev_providers_screen.dart';
+
 import 'exports.dart';
 
 void main() {
@@ -16,7 +18,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: AppThemes.lightTheme,
-      home: const EVBottomNavigationBar(),
+      home: const WelcomeScreen(),
     );
   }
 }

@@ -1,7 +1,4 @@
-import 'package:easevents_app/data/dummy_data.dart';
 import 'package:easevents_app/exports.dart';
-import 'package:easevents_app/screens/ev_providers/ev_provider_list_item.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 class EVProvidersScreen extends StatefulWidget {
   const EVProvidersScreen({super.key});

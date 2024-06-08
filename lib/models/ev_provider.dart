@@ -1,7 +1,7 @@
 class EVProvider {
   final int id;
   final String name;
-  final String services;
+  final List<String> tags;
   final String location;
   final String image;
   final String intro;
@@ -9,7 +9,7 @@ class EVProvider {
   const EVProvider({
     required this.id,
     required this.name,
-    required this.services,
+    required this.tags,
     required this.location,
     required this.image,
     required this.intro,
@@ -19,7 +19,7 @@ class EVProvider {
     return EVProvider(
       id: json['id'],
       name: json['name'],
-      services: json['services'],
+      tags: json['tags'],
       location: json['location'],
       image: json['image'],
       intro: json['intro'],

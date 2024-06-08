@@ -1,7 +1,5 @@
 import 'package:easevents_app/exports.dart';
 import 'package:easevents_app/models/ev_provider.dart';
-import 'package:easevents_app/screens/ev_providers/ev_provider_profile_screen.dart';
-import 'package:transparent_image/transparent_image.dart';
 
 class EVProviderListItem extends StatelessWidget {
   const EVProviderListItem(this.evProvider, {super.key});
@@ -14,7 +12,7 @@ class EVProviderListItem extends StatelessWidget {
       onTap: () {
         Navigator.of(context).push(
           MaterialPageRoute(
-            builder: (context) => EVProviderProfile(evProvider),
+            builder: (context) => EVProviderProfileScreen(evProvider),
           ),
         );
       },
@@ -44,20 +42,27 @@ class EVProviderListItem extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: 5),
-              Text(
-                evProvider.services,
-                style: const TextStyle(
-                  fontSize: 10,
-                  color: AppStyles.textSecondary,
-                ),
-                overflow: TextOverflow.ellipsis,
-              ),
-              const SizedBox(height: 5),
+              const SizedBox(height: 8),
+              // for (var tag in evProvider.tags)
+              //   Container(
+              //     padding: const EdgeInsets.all(5),
+              //     decoration: BoxDecoration(
+              //       color: Colors.pink,
+              //       borderRadius: BorderRadius.circular(20),
+              //     ),
+              //     child: Text(
+              //       tag,
+              //       style: const TextStyle(
+              //         fontSize: 12,
+              //         color: AppStyles.textSecondary,
+              //       ),
+              //     ),
+              //   ),
+              // const SizedBox(height: 5),
               Text(
                 evProvider.name,
                 style: const TextStyle(
-                  fontSize: 12,
+                  fontSize: 15,
                   fontWeight: FontWeight.bold,
                 ),
                 overflow: TextOverflow.ellipsis,
@@ -66,7 +71,7 @@ class EVProviderListItem extends StatelessWidget {
               Text(
                 evProvider.location,
                 style: const TextStyle(
-                  fontSize: 10,
+                  fontSize: 12,
                   color: AppStyles.textSecondary,
                 ),
                 overflow: TextOverflow.ellipsis,

@@ -1,5 +1,4 @@
 import 'package:easevents_app/exports.dart';
-import 'package:easevents_app/widgets/app_outlined_btn_plain.dart';
 import 'package:easevents_app/widgets/custom_clip_path.dart';
 
 class WelcomeScreen extends StatelessWidget {

@@ -4,7 +4,11 @@ import 'package:google_fonts/google_fonts.dart';
 class AppThemes {
   static ThemeData get lightTheme => ThemeData(
         useMaterial3: true,
-        appBarTheme: const AppBarTheme(scrolledUnderElevation: 0),
+        appBarTheme: const AppBarTheme(
+          scrolledUnderElevation: 0,
+          backgroundColor: AppStyles.primaryWhite,
+        ),
+        scaffoldBackgroundColor: AppStyles.primaryWhite,
         colorScheme: ColorScheme.fromSeed(seedColor: AppStyles.primaryColor)
             .copyWith(primary: AppStyles.primaryColor),
         primaryColorLight: AppStyles.primaryColor,
@@ -115,6 +119,20 @@ class AppThemes {
               ),
             ),
           ),
+        ),
+        bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+          enableFeedback: false,
+          selectedItemColor: AppStyles.primaryColor,
+          selectedLabelStyle: TextStyle(color: AppStyles.primaryColor),
+          selectedIconTheme: IconThemeData(
+            color: AppStyles.primaryColor,
+          ),
+          unselectedItemColor: AppStyles.primaryColor,
+          unselectedLabelStyle: TextStyle(color: AppStyles.primaryColor),
+          unselectedIconTheme: IconThemeData(
+            color: AppStyles.primaryColor,
+          ),
+          type: BottomNavigationBarType.fixed,
         ),
       );
 }

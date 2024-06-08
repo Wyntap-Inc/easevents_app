@@ -8,7 +8,10 @@ export './constants/app_theme.dart';
 export './screens/register_screen.dart';
 export './screens/login_screen.dart';
 export './screens/welcome_screen.dart';
+export './screens/ev_bottom_navigation.dart';
 
 export './widgets/divider_widget.dart';
 export './widgets/app_outlined_btn_icon.dart';
 export './widgets/app_outlined_btn_plain.dart';
+
+export './utils/validator.dart';

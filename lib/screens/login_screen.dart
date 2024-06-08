@@ -1,5 +1,3 @@
-import 'package:easevents_app/utils/validator.dart';
-
 import '../exports.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -59,6 +57,11 @@ class LoginScreen extends StatelessWidget {
                     onTap: () {
                       if (_formKey.currentState!.validate()) {
                         print('VALIDATED');
+                        Navigator.of(context).pushAndRemoveUntil(
+                            MaterialPageRoute(
+                              builder: (context) => EVBottomNavigationBar(),
+                            ),
+                            (route) => false);
                       }
                     },
                   ),
@@ -67,7 +70,7 @@ class LoginScreen extends StatelessWidget {
                     text: 'Continue with Google',
                     onTap: () {},
                     iconData: Image.asset(
-                      'asset/icon/google.png',
+                      'assets/images/google.png',
                       height: 24,
                       width: 24,
                     ),

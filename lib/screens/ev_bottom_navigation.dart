@@ -1,3 +1,4 @@
+import 'package:easevents_app/screens/coming_soon_screen.dart';
 import 'package:easevents_app/screens/ev_providers/ev_providers_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
@@ -12,19 +13,6 @@ class EVBottomNavigationBar extends StatefulWidget {
 class _EVBottomNavigationBarState extends State<EVBottomNavigationBar> {
   int selectedIndex = 0;
 
-  final List pages = [
-    const EVProvidersScreen(),
-    const Center(
-      child: CircularProgressIndicator(),
-    ),
-    const Center(
-      child: CircularProgressIndicator(),
-    ),
-    const Center(
-      child: CircularProgressIndicator(),
-    ),
-  ];
-
   void onSelectedIndex(int index) {
     setState(() {
       selectedIndex = index;
@@ -33,6 +21,12 @@ class _EVBottomNavigationBarState extends State<EVBottomNavigationBar> {
 
   @override
   Widget build(BuildContext context) {
+    final List pages = [
+      const EVProvidersScreen(),
+      const ComingSoonScreen(),
+      const ComingSoonScreen(),
+      const ComingSoonScreen(),
+    ];
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
         onTap: onSelectedIndex,

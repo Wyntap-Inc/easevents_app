@@ -1,5 +1,6 @@
 import 'package:easevents_app/constants/styles.dart';
 import 'package:easevents_app/models/ev_provider.dart';
+import 'package:easevents_app/screens/inquiry_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
@@ -14,7 +15,13 @@ class EVProviderProfileScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton.extended(
         backgroundColor: AppStyles.primaryColor,
         foregroundColor: AppStyles.primaryWhite,
-        onPressed: () {},
+        onPressed: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => const InquiryScreen(),
+            ),
+          );
+        },
         label: const Text('Inquire now'),
       ),
       body: SafeArea(
@@ -49,7 +56,7 @@ class EVProviderProfileScreen extends StatelessWidget {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        const SizedBox(height: 16),
+                        const SizedBox(height: 8),
                         buildLocationInfo(),
                         const SizedBox(height: 8),
                         Text(
@@ -70,6 +77,24 @@ class EVProviderProfileScreen extends StatelessWidget {
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
                           ),
+                        ),
+                        const SizedBox(height: 8),
+                        Column(
+                          children: evProvider.tags
+                              .map(
+                                (data) => SizedBox(
+                                  width: double.infinity,
+                                  height: 150,
+                                  child: Card(
+                                    margin:
+                                        const EdgeInsets.symmetric(vertical: 8),
+                                    child: Center(
+                                      child: Text(data),
+                                    ),
+                                  ),
+                                ),
+                              )
+                              .toList(),
                         ),
                       ],
                     ),

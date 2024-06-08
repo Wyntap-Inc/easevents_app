@@ -42,4 +42,30 @@ const dummyData = [
     intro:
         'Welcome to Radiant Films, where we transform your wedding day into an unforgettable cinematic journey, weaving together the intricate tapestry of love, laughter, and joy.',
   ),
+  EVProvider(
+    id: 4,
+    name: 'The Backyard Studios',
+    tags: ['Photography', 'Photoshoot', 'Studio'],
+    location: 'Manila, Philippines',
+    image: 'assets/images/backyard.jpg',
+    intro:
+        'We specialize in visual documentary, uncomplicated & timeless imagery! If you are looking for a team who just wanna capture your epic instants in its most joyful & authentic? LOOK NO FURTHER!',
+  ),
+  EVProvider(
+    id: 5,
+    name: 'Shuttered Dreams Project',
+    tags: ['Photography', 'Wedding', 'Birthday'],
+    location: 'Antipolo City, Philippines',
+    image: 'assets/images/shuttered.jpg',
+    intro:
+        'On the lookout for unscripted moments to make sure your wedding is not just captured but also told.❤️',
+  ),
+  EVProvider(
+    id: 6,
+    name: 'Blackroom Photography and Videography Studio',
+    tags: ['Photography', ' Videography', 'Studio'],
+    location: 'Quezon City, Philippines',
+    image: 'assets/images/blackroom.jpg',
+    intro: 'Affordable photo and video studio rental in Quezon City.',
+  ),
 ];

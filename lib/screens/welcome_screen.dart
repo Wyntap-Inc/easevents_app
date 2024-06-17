@@ -33,7 +33,7 @@ class WelcomeScreen extends StatelessWidget {
                                   .copyWith(
                                     color: AppStyles.primaryWhite,
                                     fontWeight: FontWeight.bold,
-                                    height: 1.5,
+                                    height: 1.2,
                                   ),
                             ),
                             const SizedBox(height: 24),

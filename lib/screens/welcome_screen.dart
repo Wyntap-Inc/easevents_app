@@ -18,30 +18,35 @@ class WelcomeScreen extends StatelessWidget {
                   child: Container(
                     color: AppStyles.primaryColor,
                     width: double.infinity,
-                    child: Center(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Text(
-                            'Welcome to Easevents',
-                            style: Theme.of(context)
-                                .textTheme
-                                .headlineMedium!
-                                .copyWith(
-                                  color: AppStyles.primaryWhite,
-                                  fontWeight: FontWeight.bold,
-                                  height: 2,
-                                ),
-                          ),
-                          const Text(
-                            'Booking simplified, experiences amplified!',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              color: AppStyles.primaryWhite,
-                              fontWeight: FontWeight.bold,
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Center(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Text(
+                              'Welcome to Easevents',
+                              textAlign: TextAlign.center,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headlineMedium!
+                                  .copyWith(
+                                    color: AppStyles.primaryWhite,
+                                    fontWeight: FontWeight.bold,
+                                    height: 1.2,
+                                  ),
                             ),
-                          ),
-                        ],
+                            const SizedBox(height: 24),
+                            const Text(
+                              'Booking simplified, experiences amplified!',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: AppStyles.primaryWhite,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),

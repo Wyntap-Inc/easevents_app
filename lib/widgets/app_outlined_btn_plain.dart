@@ -6,6 +6,7 @@ class AppOutlinedButtonPlain extends StatelessWidget {
     required this.onTap,
     this.bgColor = AppStyles.primaryColor,
     this.fgColor = AppStyles.primaryWhite,
+    this.isLoading = false,
     super.key,
   });
 
@@ -13,6 +14,7 @@ class AppOutlinedButtonPlain extends StatelessWidget {
   final VoidCallback? onTap;
   final Color bgColor;
   final Color fgColor;
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +31,14 @@ class AppOutlinedButtonPlain extends StatelessWidget {
           fontWeight: FontWeight.bold,
         ),
       ),
-      child: Text(text),
+      child: isLoading
+          ? Transform.scale(
+              scale: 0.5,
+              child: const CircularProgressIndicator(
+                color: Colors.white,
+              ),
+            )
+          : Text(text),
     );
   }
 }

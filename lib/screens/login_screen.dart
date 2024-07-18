@@ -1,3 +1,8 @@
+import 'package:easevents_app/providers/loader.dart';
+import 'package:easevents_app/services/login_service.dart';
+import 'package:easevents_app/services/token_storage.dart';
+import 'package:provider/provider.dart';
+
 import '../exports.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -8,6 +13,8 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final loader = Provider.of<LoaderProvider>(context);
+
     return Scaffold(
       appBar: AppBar(),
       body: SafeArea(
@@ -53,22 +60,41 @@ class LoginScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 12),
                   AppOutlinedButtonPlain(
+                    isLoading: loader.isLoading,
                     text: 'Sign in',
-                    onTap: () {
+                    onTap: () async {
                       if (_formKey.currentState!.validate()) {
-                        print('VALIDATED');
-                        Navigator.of(context).pushAndRemoveUntil(
+                        LoginService().userLogin(
+                          _emailController.text,
+                          _passwordController.text,
+                        );
+
+                        await loader.loader();
+
+                        if (context.mounted) {
+                          ScaffoldMessenger.of(context)
+                              .showSnackBar(const SnackBar(
+                            content: Text('Logged in successfuly'),
+                          ));
+
+                          Navigator.of(context).pushAndRemoveUntil(
                             MaterialPageRoute(
-                              builder: (context) => EVBottomNavigationBar(),
+                              builder: (context) =>
+                                  const EVBottomNavigationBar(),
                             ),
-                            (route) => false);
+                            (route) => false,
+                          );
+                        }
                       }
                     },
                   ),
                   const SizedBox(height: 12),
                   AppOutlinedButtonIcon(
                     text: 'Continue with Google',
-                    onTap: () {},
+                    onTap: () async {
+                      final token = await TokenStorage().getToken();
+                      print(token);
+                    },
                     iconData: Image.asset(
                       'assets/images/google.png',
                       height: 24,

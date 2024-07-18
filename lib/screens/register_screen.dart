@@ -1,5 +1,3 @@
-import 'package:easevents_app/utils/validator.dart';
-
 import '../exports.dart';
 
 class RegisterScreen extends StatefulWidget {

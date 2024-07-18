@@ -4,6 +4,8 @@ import 'package:easevents_app/widgets/custom_clip_path.dart';
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
 
+  static const routeName = '/';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

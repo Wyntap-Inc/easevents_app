@@ -6,6 +6,8 @@ import 'package:phosphor_flutter/phosphor_flutter.dart';
 class EVBottomNavigationBar extends StatefulWidget {
   const EVBottomNavigationBar({super.key});
 
+  static const routeName = 'evBottomNav';
+
   @override
   State<EVBottomNavigationBar> createState() => _EVBottomNavigationBarState();
 }

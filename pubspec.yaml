@@ -40,6 +40,9 @@ dependencies:
   transparent_image: ^2.0.1
   flutter_chat_ui: ^1.6.13
   flutter_chat_types: ^3.6.2
+  http: ^1.2.1
+  flutter_secure_storage: ^9.2.2
+  provider: ^6.1.2
 
 dev_dependencies:
   flutter_test:

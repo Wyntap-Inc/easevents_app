@@ -7,7 +7,7 @@ export 'package:transparent_image/transparent_image.dart';
 export './constants/styles.dart';
 export './constants/app_theme.dart';
 
-export './screens/register_screen.dart';
+export 'screens/register_screen/register_screen.dart';
 export './screens/login_screen.dart';
 export './screens/welcome_screen.dart';
 export './screens/ev_bottom_navigation.dart';

@@ -1,4 +1,6 @@
-import '../exports.dart';
+import 'package:easevents_app/screens/register_screen/register_otp_screen.dart';
+
+import '../../exports.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -153,7 +155,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     text: 'Sign up',
                     onTap: isButtonEnabled
                         ? () {
-                            if (_formKey.currentState!.validate()) {}
+                            if (_formKey.currentState!.validate()) {
+                              Navigator.of(context)
+                                  .pushNamed(RegisterOtpScreen.routeName);
+                            }
                           }
                         : null,
                   ),

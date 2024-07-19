@@ -36,9 +36,9 @@ class MyApp extends StatelessWidget {
       theme: AppThemes.lightTheme,
       initialRoute: initialRoute,
       routes: {
-        '/': (context) => const WelcomeScreen(),
+        '/': (context) => RegisterOtpScreen(),
         'evBottomNav': (context) => const EVBottomNavigationBar(),
-        'otp': (context) => RegisterOtpScreen(),
+        'otp': (context) => const WelcomeScreen(),
       },
     );
   }

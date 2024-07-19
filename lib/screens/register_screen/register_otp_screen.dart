@@ -1,3 +1,4 @@
+import 'package:cool_alert/cool_alert.dart';
 import 'package:easevents_app/exports.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 
@@ -8,6 +9,17 @@ class RegisterOtpScreen extends StatelessWidget {
 
   final TextEditingController _otpController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+
+  void showOtpSucces(BuildContext context) {
+    CoolAlert.show(
+      context: context,
+      type: CoolAlertType.success,
+      backgroundColor: AppStyles.primaryColor,
+      borderRadius: 10,
+      text: 'Account Creation Success',
+      confirmBtnColor: AppStyles.primaryColor,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -81,14 +93,18 @@ class RegisterOtpScreen extends StatelessWidget {
                       ],
                     ),
                   ),
-                  const SizedBox(height: 13),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () => showOtpSucces(context),
                     child: const Text('Verify OTP'),
                   ),
+                  const SizedBox(height: 16),
                   GestureDetector(
                     onTap: () {},
-                    child: const Text('Change the email address'),
+                    child: Text(
+                      'Change the email address',
+                      style: Theme.of(context).textTheme.bodySmall,
+                      textAlign: TextAlign.center,
+                    ),
                   )
                 ],
               ),

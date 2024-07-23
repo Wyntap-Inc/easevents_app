@@ -1,4 +1,5 @@
 import 'package:easevents_app/screens/register_screen/register_otp_screen.dart';
+import 'package:easevents_app/services/register_service.dart';
 
 import '../../exports.dart';
 
@@ -11,13 +12,11 @@ class RegisterScreen extends StatefulWidget {
 
 class _RegisterScreenState extends State<RegisterScreen> {
   final _formKey = GlobalKey<FormState>();
+
+  final TextEditingController _firstNameController = TextEditingController();
+  final TextEditingController _lastNameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _phoneNumberController = TextEditingController();
-  final TextEditingController _fullNameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _repeatPasswordController =
-      TextEditingController();
-  final TextEditingController _invitationController = TextEditingController();
 
   bool isButtonEnabled = false;
 
@@ -25,30 +24,26 @@ class _RegisterScreenState extends State<RegisterScreen> {
   void initState() {
     super.initState();
     _emailController.addListener(checkFields);
-    _phoneNumberController.addListener(checkFields);
-    _fullNameController.addListener(checkFields);
+    _firstNameController.addListener(checkFields);
+    _lastNameController.addListener(checkFields);
     _passwordController.addListener(checkFields);
-    _repeatPasswordController.addListener(checkFields);
   }
 
   @override
   void dispose() {
     _emailController.dispose();
-    _phoneNumberController.dispose();
-    _fullNameController.dispose();
+    _firstNameController.dispose();
+    _lastNameController.dispose();
     _passwordController.dispose();
-    _repeatPasswordController.dispose();
-    _invitationController.dispose();
     super.dispose();
   }
 
   void checkFields() {
     setState(() {
       isButtonEnabled = _emailController.text.isNotEmpty &&
-          _phoneNumberController.text.isNotEmpty &&
-          _fullNameController.text.isNotEmpty &&
-          _passwordController.text.isNotEmpty &&
-          _repeatPasswordController.text.isNotEmpty;
+          _firstNameController.text.isNotEmpty &&
+          _lastNameController.text.isNotEmpty &&
+          _passwordController.text.isNotEmpty;
     });
   }
 
@@ -83,58 +78,58 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   const Spacer(),
                   TextFormField(
                     autovalidateMode: AutovalidateMode.onUserInteraction,
+                    controller: _firstNameController,
+                    decoration: const InputDecoration(hintText: 'First Name'),
+                    validator: (_) => Validator.validateName(
+                      name: _firstNameController.text,
+                    ),
+                  ),
+                  const SizedBox(height: 12),
+                  TextFormField(
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    controller: _lastNameController,
+                    decoration: const InputDecoration(hintText: 'Last Name'),
+                    validator: (_) => Validator.validateName(
+                      name: _lastNameController.text,
+                    ),
+                  ),
+                  const SizedBox(height: 12),
+                  TextFormField(
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
                     controller: _emailController,
-                    decoration: const InputDecoration(hintText: 'Email'),
+                    decoration:
+                        const InputDecoration(hintText: 'Enter email address'),
                     validator: (_) => Validator.validateEmail(
                       email: _emailController.text,
                     ),
                   ),
                   const SizedBox(height: 12),
-                  TextFormField(
-                    autovalidateMode: AutovalidateMode.onUserInteraction,
-                    controller: _phoneNumberController,
-                    keyboardType: TextInputType.phone,
-                    decoration: const InputDecoration(hintText: 'Phone number'),
-                    validator: (_) => Validator.validatePhoneNumber(
-                      phoneNumber: _phoneNumberController.text,
-                    ),
-                  ),
-                  const SizedBox(height: 12),
-                  TextFormField(
-                    autovalidateMode: AutovalidateMode.onUserInteraction,
-                    controller: _fullNameController,
-                    decoration: const InputDecoration(hintText: 'Full name'),
-                    validator: (_) => Validator.validateName(
-                      name: _fullNameController.text,
-                    ),
-                  ),
-                  const SizedBox(height: 12),
+                  // TextFormField(
+                  //   autovalidateMode: AutovalidateMode.onUserInteraction,
+                  //   controller: _passwordController,
+                  //   obscureText: true,
+                  //   decoration: const InputDecoration(
+                  //     hintText: 'Make a password',
+                  //   ),
+                  //   validator: (value) {
+                  //     if (value != _repeatPasswordController.text) {
+                  //       return 'Password doesn\'t match';
+                  //     }
+                  //     return Validator.validatePassword(
+                  //       password: _passwordController.text,
+                  //     );
+                  //   },
+                  // ),
+                  // const SizedBox(height: 12),
                   TextFormField(
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     controller: _passwordController,
                     obscureText: true,
                     decoration: const InputDecoration(
-                      hintText: 'Make a password',
+                      hintText: 'Enter your Password',
                     ),
                     validator: (value) {
-                      if (value != _repeatPasswordController.text) {
-                        return 'Password doesn\'t match';
-                      }
-                      return Validator.validatePassword(
-                        password: _passwordController.text,
-                      );
-                    },
-                  ),
-                  const SizedBox(height: 12),
-                  TextFormField(
-                    autovalidateMode: AutovalidateMode.onUserInteraction,
-                    controller: _repeatPasswordController,
-                    obscureText: true,
-                    decoration: const InputDecoration(
-                      hintText: 'Enter your password again',
-                    ),
-                    validator: (value) {
-                      if (_repeatPasswordController.text.isEmpty) {
+                      if (_passwordController.text.isEmpty) {
                         return 'Repeat passwod field is required';
                       } else if (value != _passwordController.text) {
                         return 'Password doesn\'t match';
@@ -142,20 +137,26 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       return null;
                     },
                   ),
-                  const SizedBox(height: 12),
-                  TextFormField(
-                    controller: _invitationController,
-                    obscureText: true,
-                    decoration: const InputDecoration(
-                      hintText: 'Invitation Code (Optional)',
-                    ),
-                  ),
+                  // const SizedBox(height: 12),
+                  // TextFormField(
+                  //   controller: _invitationController,
+                  //   obscureText: true,
+                  //   decoration: const InputDecoration(
+                  //     hintText: 'Invitation Code (Optional)',
+                  //   ),
+                  // ),
                   const SizedBox(height: 12),
                   AppOutlinedButtonPlain(
                     text: 'Sign up',
                     onTap: isButtonEnabled
                         ? () {
                             if (_formKey.currentState!.validate()) {
+                              RegisterService().userRegistration(
+                                _firstNameController.text,
+                                _lastNameController.text,
+                                _emailController.text,
+                                _passwordController.text,
+                              );
                               Navigator.of(context)
                                   .pushNamed(RegisterOtpScreen.routeName);
                             }

@@ -1,6 +1,6 @@
-import 'package:easevents_app/models/login_response/login_response_data.dart';
+import 'package:easevents_app/models/request_response/request_response_data.dart';
 
-class LoginResponse {
+class RequestResponse {
   String timeRequested;
   String environment;
   String domain;
@@ -9,7 +9,7 @@ class LoginResponse {
   String statusCode;
   Data data;
 
-  LoginResponse({
+  RequestResponse({
     required this.timeRequested,
     required this.environment,
     required this.domain,
@@ -19,7 +19,8 @@ class LoginResponse {
     required this.data,
   });
 
-  factory LoginResponse.fromJson(Map<String, dynamic> json) => LoginResponse(
+  factory RequestResponse.fromJson(Map<String, dynamic> json) =>
+      RequestResponse(
         timeRequested: json['timeRequested'],
         environment: json['environment'],
         domain: json['domain'],

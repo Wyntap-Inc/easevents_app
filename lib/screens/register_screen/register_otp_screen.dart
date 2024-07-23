@@ -50,6 +50,7 @@ class RegisterOtpScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 20),
                   OtpTextField(
+                    keyboardType: TextInputType.text,
                     alignment: Alignment.center,
                     numberOfFields: 6,
                     autoFocus: true,

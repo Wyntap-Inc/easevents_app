@@ -7,7 +7,7 @@ class RequestResponse {
   bool success;
   int httpCode;
   String statusCode;
-  Data data;
+  Data? data;
 
   RequestResponse({
     required this.timeRequested,
@@ -16,7 +16,7 @@ class RequestResponse {
     required this.success,
     required this.statusCode,
     required this.httpCode,
-    required this.data,
+    this.data,
   });
 
   factory RequestResponse.fromJson(Map<String, dynamic> json) =>
@@ -27,6 +27,6 @@ class RequestResponse {
         success: json['success'],
         statusCode: json['statusCode'],
         httpCode: json['httpCode'],
-        data: Data.fromJson(json['data']),
+        data: json['data'] != null ? Data.fromJson(json['data']) : null,
       );
 }

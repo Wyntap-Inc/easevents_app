@@ -21,10 +21,30 @@ class RegisterService {
       }),
     );
 
-    if (response.statusCode == 201) {
-      final Map<String, dynamic> responseData = json.decode(response.body);
-      RequestResponse registerResponse = RequestResponse.fromJson(responseData);
-      TokenStorage().saveToken(registerResponse.data.token);
+    try {
+      if (response.statusCode == 201) {
+        if (response.body.isNotEmpty) {
+          final Map<String, dynamic> jsonResponse = json.decode(response.body);
+          RequestResponse responseData = RequestResponse.fromJson(jsonResponse);
+
+          if (responseData.data != null) {
+            if (responseData.httpCode == 200) {
+              TokenStorage().saveVerificationToken(responseData.data!.token);
+            } else {
+              throw Exception(
+                  '${responseData.httpCode} + ${responseData.statusCode}');
+            }
+          } else {
+            throw Exception('Invalid Data');
+          }
+        } else {
+          throw Exception('No Data');
+        }
+      } else {
+        throw Exception('Internal Server Error');
+      }
+    } catch (e) {
+      Exception(e);
     }
   }
 }

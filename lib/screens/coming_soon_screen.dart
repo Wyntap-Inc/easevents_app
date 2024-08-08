@@ -33,7 +33,7 @@ class ComingSoonScreen extends StatelessWidget {
                     ElevatedButton(
                       onPressed: () async {
                         final token = TokenStorage();
-                        token.deleteToken();
+                        token.deleteLoginToken();
                         await Future.delayed(const Duration(milliseconds: 2000),
                             () {
                           Navigator.of(context)

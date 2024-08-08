@@ -1,6 +1,10 @@
-import 'package:cool_alert/cool_alert.dart';
 import 'package:easevents_app/exports.dart';
+import 'package:easevents_app/providers/loader.dart';
+import 'package:easevents_app/screens/register_screen/success_screen.dart';
+import 'package:easevents_app/services/verify_registration.dart';
+import 'package:easevents_app/widgets/text_formatter_widget.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
+import 'package:provider/provider.dart';
 
 class RegisterOtpScreen extends StatelessWidget {
   RegisterOtpScreen({super.key});
@@ -10,19 +14,10 @@ class RegisterOtpScreen extends StatelessWidget {
   final TextEditingController _otpController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
-  void showOtpSucces(BuildContext context) {
-    CoolAlert.show(
-      context: context,
-      type: CoolAlertType.success,
-      backgroundColor: AppStyles.primaryColor,
-      borderRadius: 10,
-      text: 'Account Creation Success',
-      confirmBtnColor: AppStyles.primaryColor,
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
+    final loader = Provider.of<LoaderProvider>(context);
+
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: SafeArea(
@@ -50,6 +45,7 @@ class RegisterOtpScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 20),
                   OtpTextField(
+                    inputFormatters: [UppercaseInputFormatter()],
                     keyboardType: TextInputType.text,
                     alignment: Alignment.center,
                     numberOfFields: 6,
@@ -94,9 +90,20 @@ class RegisterOtpScreen extends StatelessWidget {
                       ],
                     ),
                   ),
-                  ElevatedButton(
-                    onPressed: () => showOtpSucces(context),
-                    child: const Text('Verify OTP'),
+                  AppOutlinedButtonPlain(
+                    isLoading: loader.isLoading,
+                    onTap: () async {
+                      VerifyRegistration()
+                          .verifyUserRegistration(_otpController.text);
+
+                      await loader.loader();
+
+                      if (context.mounted) {
+                        Navigator.of(context).pushNamedAndRemoveUntil(
+                            SuccessScreen.routeName, (route) => false);
+                      }
+                    },
+                    text: 'Verify OTP',
                   ),
                   const SizedBox(height: 16),
                   GestureDetector(

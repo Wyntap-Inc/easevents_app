@@ -4,8 +4,8 @@ import 'package:easevents_app/screens/inquiry_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
-class EVProviderProfileScreen extends StatelessWidget {
-  const EVProviderProfileScreen(this.evProvider, {super.key});
+class EvVendorProfileScreen extends StatelessWidget {
+  const EvVendorProfileScreen(this.evProvider, {super.key});
 
   final EVProvider evProvider;
 

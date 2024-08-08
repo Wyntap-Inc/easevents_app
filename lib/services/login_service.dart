@@ -20,7 +20,25 @@ class LoginService {
     if (response.statusCode == 200) {
       final Map<String, dynamic> responseData = json.decode(response.body);
       RequestResponse loginResponse = RequestResponse.fromJson(responseData);
-      TokenStorage().saveToken(loginResponse.data.token);
+      TokenStorage().saveLoginToken(loginResponse.data!.token);
+      if (response.body.isNotEmpty) {
+        final Map<String, dynamic> jsonResponse = json.decode(response.body);
+        RequestResponse responseData = RequestResponse.fromJson(jsonResponse);
+        if (responseData is Map<String, dynamic>) {
+          if (responseData.httpCode == 200) {
+            TokenStorage().saveLoginToken(responseData.data!.token);
+            print(responseData.data!.token);
+          } else {
+            throw Exception(responseData.httpCode);
+          }
+        } else {
+          throw const FormatException('Invalid Type');
+        }
+      } else {
+        throw Exception('Response Body is Empty');
+      }
+    } else {
+      throw Exception('Failed to verify');
     }
   }
 }

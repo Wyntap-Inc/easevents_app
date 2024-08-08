@@ -1,13 +1,13 @@
 import 'package:easevents_app/exports.dart';
 
-class EVProvidersScreen extends StatefulWidget {
-  const EVProvidersScreen({super.key});
+class EvVendorsScreen extends StatefulWidget {
+  const EvVendorsScreen({super.key});
 
   @override
-  State<EVProvidersScreen> createState() => _EVProvidersScreenState();
+  State<EvVendorsScreen> createState() => _EVProvidersScreenState();
 }
 
-class _EVProvidersScreenState extends State<EVProvidersScreen> {
+class _EVProvidersScreenState extends State<EvVendorsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +23,7 @@ class _EVProvidersScreenState extends State<EVProvidersScreen> {
           Padding(
             padding: const EdgeInsets.only(right: 8),
             child: IconButton(
-              onPressed: () {},
+              onPressed: () async {},
               icon: const PhosphorIcon(
                 PhosphorIconsBold.user,
               ),
@@ -62,7 +62,7 @@ class _EVProvidersScreenState extends State<EVProvidersScreen> {
                     crossAxisSpacing: 8,
                   ),
                   itemBuilder: (context, index) =>
-                      EVProviderListItem(dummyData[index]),
+                      EvVendorListItem(dummyData[index]),
                 ),
               ),
             ],

@@ -1,5 +1,5 @@
 import 'package:easevents_app/screens/coming_soon_screen.dart';
-import 'package:easevents_app/screens/ev_providers/ev_providers_screen.dart';
+import 'package:easevents_app/screens/ev_providers/ev_vendors_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
@@ -24,7 +24,7 @@ class _EVBottomNavigationBarState extends State<EVBottomNavigationBar> {
   @override
   Widget build(BuildContext context) {
     final List pages = [
-      const EVProvidersScreen(),
+      const EvVendorsScreen(),
       const ComingSoonScreen(),
       const ComingSoonScreen(),
       const ComingSoonScreen(),

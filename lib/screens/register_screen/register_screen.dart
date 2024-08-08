@@ -1,5 +1,7 @@
+import 'package:easevents_app/providers/loader.dart';
 import 'package:easevents_app/screens/register_screen/register_otp_screen.dart';
 import 'package:easevents_app/services/register_service.dart';
+import 'package:provider/provider.dart';
 
 import '../../exports.dart';
 
@@ -49,6 +51,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final loader = Provider.of<LoaderProvider>(context);
     return Scaffold(
       appBar: AppBar(),
       body: SafeArea(
@@ -147,9 +150,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   // ),
                   const SizedBox(height: 12),
                   AppOutlinedButtonPlain(
+                    isLoading: loader.isLoading,
                     text: 'Sign up',
                     onTap: isButtonEnabled
-                        ? () {
+                        ? () async {
                             if (_formKey.currentState!.validate()) {
                               RegisterService().userRegistration(
                                 _firstNameController.text,
@@ -157,8 +161,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 _emailController.text,
                                 _passwordController.text,
                               );
-                              Navigator.of(context)
-                                  .pushNamed(RegisterOtpScreen.routeName);
+
+                              await loader.loader();
+
+                              if (context.mounted) {
+                                Navigator.of(context)
+                                    .pushNamed(RegisterOtpScreen.routeName);
+                              }
                             }
                           }
                         : null,

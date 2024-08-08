@@ -11,8 +11,8 @@ export 'screens/register_screen/register_screen.dart';
 export './screens/login_screen.dart';
 export './screens/welcome_screen.dart';
 export './screens/ev_bottom_navigation.dart';
-export './screens/ev_providers/ev_provider_list_item.dart';
-export './screens/ev_providers/ev_provider_profile_screen.dart';
+export 'screens/ev_providers/ev_vendor_list_item.dart';
+export 'screens/ev_providers/ev_vendor_profile_screen.dart';
 
 export './widgets/divider_widget.dart';
 export './widgets/app_outlined_btn_icon.dart';

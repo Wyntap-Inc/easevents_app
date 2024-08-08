@@ -1,28 +1,40 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class TokenStorage {
-  final tokenStorage = const FlutterSecureStorage();
+  final FlutterSecureStorage _tokenStorage = const FlutterSecureStorage();
 
-  final storageKey = 'verificationToken';
+  final String _loginTokenKey = 'loginToken';
+  final String _verificationKey = 'verificationKey';
 
-  Future<void> saveToken(String token) async {
-    await tokenStorage.write(key: storageKey, value: token);
+  Future<void> saveLoginToken(String token) async {
+    await _tokenStorage.write(key: _loginTokenKey, value: token);
   }
 
-  Future<String?> getToken() async {
-    return await tokenStorage.read(key: storageKey);
+  Future<String?> getLoginToken() async {
+    return await _tokenStorage.read(key: _loginTokenKey);
   }
 
-  Future<void> deleteToken() async {
-    await tokenStorage.delete(key: storageKey);
+  Future<void> deleteLoginToken() async {
+    await _tokenStorage.delete(key: _loginTokenKey);
   }
 
   Future<bool> isUserLoggedIn() async {
-    String? token = await getToken();
+    String? token = await getLoginToken();
 
-    if (token == null || token.isEmpty) {
-      return false;
-    }
-    return true;
+    return token != null && token.isNotEmpty;
+  }
+
+  // Verification Token Methods
+
+  Future<void> saveVerificationToken(String token) async {
+    await _tokenStorage.write(key: _verificationKey, value: token);
+  }
+
+  Future<String?> getVerificationToken() async {
+    return await _tokenStorage.read(key: _verificationKey);
+  }
+
+  Future<void> deleteVerificationToken() async {
+    await _tokenStorage.delete(key: _verificationKey);
   }
 }

@@ -77,11 +77,8 @@ class LoginScreen extends StatelessWidget {
                             content: Text('Logged in successfuly'),
                           ));
 
-                          Navigator.of(context).pushAndRemoveUntil(
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  const EVBottomNavigationBar(),
-                            ),
+                          Navigator.of(context).pushNamedAndRemoveUntil(
+                            EVBottomNavigationBar.routeName,
                             (route) => false,
                           );
                         }
@@ -92,7 +89,7 @@ class LoginScreen extends StatelessWidget {
                   AppOutlinedButtonIcon(
                     text: 'Continue with Google',
                     onTap: () async {
-                      final token = await TokenStorage().getToken();
+                      final token = await TokenStorage().getLoginToken();
                       print(token);
                     },
                     iconData: Image.asset(

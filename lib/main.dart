@@ -1,5 +1,6 @@
 import 'package:easevents_app/providers/loader.dart';
 import 'package:easevents_app/screens/register_screen/register_otp_screen.dart';
+import 'package:easevents_app/screens/register_screen/success_screen.dart';
 import 'package:easevents_app/services/token_storage.dart';
 import 'package:provider/provider.dart';
 import 'exports.dart';
@@ -38,6 +39,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => const WelcomeScreen(),
         'evBottomNav': (context) => const EVBottomNavigationBar(),
+        'success': (context) => const SuccessScreen(),
         'otp': (context) => RegisterOtpScreen(),
       },
     );

@@ -1,8 +1,8 @@
 import 'package:easevents_app/exports.dart';
 import 'package:easevents_app/models/ev_provider.dart';
 
-class EVProviderListItem extends StatelessWidget {
-  const EVProviderListItem(this.evProvider, {super.key});
+class EvVendorListItem extends StatelessWidget {
+  const EvVendorListItem(this.evProvider, {super.key});
 
   final EVProvider evProvider;
 
@@ -12,7 +12,7 @@ class EVProviderListItem extends StatelessWidget {
       onTap: () {
         Navigator.of(context).push(
           MaterialPageRoute(
-            builder: (context) => EVProviderProfileScreen(evProvider),
+            builder: (context) => EvVendorProfileScreen(evProvider),
           ),
         );
       },

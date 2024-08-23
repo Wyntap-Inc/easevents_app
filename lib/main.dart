@@ -1,4 +1,5 @@
 import 'package:easevents_app/providers/loader.dart';
+import 'package:easevents_app/screens/myaccount_screen.dart';
 import 'package:easevents_app/screens/register_screen/register_otp_screen.dart';
 import 'package:easevents_app/screens/register_screen/success_screen.dart';
 import 'package:easevents_app/services/token_storage.dart';
@@ -37,7 +38,7 @@ class MyApp extends StatelessWidget {
       theme: AppThemes.lightTheme,
       initialRoute: initialRoute,
       routes: {
-        '/': (context) => const WelcomeScreen(),
+        '/': (context) => const MyAccountScreen(),
         'evBottomNav': (context) => const EVBottomNavigationBar(),
         'success': (context) => const SuccessScreen(),
         'otp': (context) => RegisterOtpScreen(),

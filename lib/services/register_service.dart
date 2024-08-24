@@ -21,30 +21,37 @@ class RegisterService {
       }),
     );
 
-    try {
-      if (response.statusCode == 201) {
-        if (response.body.isNotEmpty) {
-          final Map<String, dynamic> jsonResponse = json.decode(response.body);
-          RequestResponse responseData = RequestResponse.fromJson(jsonResponse);
+    handleResponse(response);
+  }
 
-          if (responseData.data != null) {
-            if (responseData.httpCode == 200) {
-              TokenStorage().saveVerificationToken(responseData.data!.token);
-            } else {
-              throw Exception(
-                  '${responseData.httpCode} + ${responseData.statusCode}');
-            }
-          } else {
-            throw Exception('Invalid Data');
-          }
+  void handleResponse(http.Response response) {
+    try {
+      if (response.statusCode == 201 && response.body.isNotEmpty) {
+        final Map<String, dynamic> jsonResponse = json.decode(response.body);
+        RequestResponse responseData = RequestResponse.fromJson(jsonResponse);
+
+        if (responseData.httpCode == 200 && responseData.data != null) {
+          TokenStorage().saveVerificationToken(responseData.data!.token);
         } else {
-          throw Exception('No Data');
+          throw Exception(
+            '${responseData.httpCode} && ${responseData.statusCode}',
+          );
         }
       } else {
-        throw Exception('Internal Server Error');
+        handleErrorResponse(response);
       }
-    } catch (e) {
-      Exception(e);
+    } catch (error) {
+      throw Exception(error);
+    }
+  }
+
+  void handleErrorResponse(http.Response response) {
+    if (response.body.isEmpty) {
+      throw Exception('No Data');
+    } else if (response.statusCode != 200) {
+      throw Exception('Internal Server Error ${response.statusCode}');
+    } else {
+      throw Exception('Invalid Data');
     }
   }
 }

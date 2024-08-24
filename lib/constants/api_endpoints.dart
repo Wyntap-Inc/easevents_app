@@ -1,9 +1,9 @@
 class ApiEndpoints {
   static const String _baseUrl = 'https://sso-api.easevents.app/api/v1';
 
-  static const String _signInEndpoint = '$_baseUrl/auth/signin';
-  static const String _signUpEndpoint = '$_baseUrl/auth/signup';
-  static const String _verifySignUpEndpoint = '$_baseUrl/auth/signup/verify';
+  static const String _signInEndpoint = '$_baseUrl/auth/login';
+  static const String _signUpEndpoint = '$_baseUrl/auth/register';
+  static const String _verifySignUpEndpoint = '$_baseUrl/auth/register/verify';
   static const String _resetPasswordEndpoint = '$_baseUrl/auth/reset-password';
   static const String _verifyResetPasswordEndpoint =
       '$_baseUrl/auth/reset-password/verify';

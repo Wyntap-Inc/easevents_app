@@ -27,7 +27,10 @@ class MyAccountScreen extends StatelessWidget {
                 child:
                 Column(
                   children: [
-                    Image.network('https://cdn.prod.website-files.com/5fd2ba952bcd68835f2c8254/654553fedbede7976b97eaf5_Professional-5.remini-enhanced.webp', width: 130, ),
+                    CircleAvatar(
+                      radius: 80,
+                      backgroundImage: NetworkImage('https://cdn.prod.website-files.com/5fd2ba952bcd68835f2c8254/654553fedbede7976b97eaf5_Professional-5.remini-enhanced.webp'),
+                    ),
                     SizedBox(height: 7),
                     Text('John Doe', style: Theme.of(context).textTheme.titleLarge,),
                   ],

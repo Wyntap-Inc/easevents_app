@@ -1,4 +1,5 @@
 import 'package:easevents_app/screens/coming_soon_screen.dart';
+import 'package:easevents_app/screens/my_account_screen.dart';
 import 'package:easevents_app/screens/ev_providers/ev_vendors_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
@@ -27,7 +28,7 @@ class _EVBottomNavigationBarState extends State<EVBottomNavigationBar> {
       const EvVendorsScreen(),
       const ComingSoonScreen(),
       const ComingSoonScreen(),
-      const ComingSoonScreen(),
+      const MyAccountScreen(),
     ];
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(

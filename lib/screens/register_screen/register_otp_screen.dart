@@ -7,9 +7,11 @@ import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:provider/provider.dart';
 
 class RegisterOtpScreen extends StatelessWidget {
-  RegisterOtpScreen({super.key});
+  RegisterOtpScreen({this.email, super.key});
 
   static const routeName = 'otp';
+
+  final String? email;
 
   final TextEditingController _otpController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
@@ -31,17 +33,25 @@ class RegisterOtpScreen extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   Text(
-                    'Enter your verification code',
+                    'Verify Your Email Address',
                     textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.titleLarge!.copyWith(
                           fontWeight: FontWeight.bold,
                         ),
                   ),
-                  const SizedBox(height: 16),
+                  const SizedBox(height: 8),
                   Text(
-                    'We will sent an One Time Passcode\nvia this mail@gmail.com email address.',
+                    'Please enter the 6 digit code we sent to',
                     textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.bodySmall,
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    email == null ? 'example@email.com' : email!,
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                          decoration: TextDecoration.underline,
+                        ),
                   ),
                   const SizedBox(height: 20),
                   OtpTextField(
@@ -90,6 +100,7 @@ class RegisterOtpScreen extends StatelessWidget {
                       ],
                     ),
                   ),
+                  const SizedBox(height: 4),
                   AppOutlinedButtonPlain(
                     isLoading: loader.isLoading,
                     onTap: () async {

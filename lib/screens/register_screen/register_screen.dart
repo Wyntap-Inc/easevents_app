@@ -165,8 +165,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               await loader.loader();
 
                               if (context.mounted) {
-                                Navigator.of(context)
-                                    .pushNamed(RegisterOtpScreen.routeName);
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (context) => RegisterOtpScreen(
+                                      email: _emailController.text,
+                                    ),
+                                  ),
+                                );
                               }
                             }
                           }

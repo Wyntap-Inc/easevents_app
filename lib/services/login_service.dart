@@ -17,28 +17,37 @@ class LoginService {
       },
     );
 
-    if (response.statusCode == 200) {
-      final Map<String, dynamic> responseData = json.decode(response.body);
-      RequestResponse loginResponse = RequestResponse.fromJson(responseData);
-      TokenStorage().saveLoginToken(loginResponse.data!.token);
-      if (response.body.isNotEmpty) {
+    handleResponse(response);
+  }
+
+  void handleResponse(http.Response response) {
+    try {
+      if (response.statusCode == 200 && response.body.isNotEmpty) {
         final Map<String, dynamic> jsonResponse = json.decode(response.body);
         RequestResponse responseData = RequestResponse.fromJson(jsonResponse);
-        if (responseData is Map<String, dynamic>) {
-          if (responseData.httpCode == 200) {
-            TokenStorage().saveLoginToken(responseData.data!.token);
-            print(responseData.data!.token);
-          } else {
-            throw Exception(responseData.httpCode);
-          }
+
+        if (responseData.httpCode == 202 && responseData.data != null) {
+          TokenStorage().saveLoginToken(responseData.data!.token);
         } else {
-          throw const FormatException('Invalid Type');
+          throw Exception(
+            '${responseData.httpCode} && ${responseData.statusCode}',
+          );
         }
       } else {
-        throw Exception('Response Body is Empty');
+        handleErrorResponse(response);
       }
+    } catch (error) {
+      throw Exception(error);
+    }
+  }
+
+  void handleErrorResponse(http.Response response) {
+    if (response.body.isEmpty) {
+      throw Exception('No Data');
+    } else if (response.statusCode != 200) {
+      throw Exception('Internal Server Error ${response.statusCode}');
     } else {
-      throw Exception('Failed to verify');
+      throw Exception('Invalid Data');
     }
   }
 }

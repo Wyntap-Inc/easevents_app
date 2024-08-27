@@ -23,6 +23,7 @@ class EvUserMessageListTile extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: ListTile(
+        contentPadding: const EdgeInsets.only(left: 16, right: 22),
         leading: badges.Badge(
           position: badges.BadgePosition.bottomEnd(bottom: -3, end: -2),
           badgeStyle: const badges.BadgeStyle(

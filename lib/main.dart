@@ -1,4 +1,5 @@
 import 'package:easevents_app/providers/loader.dart';
+import 'package:easevents_app/screens/message_screen/ev_chat_list_screen.dart';
 import 'package:easevents_app/screens/register_screen/register_otp_screen.dart';
 import 'package:easevents_app/screens/register_screen/success_screen.dart';
 import 'package:easevents_app/services/token_storage.dart';

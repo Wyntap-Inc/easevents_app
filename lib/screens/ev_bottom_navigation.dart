@@ -1,5 +1,6 @@
 import 'package:easevents_app/screens/coming_soon_screen.dart';
 import 'package:easevents_app/screens/ev_providers/ev_vendors_screen.dart';
+import 'package:easevents_app/screens/message_screen/ev_chat_list_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
@@ -26,7 +27,7 @@ class _EVBottomNavigationBarState extends State<EVBottomNavigationBar> {
     final List pages = [
       const EvVendorsScreen(),
       const ComingSoonScreen(),
-      const ComingSoonScreen(),
+      const EvChatListSCreen(),
       const ComingSoonScreen(),
     ];
     return Scaffold(
@@ -43,8 +44,8 @@ class _EVBottomNavigationBarState extends State<EVBottomNavigationBar> {
             label: 'Bookmarks',
           ),
           BottomNavigationBarItem(
-            icon: Icon(PhosphorIcons.clockCounterClockwise()),
-            label: 'History',
+            icon: Icon(PhosphorIcons.chatCircleText()),
+            label: 'Messages',
           ),
           BottomNavigationBarItem(
             icon: Icon(PhosphorIcons.user()),

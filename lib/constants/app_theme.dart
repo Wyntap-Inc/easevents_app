@@ -120,6 +120,13 @@ class AppThemes {
             ),
           ),
         ),
+        listTileTheme: const ListTileThemeData(
+          horizontalTitleGap: 10,
+          minVerticalPadding: 15,
+          minTileHeight: 69,
+          contentPadding: EdgeInsets.symmetric(horizontal: 16),
+          titleAlignment: ListTileTitleAlignment.center,
+        ),
         bottomNavigationBarTheme: const BottomNavigationBarThemeData(
           enableFeedback: false,
           selectedItemColor: AppStyles.primaryColor,

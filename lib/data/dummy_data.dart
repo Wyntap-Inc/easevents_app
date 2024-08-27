@@ -1,3 +1,4 @@
+import 'package:easevents_app/models/ev_chat.dart';
 import 'package:easevents_app/models/ev_provider.dart';
 
 const dummyData = [
@@ -67,5 +68,58 @@ const dummyData = [
     location: 'Quezon City, Philippines',
     image: 'assets/images/blackroom.jpg',
     intro: 'Affordable photo and video studio rental in Quezon City.',
+  ),
+];
+
+List<EvChat> chatDummyData = [
+  EvChat(
+    id: 0,
+    name: 'Theodora',
+    messages: 'Lorem ipsum dolor sit amet,',
+    time: DateTime.now(),
+    date: DateTime.now(),
+    image: 'assets/images/alservo.jpg',
+    activeStatus: true,
+    notification: 4,
+  ),
+  EvChat(
+    id: 1,
+    name: 'Coreen Snow',
+    messages: 'Lorem ipsum dolor sit amet,',
+    time: DateTime.now(),
+    date: DateTime(DateTime.august, 20),
+    image: 'assets/images/greatpixels.png',
+    activeStatus: true,
+    notification: 2,
+  ),
+  EvChat(
+    id: 2,
+    name: 'Allen Lucas',
+    messages: 'Lorem ipsum dolor sit amet,',
+    time: DateTime.now(),
+    date: DateTime.now(),
+    image: 'assets/images/r&j.jpg',
+    activeStatus: true,
+    notification: 6,
+  ),
+  EvChat(
+    id: 3,
+    name: 'Linda Roling',
+    messages: 'Lorem ipsum dolor sit amet,',
+    time: DateTime.now(),
+    date: DateTime.now(),
+    image: 'assets/images/radiantfilms.png',
+    activeStatus: true,
+    notification: 8,
+  ),
+  EvChat(
+    id: 4,
+    name: 'Mark Burgoon',
+    messages: 'Lorem ipsum dolor sit amet,',
+    time: DateTime.now(),
+    date: DateTime.now(),
+    image: 'assets/images/backyard.jpg',
+    activeStatus: true,
+    notification: 3,
   ),
 ];

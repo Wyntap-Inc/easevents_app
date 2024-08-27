@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
       theme: AppThemes.lightTheme,
       initialRoute: initialRoute,
       routes: {
-        '/': (context) => const EvChatListSCreen(),
+        '/': (context) => const WelcomeScreen(),
         'evBottomNav': (context) => const EVBottomNavigationBar(),
         'success': (context) => const SuccessScreen(),
         'otp': (context) => RegisterOtpScreen(),

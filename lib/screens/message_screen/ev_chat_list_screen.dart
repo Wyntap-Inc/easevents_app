@@ -26,7 +26,7 @@ class EvChatListSCreen extends StatelessWidget {
         ],
       ),
       body: Padding(
-        padding: const EdgeInsets.only(top: 8, right: 16),
+        padding: const EdgeInsets.only(top: 8),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
@@ -34,6 +34,7 @@ class EvChatListSCreen extends StatelessWidget {
               child: ListView.builder(
                 physics: const BouncingScrollPhysics(),
                 scrollDirection: Axis.vertical,
+                padding: EdgeInsets.zero,
                 itemCount: chatDummyData.length,
                 itemBuilder: (context, index) {
                   return EvUserMessageListTile(

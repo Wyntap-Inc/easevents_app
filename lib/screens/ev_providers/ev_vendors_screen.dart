@@ -1,4 +1,5 @@
 import 'package:easevents_app/exports.dart';
+import 'package:easevents_app/services/token_storage.dart';
 
 class EvVendorsScreen extends StatefulWidget {
   const EvVendorsScreen({super.key});
@@ -23,7 +24,16 @@ class _EVProvidersScreenState extends State<EvVendorsScreen> {
           Padding(
             padding: const EdgeInsets.only(right: 8),
             child: IconButton(
-              onPressed: () async {},
+              onPressed: () async {
+                final token = TokenStorage();
+                token.deleteLoginToken();
+                await Future.delayed(const Duration(milliseconds: 2000), () {
+                  if (context.mounted) {
+                    Navigator.of(context)
+                        .pushNamedAndRemoveUntil('/', (route) => false);
+                  }
+                });
+              },
               icon: const PhosphorIcon(
                 PhosphorIconsBold.user,
               ),

@@ -1,3 +1,4 @@
+import 'package:easevents_app/providers/consumer_login_account_provider.dart';
 import 'package:easevents_app/providers/loader.dart';
 import 'package:easevents_app/screens/register_screen/register_otp_screen.dart';
 import 'package:easevents_app/screens/register_screen/success_screen.dart';
@@ -7,27 +8,31 @@ import 'exports.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  final tokenStorage = TokenStorage();
+
+  bool userIsLoggedIn = await tokenStorage.isUserLoggedIn();
+
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]);
-
-  bool userIsLoggedIn = await TokenStorage().isUserLoggedIn();
 
   runApp(
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => LoaderProvider()),
+        ChangeNotifierProvider(
+            create: (_) => ConsumerAccountProvider(tokenStorage)),
       ],
       child: MyApp(initialRoute: userIsLoggedIn ? 'evBottomNav' : '/'),
     ),
   );
 }
 
-// ignore: must_be_immutable
 class MyApp extends StatelessWidget {
-  MyApp({required this.initialRoute, super.key});
+  const MyApp({required this.initialRoute, super.key});
 
-  String initialRoute = '/';
+  final String initialRoute;
 
   @override
   Widget build(BuildContext context) {
@@ -41,6 +46,7 @@ class MyApp extends StatelessWidget {
         'evBottomNav': (context) => const EVBottomNavigationBar(),
         'success': (context) => const SuccessScreen(),
         'otp': (context) => RegisterOtpScreen(),
+        'profile': (context) => const ConsumerProfileScreen(),
       },
     );
   }

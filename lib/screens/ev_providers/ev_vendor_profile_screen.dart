@@ -1,5 +1,5 @@
 import 'package:easevents_app/constants/styles.dart';
-import 'package:easevents_app/models/ev_provider.dart';
+import 'package:easevents_app/models/ev_vendor.dart';
 import 'package:easevents_app/screens/inquiry_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
@@ -7,7 +7,7 @@ import 'package:phosphor_flutter/phosphor_flutter.dart';
 class EvVendorProfileScreen extends StatelessWidget {
   const EvVendorProfileScreen(this.evProvider, {super.key});
 
-  final EVProvider evProvider;
+  final EvVendor evProvider;
 
   @override
   Widget build(BuildContext context) {

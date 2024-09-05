@@ -1,8 +1,8 @@
 import 'package:easevents_app/models/ev_chat.dart';
-import 'package:easevents_app/models/ev_provider.dart';
+import 'package:easevents_app/models/ev_vendor.dart';
 
 const dummyData = [
-  EVProvider(
+  EvVendor(
     id: 0,
     name: 'Al Servo',
     tags: [
@@ -16,7 +16,7 @@ const dummyData = [
     intro:
         'Captured by the lens, Held by the heart. Celebrating love that lasts a lifetime.',
   ),
-  EVProvider(
+  EvVendor(
     id: 1,
     name: 'R & J Lights and Sounds',
     tags: ['Lights, Sounds', 'Birthday', 'Wedding'],
@@ -25,7 +25,7 @@ const dummyData = [
     intro:
         'Experience the ultimate in full band setups and event perfection with R & J Lights and Sounds.',
   ),
-  EVProvider(
+  EvVendor(
     id: 2,
     name: 'Great Pixels Photography',
     tags: ['Photography', 'Wedding', 'Videography'],
@@ -34,7 +34,7 @@ const dummyData = [
     intro:
         'Our focused on capturing perfect moments during your perfect day. The difference is that we love our work, which is reflected by the quality. turning a simple snapshot into a work of art that can tell a story.',
   ),
-  EVProvider(
+  EvVendor(
     id: 3,
     name: 'Radiant Films',
     tags: ['Videography', 'Wedding', 'Photography'],
@@ -43,7 +43,7 @@ const dummyData = [
     intro:
         'Welcome to Radiant Films, where we transform your wedding day into an unforgettable cinematic journey, weaving together the intricate tapestry of love, laughter, and joy.',
   ),
-  EVProvider(
+  EvVendor(
     id: 4,
     name: 'The Backyard Studios',
     tags: ['Photography', 'Photoshoot', 'Studio'],
@@ -52,7 +52,7 @@ const dummyData = [
     intro:
         'We specialize in visual documentary, uncomplicated & timeless imagery! If you are looking for a team who just wanna capture your epic instants in its most joyful & authentic? LOOK NO FURTHER!',
   ),
-  EVProvider(
+  EvVendor(
     id: 5,
     name: 'Shuttered Dreams Project',
     tags: ['Photography', 'Wedding', 'Birthday'],
@@ -61,7 +61,7 @@ const dummyData = [
     intro:
         'On the lookout for unscripted moments to make sure your wedding is not just captured but also told.❤️',
   ),
-  EVProvider(
+  EvVendor(
     id: 6,
     name: 'Blackroom Photography and Videography Studio',
     tags: ['Photography', ' Videography', 'Studio'],

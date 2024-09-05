@@ -33,7 +33,8 @@ class VerifyRegistration {
         RequestResponse responseData = RequestResponse.fromJson(jsonResponse);
 
         if (responseData.httpCode == 200 && responseData.data != null) {
-          TokenStorage().saveLoginToken(responseData.data!.token);
+          TokenStorage().saveLoginToken(responseData.data!.accessToken);
+          // manage deleting verificationKey after user is verified
         } else {
           throw Exception(
             '${responseData.httpCode} && ${responseData.statusCode}',

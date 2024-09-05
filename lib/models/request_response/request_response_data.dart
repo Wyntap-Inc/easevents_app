@@ -1,11 +1,18 @@
+import 'package:easevents_app/models/consumer_account.dart';
+
 class Data {
-  final String token;
+  final String accessToken;
+  final ConsumerAccount? account;
 
   Data({
-    required this.token,
+    required this.accessToken,
+    required this.account,
   });
 
   factory Data.fromJson(Map<String, dynamic> json) => Data(
-        token: json['token'],
+        accessToken: json['accessToken'],
+        account: json['account'] != null
+            ? ConsumerAccount.fromJson(json['account'])
+            : null,
       );
 }

@@ -1,3 +1,5 @@
+import 'dart:convert';
+import 'package:easevents_app/models/consumer_account.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class TokenStorage {
@@ -5,6 +7,7 @@ class TokenStorage {
 
   final String _loginTokenKey = 'loginToken';
   final String _verificationKey = 'verificationKey';
+  final String _userAccountInfoKey = 'userAccountKey';
 
   Future<void> saveLoginToken(String token) async {
     await _tokenStorage.write(key: _loginTokenKey, value: token);
@@ -36,5 +39,35 @@ class TokenStorage {
 
   Future<void> deleteVerificationToken() async {
     await _tokenStorage.delete(key: _verificationKey);
+  }
+
+  Future<void> readAllData() async {
+    final Map<String, String> allValues = await _tokenStorage.readAll();
+
+    print(allValues.entries);
+  }
+
+  Future<void> clearUserData() async {
+    try {
+      await _tokenStorage.deleteAll();
+    } catch (error) {
+      throw Exception('Failed to clear Storage');
+    }
+  }
+
+  Future<void> saveUserAccountInfo(ConsumerAccount user) async {
+    final accountJson = json.encode(user.toJson());
+    await _tokenStorage.write(key: _userAccountInfoKey, value: accountJson);
+  }
+
+  Future<ConsumerAccount?> getUserAccountInfo() async {
+    final accountInfoJson = await _tokenStorage.read(key: _userAccountInfoKey);
+
+    if (accountInfoJson != null) {
+      final Map<String, dynamic> accountInfoMap = json.decode(accountInfoJson);
+      return ConsumerAccount.fromJson(accountInfoMap);
+    } else {
+      return null;
+    }
   }
 }

@@ -1,10 +1,10 @@
 import 'package:easevents_app/exports.dart';
-import 'package:easevents_app/models/ev_provider.dart';
+import 'package:easevents_app/models/ev_vendor.dart';
 
 class EvVendorListItem extends StatelessWidget {
   const EvVendorListItem(this.evProvider, {super.key});
 
-  final EVProvider evProvider;
+  final EvVendor evProvider;
 
   @override
   Widget build(BuildContext context) {

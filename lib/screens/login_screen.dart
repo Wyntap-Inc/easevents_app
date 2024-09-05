@@ -89,8 +89,8 @@ class LoginScreen extends StatelessWidget {
                   AppOutlinedButtonIcon(
                     text: 'Continue with Google',
                     onTap: () async {
-                      final token = await TokenStorage().getLoginToken();
-                      print(token);
+                      final token = TokenStorage();
+                      await token.readAllData();
                     },
                     iconData: Image.asset(
                       'assets/images/google.png',

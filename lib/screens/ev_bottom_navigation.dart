@@ -1,5 +1,5 @@
 import 'package:easevents_app/screens/coming_soon_screen.dart';
-import 'package:easevents_app/screens/my_account_screen.dart';
+import 'package:easevents_app/screens/consumer_profile_screen.dart';
 import 'package:easevents_app/screens/ev_providers/ev_vendors_screen.dart';
 import 'package:easevents_app/screens/message_screen/ev_chat_list_screen.dart';
 import 'package:flutter/material.dart';
@@ -29,8 +29,9 @@ class _EVBottomNavigationBarState extends State<EVBottomNavigationBar> {
       const EvVendorsScreen(),
       const ComingSoonScreen(),
       const EvChatListSCreen(),
-      const MyAccountScreen(),
+      const ConsumerProfileScreen(),
     ];
+
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
         onTap: onSelectedIndex,

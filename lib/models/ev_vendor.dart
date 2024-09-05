@@ -1,4 +1,4 @@
-class EVProvider {
+class EvVendor {
   final int id;
   final String name;
   final List<String> tags;
@@ -6,7 +6,7 @@ class EVProvider {
   final String image;
   final String intro;
 
-  const EVProvider({
+  const EvVendor({
     required this.id,
     required this.name,
     required this.tags,
@@ -15,8 +15,8 @@ class EVProvider {
     required this.intro,
   });
 
-  factory EVProvider.fromJson(Map<String, dynamic> json) {
-    return EVProvider(
+  factory EvVendor.fromJson(Map<String, dynamic> json) {
+    return EvVendor(
       id: json['id'],
       name: json['name'],
       tags: json['tags'],

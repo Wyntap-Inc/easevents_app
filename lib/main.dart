@@ -1,7 +1,7 @@
 import 'package:easevents_app/providers/consumer_login_account_provider.dart';
 import 'package:easevents_app/providers/loader.dart';
 import 'package:easevents_app/screens/register_screen/register_otp_screen.dart';
-import 'package:easevents_app/screens/register_screen/success_screen.dart';
+import 'package:easevents_app/screens/register_screen/register_success_screen.dart';
 import 'package:easevents_app/services/token_storage.dart';
 import 'package:provider/provider.dart';
 import 'exports.dart';
@@ -9,7 +9,7 @@ import 'exports.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  final tokenStorage = TokenStorage();
+  final tokenStorage = LocalStorageManager();
 
   bool userIsLoggedIn = await tokenStorage.isUserLoggedIn();
 
@@ -39,12 +39,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: AppThemes.lightTheme,
+      theme: EvAppTheme.lightTheme,
       initialRoute: initialRoute,
       routes: {
         '/': (context) => const WelcomeScreen(),
         'evBottomNav': (context) => const EVBottomNavigationBar(),
-        'success': (context) => const SuccessScreen(),
+        'success': (context) => const RegisterSuccessScreen(),
         'otp': (context) => RegisterOtpScreen(),
         'profile': (context) => const ConsumerProfileScreen(),
       },

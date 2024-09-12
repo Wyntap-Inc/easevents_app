@@ -24,7 +24,7 @@ class ConsumerProfileScreen extends StatelessWidget {
           'Profile',
           style: TextStyle(
             fontWeight: FontWeight.bold,
-            color: AppStyles.primaryColor,
+            color: EVStyles.primaryColor,
           ),
         ),
       ),
@@ -95,7 +95,7 @@ class ConsumerProfileScreen extends StatelessWidget {
                             onPressed: () async {
                               await loader.loader();
 
-                              final token = TokenStorage();
+                              final token = LocalStorageManager();
                               await token.clearUserData();
 
                               if (context.mounted) {

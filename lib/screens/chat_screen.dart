@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:math';
 
-import 'package:easevents_app/constants/styles.dart';
+import 'package:easevents_app/constants/ev_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
@@ -31,8 +31,8 @@ class _ChatScreenState extends State<ChatScreen> {
       ),
       body: Chat(
         theme: const DefaultChatTheme(
-          primaryColor: AppStyles.primaryColor,
-          inputBackgroundColor: AppStyles.primaryColor,
+          primaryColor: EVStyles.primaryColor,
+          inputBackgroundColor: EVStyles.primaryColor,
           inputBorderRadius: BorderRadius.zero,
           inputContainerDecoration: BoxDecoration(),
           inputTextDecoration: InputDecoration(

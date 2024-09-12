@@ -5,7 +5,7 @@ class AppOutlinedButtonIcon extends StatelessWidget {
     required this.text,
     required this.onTap,
     required this.iconData,
-    this.fgColor = AppStyles.primaryColor,
+    this.fgColor = EVStyles.primaryColor,
     super.key,
   });
 
@@ -20,7 +20,7 @@ class AppOutlinedButtonIcon extends StatelessWidget {
       onPressed: onTap,
       style: OutlinedButton.styleFrom(
         side: const BorderSide(
-          color: AppStyles.enabledBorderSideColor,
+          color: EVStyles.enabledBorderSideColor,
         ),
         foregroundColor: fgColor,
         textStyle: const TextStyle(

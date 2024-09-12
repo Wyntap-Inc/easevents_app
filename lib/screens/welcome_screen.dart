@@ -18,7 +18,7 @@ class WelcomeScreen extends StatelessWidget {
                 clipper: CustomClipPath(),
                 child: ClipRect(
                   child: Container(
-                    color: AppStyles.primaryColor,
+                    color: EVStyles.primaryColor,
                     width: double.infinity,
                     child: Padding(
                       padding: const EdgeInsets.all(16.0),
@@ -33,7 +33,7 @@ class WelcomeScreen extends StatelessWidget {
                                   .textTheme
                                   .headlineMedium!
                                   .copyWith(
-                                    color: AppStyles.primaryWhite,
+                                    color: EVStyles.primaryWhite,
                                     fontWeight: FontWeight.bold,
                                     height: 1.2,
                                   ),
@@ -43,7 +43,7 @@ class WelcomeScreen extends StatelessWidget {
                               'Booking simplified, experiences amplified!',
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                color: AppStyles.primaryWhite,
+                                color: EVStyles.primaryWhite,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -76,12 +76,12 @@ class WelcomeScreen extends StatelessWidget {
                     onTap: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => RegisterScreen(),
+                          builder: (context) => const RegisterScreen(),
                         ),
                       );
                     },
-                    bgColor: AppStyles.primaryWhite,
-                    fgColor: AppStyles.primaryColor,
+                    bgColor: EVStyles.primaryWhite,
+                    fgColor: EVStyles.primaryColor,
                   ),
                 ],
               ),

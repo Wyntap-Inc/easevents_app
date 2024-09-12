@@ -6,9 +6,11 @@ import 'package:easevents_app/services/token_storage.dart';
 import 'package:http/http.dart' as http;
 
 class VerifyRegistration {
+  final storageManager = LocalStorageManager();
+
   Future<void> verifyUserRegistration(String verificationCode) async {
     final String? verificationToken =
-        await TokenStorage().getVerificationToken();
+        await storageManager.getVerificationToken();
 
     final response = await http.post(
       Uri.parse(ApiEndpoints.verifySignUpEndpoint),
@@ -33,7 +35,7 @@ class VerifyRegistration {
         RequestResponse responseData = RequestResponse.fromJson(jsonResponse);
 
         if (responseData.httpCode == 200 && responseData.data != null) {
-          TokenStorage().saveLoginToken(responseData.data!.accessToken);
+          storageManager.saveLoginToken(responseData.data!.accessToken);
           // manage deleting verificationKey after user is verified
         } else {
           throw Exception(

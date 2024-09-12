@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:easevents_app/models/consumer_account.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
-class TokenStorage {
+class LocalStorageManager {
   final FlutterSecureStorage _tokenStorage = const FlutterSecureStorage();
 
   final String _loginTokenKey = 'loginToken';
@@ -41,11 +41,12 @@ class TokenStorage {
     await _tokenStorage.delete(key: _verificationKey);
   }
 
-  Future<void> readAllData() async {
-    final Map<String, String> allValues = await _tokenStorage.readAll();
+  // for debugging print all data in localstorage
+  // Future<void> readAllData() async {
+  //   final Map<String, String> allValues = await _tokenStorage.readAll();
 
-    print(allValues.entries);
-  }
+  //   print(allValues.entries);
+  // }
 
   Future<void> clearUserData() async {
     try {

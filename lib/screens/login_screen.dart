@@ -1,6 +1,5 @@
 import 'package:easevents_app/providers/loader.dart';
 import 'package:easevents_app/services/login_service.dart';
-import 'package:easevents_app/services/token_storage.dart';
 import 'package:provider/provider.dart';
 
 import '../exports.dart';
@@ -26,7 +25,7 @@ class LoginScreen extends StatelessWidget {
                 horizontal: 24,
                 vertical: 16,
               ),
-              height: AppStyles.getUsableHeight(context),
+              height: EVStyles.getUsableHeight(context),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 mainAxisSize: MainAxisSize.min,
@@ -88,10 +87,7 @@ class LoginScreen extends StatelessWidget {
                   const SizedBox(height: 12),
                   AppOutlinedButtonIcon(
                     text: 'Continue with Google',
-                    onTap: () async {
-                      final token = TokenStorage();
-                      await token.readAllData();
-                    },
+                    onTap: () async {},
                     iconData: Image.asset(
                       'assets/images/google.png',
                       height: 24,
@@ -108,7 +104,7 @@ class LoginScreen extends StatelessWidget {
                           text: 'Forgot password?',
                           style:
                               Theme.of(context).textTheme.bodySmall!.copyWith(
-                                    color: AppStyles.primaryColor,
+                                    color: EVStyles.primaryColor,
                                     fontWeight: FontWeight.w600,
                                     fontSize: 11,
                                   ),
@@ -129,7 +125,7 @@ class LoginScreen extends StatelessWidget {
                                   .textTheme
                                   .bodySmall!
                                   .copyWith(
-                                    color: AppStyles.textPrimary,
+                                    color: EVStyles.textPrimary,
                                     fontSize: 11,
                                   ),
                             ),
@@ -139,7 +135,7 @@ class LoginScreen extends StatelessWidget {
                                   .textTheme
                                   .bodySmall!
                                   .copyWith(
-                                    color: AppStyles.primaryColor,
+                                    color: EVStyles.primaryColor,
                                     fontWeight: FontWeight.w600,
                                     fontSize: 11,
                                   ),

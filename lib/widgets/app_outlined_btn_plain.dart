@@ -4,8 +4,8 @@ class AppOutlinedButtonPlain extends StatelessWidget {
   const AppOutlinedButtonPlain({
     required this.text,
     required this.onTap,
-    this.bgColor = AppStyles.primaryColor,
-    this.fgColor = AppStyles.primaryWhite,
+    this.bgColor = EVStyles.primaryColor,
+    this.fgColor = EVStyles.primaryWhite,
     this.isLoading = false,
     super.key,
   });
@@ -22,9 +22,9 @@ class AppOutlinedButtonPlain extends StatelessWidget {
       onPressed: onTap,
       style: OutlinedButton.styleFrom(
         side: const BorderSide(
-          color: AppStyles.enabledBorderSideColor,
+          color: EVStyles.enabledBorderSideColor,
         ),
-        disabledBackgroundColor: AppStyles.primaryColor.withOpacity(0.9),
+        disabledBackgroundColor: EVStyles.primaryColor.withOpacity(0.9),
         backgroundColor: bgColor,
         foregroundColor: fgColor,
         textStyle: const TextStyle(

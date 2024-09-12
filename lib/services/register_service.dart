@@ -6,6 +6,7 @@ import 'package:easevents_app/services/token_storage.dart';
 import 'package:http/http.dart' as http;
 
 class RegisterService {
+  final storageManager = LocalStorageManager();
   Future<void> userRegistration(String firstName, String lastName,
       String emailAddress, String password) async {
     final response = await http.post(
@@ -31,7 +32,7 @@ class RegisterService {
         RequestResponse responseData = RequestResponse.fromJson(jsonResponse);
 
         if (responseData.httpCode == 200 && responseData.data != null) {
-          TokenStorage().saveVerificationToken(responseData.data!.accessToken);
+          storageManager.saveVerificationToken(responseData.data!.accessToken);
         } else {
           throw Exception(
             '${responseData.httpCode} && ${responseData.statusCode}',

@@ -5,14 +5,14 @@ import 'package:flutter/material.dart';
 class ConsumerAccountProvider with ChangeNotifier {
   ConsumerAccount? _accountInfo;
 
-  final TokenStorage _tokenStorage;
+  final LocalStorageManager _storageManager;
 
-  ConsumerAccountProvider(this._tokenStorage);
+  ConsumerAccountProvider(this._storageManager);
 
   ConsumerAccount? get accountGetter => _accountInfo;
 
   Future<void> loadConsumerAccountData() async {
-    _accountInfo = await _tokenStorage.getUserAccountInfo();
+    _accountInfo = await _storageManager.getUserAccountInfo();
     notifyListeners();
   }
 

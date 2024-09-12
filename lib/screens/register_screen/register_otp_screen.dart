@@ -1,6 +1,6 @@
 import 'package:easevents_app/exports.dart';
 import 'package:easevents_app/providers/loader.dart';
-import 'package:easevents_app/screens/register_screen/success_screen.dart';
+import 'package:easevents_app/screens/register_screen/register_success_screen.dart';
 import 'package:easevents_app/services/verify_registration.dart';
 import 'package:easevents_app/widgets/text_formatter_widget.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
@@ -65,9 +65,9 @@ class RegisterOtpScreen extends StatelessWidget {
                     filled: true,
                     fieldHeight: 40,
                     margin: const EdgeInsets.symmetric(horizontal: 9),
-                    borderColor: AppStyles.primaryColor,
-                    enabledBorderColor: AppStyles.textSecondary,
-                    focusedBorderColor: AppStyles.primaryColor,
+                    borderColor: EVStyles.primaryColor,
+                    enabledBorderColor: EVStyles.textSecondary,
+                    focusedBorderColor: EVStyles.primaryColor,
                     showFieldAsBox: true,
                     onCodeChanged: (value) {},
                     onSubmit: (value) {
@@ -83,7 +83,7 @@ class RegisterOtpScreen extends StatelessWidget {
                           text: 'Didn\'t get it?  ',
                           style:
                               Theme.of(context).textTheme.bodySmall!.copyWith(
-                                    color: AppStyles.textPrimary,
+                                    color: EVStyles.textPrimary,
                                     fontSize: 11,
                                   ),
                         ),
@@ -91,7 +91,7 @@ class RegisterOtpScreen extends StatelessWidget {
                           text: 'Resend code',
                           style:
                               Theme.of(context).textTheme.bodySmall!.copyWith(
-                                    color: AppStyles.primaryColor,
+                                    color: EVStyles.primaryColor,
                                     fontWeight: FontWeight.w600,
                                     fontSize: 11,
                                   ),
@@ -111,7 +111,7 @@ class RegisterOtpScreen extends StatelessWidget {
 
                       if (context.mounted) {
                         Navigator.of(context).pushNamedAndRemoveUntil(
-                            SuccessScreen.routeName, (route) => false);
+                            RegisterSuccessScreen.routeName, (route) => false);
                       }
                     },
                     text: 'Verify OTP',

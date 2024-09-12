@@ -7,7 +7,7 @@ import 'package:easevents_app/services/token_storage.dart';
 import 'package:http/http.dart' as http;
 
 class LoginService {
-  final TokenStorage store = TokenStorage();
+  final LocalStorageManager storageManager = LocalStorageManager();
 
   Future<void> userLogin(String email, String password) async {
     final response = await http.post(
@@ -29,9 +29,9 @@ class LoginService {
         RequestResponse responseData = RequestResponse.fromJson(jsonResponse);
 
         if (responseData.httpCode == 202 && responseData.data != null) {
-          store.saveLoginToken(responseData.data!.accessToken);
+          storageManager.saveLoginToken(responseData.data!.accessToken);
 
-          store.saveUserAccountInfo(
+          storageManager.saveUserAccountInfo(
               ConsumerAccount.fromJson(jsonResponse['data']['account']));
         } else {
           throw Exception(

@@ -61,7 +61,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               horizontal: 24,
               vertical: 16,
             ),
-            height: AppStyles.getUsableHeight(context),
+            height: EVStyles.getUsableHeight(context),
             child: Form(
               key: _formKey,
               child: Column(
@@ -196,7 +196,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           text: 'Already have an account? ',
                           style:
                               Theme.of(context).textTheme.bodySmall!.copyWith(
-                                    color: AppStyles.textPrimary,
+                                    color: EVStyles.textPrimary,
                                     fontSize: 11,
                                   ),
                         ),
@@ -204,7 +204,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           text: 'Login',
                           style:
                               Theme.of(context).textTheme.bodySmall!.copyWith(
-                                    color: AppStyles.primaryColor,
+                                    color: EVStyles.primaryColor,
                                     fontWeight: FontWeight.w600,
                                     fontSize: 11,
                                   ),

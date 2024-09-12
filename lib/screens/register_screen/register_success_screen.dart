@@ -1,5 +1,5 @@
 import 'package:easevents_app/exports.dart';
-import 'package:easevents_app/services/token_storage.dart';
+import 'package:easevents_app/services/local_storage_manager.dart';
 import 'package:lottie/lottie.dart';
 
 class RegisterSuccessScreen extends StatelessWidget {

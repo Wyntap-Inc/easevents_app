@@ -1,6 +1,6 @@
 import 'package:easevents_app/exports.dart';
 import 'package:easevents_app/providers/consumer_login_account_provider.dart';
-import 'package:easevents_app/services/token_storage.dart';
+import 'package:easevents_app/services/local_storage_manager.dart';
 import 'package:easevents_app/widgets/ev_search_bar_delegate.dart';
 import 'package:provider/provider.dart';
 

@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:easevents_app/constants/api_endpoints.dart';
 import 'package:easevents_app/models/request_response/request_response.dart';
-import 'package:easevents_app/services/token_storage.dart';
+import 'package:easevents_app/services/local_storage_manager.dart';
 import 'package:http/http.dart' as http;
 
 class RegisterService {

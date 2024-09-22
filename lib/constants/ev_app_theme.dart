@@ -5,6 +5,7 @@ class EvAppTheme {
   static ThemeData get lightTheme => ThemeData(
         useMaterial3: true,
         appBarTheme: const AppBarTheme(
+          iconTheme: IconThemeData(color: EVStyles.primaryColor),
           scrolledUnderElevation: 0,
           backgroundColor: EVStyles.primaryWhite,
         ),

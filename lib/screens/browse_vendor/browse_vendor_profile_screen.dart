@@ -12,6 +12,18 @@ class EvVendorProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        foregroundColor: EVStyles.primaryColor,
+        title: const Text('Vendor Profile'),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              PhosphorIconsBold.dotsThreeVertical,
+            ),
+          ),
+        ],
+      ),
       floatingActionButton: FloatingActionButton.extended(
         backgroundColor: EVStyles.primaryColor,
         foregroundColor: EVStyles.primaryWhite,
@@ -33,10 +45,17 @@ class EvVendorProfileScreen extends StatelessWidget {
                 children: [
                   Hero(
                     tag: evProvider.name,
-                    child: Image.asset(
-                      evProvider.image,
-                      height: MediaQuery.of(context).size.height / 2,
-                      fit: BoxFit.cover,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(8),
+                        child: Image.asset(
+                          evProvider.image,
+                          height: MediaQuery.of(context).size.height / 3.5,
+                          width: double.infinity,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
                     ),
                   ),
                   Padding(
@@ -113,43 +132,25 @@ class EvVendorProfileScreen extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.only(
         left: 16,
-        right: 16,
-        top: 16,
+        right: 24,
+        top: 8,
       ),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
         children: [
           InkWell(
-            onTap: () {
-              Navigator.of(context).pop();
-            },
+            onTap: () {},
             child: Container(
               width: 50,
               height: 50,
               decoration: BoxDecoration(
-                color: EVStyles.primaryColor,
-                borderRadius: BorderRadius.circular(30),
-              ),
-              child: Icon(
-                PhosphorIcons.caretLeft(),
+                boxShadow: [],
                 color: EVStyles.primaryWhite,
-              ),
-            ),
-          ),
-          const Spacer(),
-          InkWell(
-            onTap: () {
-              print('bookmark added');
-            },
-            child: Container(
-              width: 50,
-              height: 50,
-              decoration: BoxDecoration(
-                color: EVStyles.primaryColor,
                 borderRadius: BorderRadius.circular(30),
               ),
               child: Icon(
                 PhosphorIcons.bookmarkSimple(),
-                color: EVStyles.primaryWhite,
+                color: EVStyles.primaryColor,
               ),
             ),
           ),

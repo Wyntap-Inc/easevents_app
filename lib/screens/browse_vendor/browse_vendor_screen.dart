@@ -11,6 +11,13 @@ class BrowseVendorScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final consumerInfoProvider = Provider.of<ConsumerAccountProvider>(context);
 
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+        statusBarColor: EVStyles.primaryWhite,
+        statusBarIconBrightness: Brightness.dark,
+      ),
+    );
+
     Future.microtask(() {
       if (context.mounted) {
         Provider.of<ConsumerAccountProvider>(context, listen: false)

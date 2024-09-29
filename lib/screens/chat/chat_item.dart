@@ -4,7 +4,6 @@ import 'package:badges/badges.dart' as badges;
 
 class ChatItem extends StatelessWidget {
   const ChatItem({
-    required this.onTap,
     required this.images,
     required this.title,
     required this.subtitle,
@@ -12,7 +11,6 @@ class ChatItem extends StatelessWidget {
     super.key,
   });
 
-  final void Function() onTap;
   final String images;
   final String title;
   final String subtitle;
@@ -20,53 +18,50 @@ class ChatItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      child: ListTile(
-        contentPadding: const EdgeInsets.only(left: 16, right: 22),
-        leading: badges.Badge(
-          position: badges.BadgePosition.bottomEnd(bottom: -3, end: -2),
-          badgeStyle: const badges.BadgeStyle(
-            badgeColor: Colors.green,
-            padding: EdgeInsets.all(8),
-            elevation: 0,
-            shape: badges.BadgeShape.circle,
-            borderSide: BorderSide(
-              color: Colors.white,
-              width: 1.5,
-            ),
-          ),
-          child: CircleAvatar(
-            backgroundImage: AssetImage(images),
-            maxRadius: 24,
+    return ListTile(
+      contentPadding: const EdgeInsets.only(left: 16, right: 22),
+      leading: badges.Badge(
+        position: badges.BadgePosition.bottomEnd(bottom: -3, end: -2),
+        badgeStyle: const badges.BadgeStyle(
+          badgeColor: Colors.green,
+          padding: EdgeInsets.all(8),
+          elevation: 0,
+          shape: badges.BadgeShape.circle,
+          borderSide: BorderSide(
+            color: Colors.white,
+            width: 1.5,
           ),
         ),
-        title: Text(
-          overflow: TextOverflow.ellipsis,
-          maxLines: 1,
-          title,
+        child: CircleAvatar(
+          backgroundImage: AssetImage(images),
+          maxRadius: 24,
         ),
-        subtitle: Text(
-          subtitle,
-          maxLines: 1,
+      ),
+      title: Text(
+        overflow: TextOverflow.ellipsis,
+        maxLines: 1,
+        title,
+      ),
+      subtitle: Text(
+        subtitle,
+        maxLines: 1,
+      ),
+      titleTextStyle: Theme.of(context).textTheme.bodyMedium,
+      subtitleTextStyle: Theme.of(context).textTheme.labelMedium!.copyWith(
+            color: EVStyles.textSecondary,
+          ),
+      trailing: badges.Badge(
+        badgeContent: Text(
+          notification,
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 11,
+          ),
         ),
-        titleTextStyle: Theme.of(context).textTheme.bodyMedium,
-        subtitleTextStyle: Theme.of(context).textTheme.labelMedium!.copyWith(
-              color: EVStyles.textSecondary,
-            ),
-        trailing: badges.Badge(
-          badgeContent: Text(
-            notification,
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 11,
-            ),
-          ),
-          badgeStyle: const badges.BadgeStyle(
-            shape: badges.BadgeShape.circle,
-            padding: EdgeInsets.all(8),
-            elevation: 0,
-          ),
+        badgeStyle: const badges.BadgeStyle(
+          shape: badges.BadgeShape.circle,
+          padding: EdgeInsets.all(8),
+          elevation: 0,
         ),
       ),
     );

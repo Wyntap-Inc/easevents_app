@@ -7,7 +7,9 @@ import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
 
 class ChatScreen extends StatefulWidget {
-  const ChatScreen({super.key});
+  const ChatScreen({required this.title, super.key});
+
+  final String title;
 
   @override
   State<ChatScreen> createState() => _ChatScreenState();
@@ -27,7 +29,7 @@ class _ChatScreenState extends State<ChatScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Al Servo'),
+        title: Text(widget.title),
       ),
       body: Chat(
         theme: const DefaultChatTheme(

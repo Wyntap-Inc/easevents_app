@@ -42,7 +42,9 @@ class ConversationListScreen extends StatelessWidget {
                     onTap: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => const ChatScreen(),
+                          builder: (context) => ChatScreen(
+                            title: chatDummyData[index].name,
+                          ),
                         ),
                       );
                     },

@@ -39,7 +39,9 @@ class EvVendorProfileScreen extends StatelessWidget {
         onPressed: () {
           Navigator.of(context).push(
             MaterialPageRoute(
-              builder: (context) => const ChatScreen(),
+              builder: (context) => ChatScreen(
+                title: evProvider.name,
+              ),
             ),
           );
         },

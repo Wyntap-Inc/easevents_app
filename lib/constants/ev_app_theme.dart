@@ -8,6 +8,10 @@ class EvAppTheme {
           iconTheme: IconThemeData(color: EVStyles.primaryColor),
           scrolledUnderElevation: 0,
           backgroundColor: EVStyles.primaryWhite,
+          titleTextStyle: TextStyle(
+            color: Colors.black,
+            fontSize: 16,
+          ),
         ),
         scaffoldBackgroundColor: EVStyles.primaryWhite,
         colorScheme: ColorScheme.fromSeed(seedColor: EVStyles.primaryColor)

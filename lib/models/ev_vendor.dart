@@ -5,6 +5,7 @@ class EvVendor {
   final String location;
   final String image;
   final String intro;
+  final List<String> testimonials;
 
   const EvVendor({
     required this.id,
@@ -13,6 +14,7 @@ class EvVendor {
     required this.location,
     required this.image,
     required this.intro,
+    required this.testimonials,
   });
 
   factory EvVendor.fromJson(Map<String, dynamic> json) {
@@ -23,6 +25,7 @@ class EvVendor {
       location: json['location'],
       image: json['image'],
       intro: json['intro'],
+      testimonials: json['testimonials'],
     );
   }
 }

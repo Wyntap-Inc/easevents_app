@@ -1,5 +1,6 @@
 import 'package:easevents_app/exports.dart';
 import 'package:easevents_app/screens/chat/chat_item.dart';
+import 'package:easevents_app/screens/chat/chat_screen.dart';
 
 class ConversationListScreen extends StatelessWidget {
   const ConversationListScreen({super.key});
@@ -37,13 +38,22 @@ class ConversationListScreen extends StatelessWidget {
                 padding: EdgeInsets.zero,
                 itemCount: chatDummyData.length,
                 itemBuilder: (context, index) {
-                  return ChatItem(
-                    onTap: () {},
-                    images: chatDummyData[index].image,
-                    title: chatDummyData[index].name,
-                    subtitle:
-                        '${chatDummyData[index].messages} • ${chatDummyData[index].formatTime()}',
-                    notification: chatDummyData[index].notification.toString(),
+                  return InkWell(
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => const ChatScreen(),
+                        ),
+                      );
+                    },
+                    child: ChatItem(
+                      images: chatDummyData[index].image,
+                      title: chatDummyData[index].name,
+                      subtitle:
+                          '${chatDummyData[index].messages} • ${chatDummyData[index].formatTime()}',
+                      notification:
+                          chatDummyData[index].notification.toString(),
+                    ),
                   );
                 },
               ),

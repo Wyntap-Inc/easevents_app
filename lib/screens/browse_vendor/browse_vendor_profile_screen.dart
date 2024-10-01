@@ -264,7 +264,7 @@ class EvVendorProfileScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              Positioned(
+              const Positioned(
                 top: 170,
                 // bottom: 50,
                 left: 36,
@@ -273,7 +273,7 @@ class EvVendorProfileScreen extends StatelessWidget {
                   backgroundColor: EVStyles.primaryWhite,
                   radius: 50,
                   child: CircleAvatar(
-                    backgroundImage: AssetImage(evProvider.image),
+                    backgroundImage: AssetImage('assets/images/default.png'),
                     radius: 48,
                     backgroundColor: EVStyles.primaryColor,
                   ),

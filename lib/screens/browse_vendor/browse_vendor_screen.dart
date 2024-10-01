@@ -72,6 +72,7 @@ class BrowseVendorScreen extends StatelessWidget {
                     onPressed: () async {
                       final token = LocalStorageManager();
                       token.deleteLoginToken();
+                      token.deleteVerificationToken();
                       await Future.delayed(const Duration(milliseconds: 2000),
                           () {
                         if (context.mounted) {

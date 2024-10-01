@@ -46,16 +46,14 @@ class ConsumerProfileScreen extends StatelessWidget {
                         children: [
                           CircleAvatar(
                             radius: 80,
-                            child: FadeInImage(
-                              placeholder: MemoryImage(kTransparentImage),
-                              image: value.accountGetter!.profilePhoto == null
-                                  ? const AssetImage(
-                                      'assets/images/default.png',
-                                    )
-                                  : AssetImage(
-                                      value.accountGetter!.profilePhoto!,
-                                    ),
-                            ),
+                            backgroundImage:
+                                value.accountGetter!.profilePhoto == null
+                                    ? const NetworkImage(
+                                        'assets/images/default.png',
+                                      )
+                                    : NetworkImage(
+                                        value.accountGetter!.profilePhoto!,
+                                      ),
                           ),
                           const SizedBox(height: 12),
                           Text(

@@ -1,6 +1,8 @@
 import 'package:easevents_app/exports.dart';
+import 'package:easevents_app/providers/loader.dart';
 import 'package:easevents_app/services/local_storage_manager.dart';
 import 'package:lottie/lottie.dart';
+import 'package:provider/provider.dart';
 
 class RegisterSuccessScreen extends StatelessWidget {
   const RegisterSuccessScreen({super.key});
@@ -9,6 +11,8 @@ class RegisterSuccessScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final loader = Provider.of<LoaderProvider>(context);
+
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -28,27 +32,30 @@ class RegisterSuccessScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 15),
               Text(
-                'Account Successfuly Verified!',
+                'Account Successfully Verified!',
                 style: Theme.of(context).textTheme.titleLarge!.copyWith(
                       fontWeight: FontWeight.bold,
                     ),
               ),
               const SizedBox(height: 13),
               Text(
-                'Congratulations your account has fully veryfied, you can now login to your account.',
+                'Congratulations your account has fully verified, you can now login to your account.',
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.bodySmall!.copyWith(
                       height: 1.5,
                     ),
               ),
               const Spacer(),
-              ElevatedButton(
-                onPressed: () async {
+              AppOutlinedButtonPlain(
+                isLoading: loader.isLoading,
+                onTap: () async {
                   final storageManager = LocalStorageManager();
 
                   final token = await storageManager.getLoginToken();
+
+                  await loader.loader();
 
                   if (token != null && token.isNotEmpty) {
                     storageManager.deleteVerificationToken();
@@ -58,7 +65,7 @@ class RegisterSuccessScreen extends StatelessWidget {
                     }
                   }
                 },
-                child: const Text('Confirm'),
+                text: 'Confirm',
               ),
               const SizedBox(height: 13),
             ],

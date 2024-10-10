@@ -1,25 +1,24 @@
 import 'dart:convert';
 
 import 'package:easevents_app/constants/api_endpoints.dart';
-import 'package:easevents_app/models/consumer_account.dart';
 import 'package:easevents_app/models/request_response/request_response.dart';
-import 'package:easevents_app/services/local_storage_manager.dart';
 import 'package:http/http.dart' as http;
 
-class LoginService {
-  final LocalStorageManager storageManager = LocalStorageManager();
-
-  Future<void> userLogin(String email, String password) async {
+class GoogleSigninService {
+  String redirectUri = '';
+  Future<String> googleSignInService() async {
     final response = await http.post(
-      Uri.parse(ApiEndpoints.signInEndpoint),
+      Uri.parse(ApiEndpoints.signInGoogleEndpoint),
       headers: {},
       body: {
-        "emailAddress": email,
-        "password": password,
-        "test": "1234567890",
+        'provider': 'google',
+        'redirectUrl': 'https://easevents.app/social-login-redirect',
       },
     );
+
     handleResponse(response);
+
+    return redirectUri;
   }
 
   Future<void> handleResponse(http.Response response) async {
@@ -28,11 +27,8 @@ class LoginService {
         final Map<String, dynamic> jsonResponse = json.decode(response.body);
         RequestResponse responseData = RequestResponse.fromJson(jsonResponse);
 
-        if (responseData.httpCode == 202 && responseData.data != null) {
-          storageManager.saveLoginToken(responseData.data!.accessToken!);
-
-          storageManager.saveUserAccountInfo(
-              ConsumerAccount.fromJson(jsonResponse['data']['account']));
+        if (responseData.httpCode == 200 && responseData.data != null) {
+          redirectUri = responseData.data!.redirectUri!;
         } else {
           throw Exception(
             '${responseData.httpCode} && ${responseData.statusCode}',

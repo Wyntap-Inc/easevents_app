@@ -1,6 +1,8 @@
+import 'package:easevents_app/providers/google_signin_redirectUrl_provider.dart';
 import 'package:easevents_app/providers/loader.dart';
 import 'package:easevents_app/services/login_service.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../exports.dart';
 
@@ -13,6 +15,8 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final loader = Provider.of<LoaderProvider>(context);
+    final googleSignInProvider =
+        Provider.of<GoogleSigninRedirectURLProvider>(context);
 
     return Scaffold(
       appBar: AppBar(),
@@ -87,7 +91,17 @@ class LoginScreen extends StatelessWidget {
                   const SizedBox(height: 12),
                   AppOutlinedButtonIcon(
                     text: 'Continue with Google',
-                    onTap: () async {},
+                    onTap: () async {
+                      await googleSignInProvider.fetchRedirectString();
+
+                      final Uri url =
+                          Uri.parse(googleSignInProvider.redirectUrl);
+
+                      if (!await launchUrl(url,
+                          mode: LaunchMode.inAppBrowserView)) {
+                        throw Exception('Could not launch $url');
+                      }
+                    },
                     iconData: Image.asset(
                       'assets/images/google.png',
                       height: 24,

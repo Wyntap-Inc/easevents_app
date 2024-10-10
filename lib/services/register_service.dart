@@ -32,7 +32,7 @@ class RegisterService {
         RequestResponse responseData = RequestResponse.fromJson(jsonResponse);
 
         if (responseData.httpCode == 200 && responseData.data != null) {
-          storageManager.saveVerificationToken(responseData.data!.accessToken);
+          storageManager.saveVerificationToken(responseData.data!.accessToken!);
         } else {
           throw Exception(
             '${responseData.httpCode} && ${responseData.statusCode}',

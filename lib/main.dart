@@ -1,4 +1,5 @@
 import 'package:easevents_app/providers/consumer_login_account_provider.dart';
+import 'package:easevents_app/providers/google_signin_redirectUrl_provider.dart';
 import 'package:easevents_app/providers/loader.dart';
 import 'package:easevents_app/screens/register_screen/register_otp_screen.dart';
 import 'package:easevents_app/screens/register_screen/register_success_screen.dart';
@@ -23,6 +24,8 @@ void main() async {
         ChangeNotifierProvider(create: (context) => LoaderProvider()),
         ChangeNotifierProvider(
             create: (_) => ConsumerAccountProvider(tokenStorage)),
+        ChangeNotifierProvider(
+            create: (_) => GoogleSigninRedirectURLProvider()),
       ],
       child: MyApp(initialRoute: userIsLoggedIn ? 'evBottomNav' : '/'),
     ),

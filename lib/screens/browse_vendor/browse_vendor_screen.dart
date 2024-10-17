@@ -30,6 +30,7 @@ class BrowseVendorScreen extends StatelessWidget {
         child: NestedScrollView(
           headerSliverBuilder: (context, indexBoxIsScrolled) => [
             SliverAppBar(
+              automaticallyImplyLeading: false,
               title: Row(
                 children: [
                   CircleAvatar(

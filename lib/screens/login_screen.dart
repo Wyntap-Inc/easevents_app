@@ -1,13 +1,19 @@
 import 'package:easevents_app/providers/google_signin_redirectUrl_provider.dart';
 import 'package:easevents_app/providers/loader.dart';
+import 'package:easevents_app/screens/register_screen/login_web_view.dart';
 import 'package:easevents_app/services/login_service.dart';
 import 'package:provider/provider.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../exports.dart';
 
-class LoginScreen extends StatelessWidget {
-  LoginScreen({super.key});
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
@@ -15,6 +21,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final loader = Provider.of<LoaderProvider>(context);
+
     final googleSignInProvider =
         Provider.of<GoogleSigninRedirectURLProvider>(context);
 
@@ -93,13 +100,14 @@ class LoginScreen extends StatelessWidget {
                     text: 'Continue with Google',
                     onTap: () async {
                       await googleSignInProvider.fetchRedirectString();
-
-                      final Uri url =
-                          Uri.parse(googleSignInProvider.redirectUrl);
-
-                      if (!await launchUrl(url,
-                          mode: LaunchMode.inAppBrowserView)) {
-                        throw Exception('Could not launch $url');
+                      if (context.mounted) {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return const LoginWebView();
+                            },
+                          ),
+                        );
                       }
                     },
                     iconData: Image.asset(

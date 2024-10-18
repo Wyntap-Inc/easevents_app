@@ -1,11 +1,4 @@
-import 'package:easevents_app/providers/google_signin_redirectUrl_provider.dart';
-import 'package:easevents_app/providers/loader.dart';
-import 'package:easevents_app/screens/register_screen/register_otp_screen.dart';
-import 'package:easevents_app/services/register_service.dart';
-import 'package:provider/provider.dart';
-import 'package:url_launcher/url_launcher.dart';
-
-import '../../exports.dart';
+import 'package:easevents_app/exports.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -185,17 +178,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   const SizedBox(height: 12),
                   AppOutlinedButtonIcon(
                     text: 'Sign up with Google',
-                    onTap: () async {
-                      await googleSignInProvider.fetchRedirectString();
-
-                      final Uri url =
-                          Uri.parse(googleSignInProvider.redirectUrl);
-
-                      if (!await launchUrl(url,
-                          mode: LaunchMode.inAppBrowserView)) {
-                        throw Exception('Could not launch $url');
-                      }
-                    },
+                    onTap: () async {},
                     iconData: Image.asset(
                       'assets/images/google.png',
                       height: 24,

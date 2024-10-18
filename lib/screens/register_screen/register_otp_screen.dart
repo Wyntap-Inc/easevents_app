@@ -1,10 +1,4 @@
 import 'package:easevents_app/exports.dart';
-import 'package:easevents_app/providers/loader.dart';
-import 'package:easevents_app/screens/register_screen/register_success_screen.dart';
-import 'package:easevents_app/services/verify_registration.dart';
-import 'package:easevents_app/widgets/text_formatter_widget.dart';
-import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
-import 'package:provider/provider.dart';
 
 class RegisterOtpScreen extends StatelessWidget {
   RegisterOtpScreen({this.email, super.key});

@@ -1,6 +1,4 @@
-import 'package:easevents_app/models/consumer_account.dart';
-import 'package:easevents_app/services/local_storage_manager.dart';
-import 'package:flutter/material.dart';
+import 'package:easevents_app/exports.dart';
 
 class ConsumerAccountProvider with ChangeNotifier {
   ConsumerAccount? _accountInfo;

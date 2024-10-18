@@ -1,8 +1,5 @@
-import 'dart:convert';
-
-import 'package:easevents_app/constants/api_endpoints.dart';
-import 'package:easevents_app/models/request_response/request_response.dart';
 import 'package:http/http.dart' as http;
+import 'package:easevents_app/exports.dart';
 
 class GoogleSigninService {
   String redirectUri = '';

@@ -1,10 +1,5 @@
-import 'dart:convert';
-import 'dart:math';
-
-import 'package:easevents_app/constants/ev_styles.dart';
-import 'package:flutter/material.dart';
+import 'package:easevents_app/exports.dart';
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
-import 'package:flutter_chat_ui/flutter_chat_ui.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({required this.title, super.key});

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:easevents_app/exports.dart';
 
 class EVStyles {
   static const Color primaryColor = Color(0xFF0A3C26);

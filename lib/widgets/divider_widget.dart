@@ -1,4 +1,4 @@
-import '../exports.dart';
+import 'package:easevents_app/exports.dart';
 
 class DividerWidget extends StatelessWidget {
   const DividerWidget({super.key});

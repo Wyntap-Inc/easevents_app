@@ -1,4 +1,4 @@
-import 'package:easevents_app/models/request_response/request_response_data.dart';
+import 'package:easevents_app/exports.dart';
 
 class RequestResponse {
   String timeRequested;

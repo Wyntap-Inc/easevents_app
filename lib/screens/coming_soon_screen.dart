@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:easevents_app/exports.dart';
 
 class ComingSoonScreen extends StatelessWidget {
   const ComingSoonScreen({super.key});

@@ -1,7 +1,4 @@
 import 'package:easevents_app/exports.dart';
-import 'package:easevents_app/providers/google_signin_redirectUrl_provider.dart';
-import 'package:provider/provider.dart';
-import 'package:webview_flutter/webview_flutter.dart';
 
 class LoginWebView extends StatelessWidget {
   const LoginWebView({super.key});

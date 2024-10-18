@@ -1,6 +1,4 @@
 import 'package:easevents_app/exports.dart';
-import 'package:easevents_app/screens/chat/chat_item.dart';
-import 'package:easevents_app/screens/chat/chat_screen.dart';
 
 class ConversationListScreen extends StatelessWidget {
   const ConversationListScreen({super.key});

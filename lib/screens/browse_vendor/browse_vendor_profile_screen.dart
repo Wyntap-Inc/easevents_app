@@ -1,11 +1,4 @@
-import 'dart:ui';
-
-import 'package:easevents_app/constants/ev_styles.dart';
-import 'package:easevents_app/models/ev_vendor.dart';
-import 'package:easevents_app/screens/browse_vendor/browse_vendor_item_details.dart';
-import 'package:easevents_app/screens/chat/chat_screen.dart';
-import 'package:flutter/material.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:easevents_app/exports.dart';
 
 class EvVendorProfileScreen extends StatelessWidget {
   EvVendorProfileScreen(this.evProvider, {super.key});

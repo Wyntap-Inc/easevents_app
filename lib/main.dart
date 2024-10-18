@@ -1,11 +1,4 @@
-import 'package:easevents_app/providers/consumer_login_account_provider.dart';
-import 'package:easevents_app/providers/google_signin_redirectUrl_provider.dart';
-import 'package:easevents_app/providers/loader.dart';
-import 'package:easevents_app/screens/register_screen/register_otp_screen.dart';
-import 'package:easevents_app/screens/register_screen/register_success_screen.dart';
-import 'package:easevents_app/services/local_storage_manager.dart';
-import 'package:provider/provider.dart';
-import 'exports.dart';
+import 'package:easevents_app/exports.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

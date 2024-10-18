@@ -1,6 +1,3 @@
-import 'package:easevents_app/screens/browse_vendor/browse_vendor_screen.dart';
-import 'package:easevents_app/screens/coming_soon_screen.dart';
-import 'package:easevents_app/screens/chat/chat_list_screen.dart';
 import 'package:easevents_app/exports.dart';
 
 class EVBottomNavigationBar extends StatefulWidget {

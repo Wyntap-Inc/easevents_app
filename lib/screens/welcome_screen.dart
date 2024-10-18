@@ -1,5 +1,4 @@
 import 'package:easevents_app/exports.dart';
-import 'package:easevents_app/widgets/custom_clip_path.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
@@ -65,7 +64,7 @@ class WelcomeScreen extends StatelessWidget {
                     onTap: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => LoginScreen(),
+                          builder: (context) => const LoginScreen(),
                         ),
                       );
                     },

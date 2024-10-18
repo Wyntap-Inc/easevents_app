@@ -1,6 +1,4 @@
-import 'dart:convert';
-
-import 'package:easevents_app/models/vendor_model.dart';
+import 'package:easevents_app/exports.dart';
 import 'package:http/http.dart' as http;
 
 class VendorService {

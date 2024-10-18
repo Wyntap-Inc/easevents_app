@@ -1,8 +1,4 @@
 import 'package:easevents_app/exports.dart';
-import 'package:easevents_app/providers/loader.dart';
-import 'package:easevents_app/services/local_storage_manager.dart';
-import 'package:lottie/lottie.dart';
-import 'package:provider/provider.dart';
 
 class RegisterSuccessScreen extends StatelessWidget {
   const RegisterSuccessScreen({super.key});

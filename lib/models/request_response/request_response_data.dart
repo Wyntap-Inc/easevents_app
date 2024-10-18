@@ -1,4 +1,4 @@
-import 'package:easevents_app/models/consumer_account.dart';
+import 'package:easevents_app/exports.dart';
 
 class Data {
   final String? accessToken;

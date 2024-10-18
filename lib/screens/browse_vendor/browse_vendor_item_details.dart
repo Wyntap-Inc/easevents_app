@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:easevents_app/exports.dart';
 
 class BrowseVendorItemDetails extends StatelessWidget {
   const BrowseVendorItemDetails({required this.title, super.key});

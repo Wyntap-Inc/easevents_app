@@ -1,10 +1,4 @@
-import 'package:easevents_app/providers/google_signin_redirectUrl_provider.dart';
-import 'package:easevents_app/providers/loader.dart';
-import 'package:easevents_app/screens/register_screen/login_web_view.dart';
-import 'package:easevents_app/services/login_service.dart';
-import 'package:provider/provider.dart';
-
-import '../exports.dart';
+import 'package:easevents_app/exports.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});

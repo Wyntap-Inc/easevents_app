@@ -1,5 +1,4 @@
-import 'package:easevents_app/constants/ev_styles.dart';
-import 'package:flutter/material.dart';
+import 'package:easevents_app/exports.dart';
 import 'package:badges/badges.dart' as badges;
 
 class ChatItem extends StatelessWidget {

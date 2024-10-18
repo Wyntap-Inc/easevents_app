@@ -1,5 +1,4 @@
-import '../exports.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:easevents_app/exports.dart';
 
 class EvAppTheme {
   static ThemeData get lightTheme => ThemeData(

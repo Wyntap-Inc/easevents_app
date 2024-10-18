@@ -1,5 +1,4 @@
 import 'package:easevents_app/exports.dart';
-import 'package:easevents_app/models/ev_vendor.dart';
 
 class BrowseVendorScreenListItem extends StatelessWidget {
   const BrowseVendorScreenListItem(this.evProvider, {super.key});

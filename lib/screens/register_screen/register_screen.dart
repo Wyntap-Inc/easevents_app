@@ -16,6 +16,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final TextEditingController _passwordController = TextEditingController();
 
   bool isButtonEnabled = false;
+  String? errorMessage;
 
   @override
   void initState() {
@@ -74,8 +75,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         .copyWith(fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 8),
-                  Text('Welcome back.\nYou\'ve been missed!',
-                      style: Theme.of(context).textTheme.titleLarge),
+                  Text(
+                    'Let\'s Bring your Dream \nEvent to Life!',
+                    style: Theme.of(context).textTheme.titleLarge,
+                  ),
                   const Spacer(),
                   TextFormField(
                     autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -100,28 +103,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     controller: _emailController,
                     decoration:
                         const InputDecoration(hintText: 'Enter email address'),
-                    validator: (_) => Validator.validateEmail(
-                      email: _emailController.text,
-                    ),
+                    validator: (_) {
+                      final validateEmail =
+                          errorMessage ?? _emailController.text;
+
+                      return Validator.validateEmail(
+                        email: validateEmail,
+                      );
+                    },
                   ),
                   const SizedBox(height: 12),
-                  // TextFormField(
-                  //   autovalidateMode: AutovalidateMode.onUserInteraction,
-                  //   controller: _passwordController,
-                  //   obscureText: true,
-                  //   decoration: const InputDecoration(
-                  //     hintText: 'Make a password',
-                  //   ),
-                  //   validator: (value) {
-                  //     if (value != _repeatPasswordController.text) {
-                  //       return 'Password doesn\'t match';
-                  //     }
-                  //     return Validator.validatePassword(
-                  //       password: _passwordController.text,
-                  //     );
-                  //   },
-                  // ),
-                  // const SizedBox(height: 12),
                   TextFormField(
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     controller: _passwordController,
@@ -138,47 +129,55 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       return null;
                     },
                   ),
-                  // const SizedBox(height: 12),
-                  // TextFormField(
-                  //   controller: _invitationController,
-                  //   obscureText: true,
-                  //   decoration: const InputDecoration(
-                  //     hintText: 'Invitation Code (Optional)',
-                  //   ),
-                  // ),
                   const SizedBox(height: 12),
                   AppOutlinedButtonPlain(
                     isLoading: loader.isLoading,
                     text: 'Sign up',
-                    onTap: isButtonEnabled
-                        ? () async {
-                            if (_formKey.currentState!.validate()) {
-                              RegisterService().userRegistration(
-                                _firstNameController.text,
-                                _lastNameController.text,
-                                _emailController.text,
-                                _passwordController.text,
-                              );
+                    onTap: () async {
+                      await loader.loader();
 
-                              await loader.loader();
+                      if (_formKey.currentState!.validate()) {
+                        final RequestResponse response =
+                            await RegisterService().userRegistration(
+                          firstName: _firstNameController.text,
+                          lastName: _lastNameController.text,
+                          emailAddress: _emailController.text,
+                          password: _passwordController.text,
+                        );
 
-                              if (context.mounted) {
-                                Navigator.of(context).push(
-                                  MaterialPageRoute(
-                                    builder: (context) => RegisterOtpScreen(
-                                      email: _emailController.text,
-                                    ),
-                                  ),
-                                );
-                              }
-                            }
+                        setState(() {
+                          errorMessage = response.statusCode;
+                        });
+
+                        if (response.statusCode != 'already-exists') {
+                          if (context.mounted) {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => RegisterOtpScreen(
+                                  email: _emailController.text,
+                                ),
+                              ),
+                            );
                           }
-                        : null,
+                        }
+                      }
+                    },
                   ),
                   const SizedBox(height: 12),
                   AppOutlinedButtonIcon(
                     text: 'Sign up with Google',
-                    onTap: () async {},
+                    onTap: () async {
+                      await googleSignInProvider.fetchRedirectString();
+                      if (context.mounted) {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return const LoginWebView();
+                            },
+                          ),
+                        );
+                      }
+                    },
                     iconData: Image.asset(
                       'assets/images/google.png',
                       height: 24,
@@ -210,7 +209,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             ..onTap = () {
                               Navigator.of(context).pushReplacement(
                                 MaterialPageRoute(
-                                  builder: (context) => LoginScreen(),
+                                  builder: (context) => const LoginScreen(),
                                 ),
                               );
                             },

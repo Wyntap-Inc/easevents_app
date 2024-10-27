@@ -1,11 +1,11 @@
 import 'package:easevents_app/exports.dart';
 
-class ConsumerAccountProvider with ChangeNotifier {
+class ConsumerLoginAccountProvider with ChangeNotifier {
   ConsumerAccount? _accountInfo;
 
   final LocalStorageManager _storageManager;
 
-  ConsumerAccountProvider(this._storageManager);
+  ConsumerLoginAccountProvider(this._storageManager);
 
   ConsumerAccount? get accountGetter => _accountInfo;
 

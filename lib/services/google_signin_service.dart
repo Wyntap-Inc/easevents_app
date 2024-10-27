@@ -3,12 +3,14 @@ import 'package:easevents_app/exports.dart';
 
 class GoogleSigninService {
   String redirectUri = '';
+
   Future<String> googleSignInService() async {
     final response = await http.post(
       Uri.parse(ApiEndpoints.signInGoogleEndpoint),
       headers: {},
       body: {
         'provider': 'google',
+        'client': 'app',
         'redirectUrl': 'https://easevents.app/social-login-redirect',
       },
     );

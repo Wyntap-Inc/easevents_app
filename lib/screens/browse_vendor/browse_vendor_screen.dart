@@ -5,7 +5,8 @@ class BrowseVendorScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final consumerInfoProvider = Provider.of<ConsumerAccountProvider>(context);
+    final consumerInfoProvider =
+        Provider.of<ConsumerLoginAccountProvider>(context);
 
     SystemChrome.setSystemUIOverlayStyle(
       const SystemUiOverlayStyle(
@@ -16,7 +17,7 @@ class BrowseVendorScreen extends StatelessWidget {
 
     Future.microtask(() {
       if (context.mounted) {
-        Provider.of<ConsumerAccountProvider>(context, listen: false)
+        Provider.of<ConsumerLoginAccountProvider>(context, listen: false)
             .loadConsumerAccountData();
       }
     });

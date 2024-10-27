@@ -9,7 +9,7 @@ class ConsumerProfileScreen extends StatelessWidget {
 
     Future.microtask(() {
       if (context.mounted) {
-        Provider.of<ConsumerAccountProvider>(context, listen: false)
+        Provider.of<ConsumerLoginAccountProvider>(context, listen: false)
             .loadConsumerAccountData();
       }
     });
@@ -24,7 +24,7 @@ class ConsumerProfileScreen extends StatelessWidget {
           ),
         ),
       ),
-      body: Consumer<ConsumerAccountProvider>(
+      body: Consumer<ConsumerLoginAccountProvider>(
         builder: (_, value, __) {
           if (value.accountGetter == null) {
             return const Center(

@@ -3,8 +3,13 @@ import 'package:http/http.dart' as http;
 
 class RegisterService {
   final storageManager = LocalStorageManager();
-  Future<void> userRegistration(String firstName, String lastName,
-      String emailAddress, String password) async {
+
+  Future<RequestResponse> userRegistration({
+    String? firstName,
+    String? lastName,
+    String? emailAddress,
+    String? password,
+  }) async {
     final response = await http.post(
       Uri.parse(ApiEndpoints.signUpEndpoint),
       headers: {
@@ -18,7 +23,12 @@ class RegisterService {
       }),
     );
 
+    final decodedResponse = json.decode(response.body);
+    final RequestResponse data = RequestResponse.fromJson(decodedResponse);
+
     handleResponse(response);
+
+    return data;
   }
 
   void handleResponse(http.Response response) {
@@ -29,6 +39,8 @@ class RegisterService {
 
         if (responseData.httpCode == 200 && responseData.data != null) {
           storageManager.saveVerificationToken(responseData.data!.accessToken!);
+        } else if (responseData.httpCode == 409 &&
+            responseData.statusCode == 'already-exists') {
         } else {
           throw Exception(
             '${responseData.httpCode} && ${responseData.statusCode}',

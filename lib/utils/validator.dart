@@ -5,6 +5,8 @@ class Validator {
 
     if (email.isEmpty) {
       return 'Must Provide valid email';
+    } else if (email == 'already-exists') {
+      return 'User Already Exists';
     } else if (!regEx.hasMatch(email)) {
       return 'Invalid Email Format';
     }

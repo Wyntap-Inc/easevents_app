@@ -16,7 +16,7 @@ void main() async {
       providers: [
         ChangeNotifierProvider(create: (context) => LoaderProvider()),
         ChangeNotifierProvider(
-            create: (_) => ConsumerAccountProvider(tokenStorage)),
+            create: (_) => ConsumerLoginAccountProvider(tokenStorage)),
         ChangeNotifierProvider(
             create: (_) => GoogleSigninRedirectURLProvider()),
       ],

@@ -5,6 +5,7 @@ class AppOutlinedButtonIcon extends StatelessWidget {
     required this.text,
     required this.onTap,
     required this.iconData,
+    this.isLoading = false,
     this.fgColor = EVStyles.primaryColor,
     super.key,
   });
@@ -12,6 +13,7 @@ class AppOutlinedButtonIcon extends StatelessWidget {
   final String text;
   final VoidCallback onTap;
   final Widget iconData;
+  final bool isLoading;
   final Color fgColor;
 
   @override
@@ -27,8 +29,15 @@ class AppOutlinedButtonIcon extends StatelessWidget {
           fontWeight: FontWeight.bold,
         ),
       ),
-      label: Text(text),
-      icon: iconData,
+      label: isLoading
+          ? Transform.scale(
+              scale: 0.5,
+              child: const CircularProgressIndicator(
+                color: Colors.white,
+              ),
+            )
+          : Text(text),
+      icon: isLoading ? null : iconData,
     );
   }
 }

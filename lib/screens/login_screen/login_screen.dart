@@ -13,9 +13,15 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _passwordController = TextEditingController();
 
   @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final loader = Provider.of<LoaderProvider>(context);
-
     final googleSignInProvider =
         Provider.of<GoogleSigninRedirectURLProvider>(context);
 
@@ -67,13 +73,13 @@ class _LoginScreenState extends State<LoginScreen> {
                     isLoading: loader.isLoading,
                     text: 'Sign in',
                     onTap: () async {
+                      await loader.loader();
+
                       if (_formKey.currentState!.validate()) {
                         LoginService().userLogin(
                           _emailController.text,
                           _passwordController.text,
                         );
-
-                        await loader.loader();
 
                         if (context.mounted) {
                           ScaffoldMessenger.of(context)

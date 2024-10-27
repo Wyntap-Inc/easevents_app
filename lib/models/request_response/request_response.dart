@@ -7,6 +7,7 @@ class RequestResponse {
   bool success;
   int httpCode;
   String statusCode;
+  String? message;
   Data? data;
 
   RequestResponse({
@@ -15,6 +16,7 @@ class RequestResponse {
     required this.domain,
     required this.success,
     required this.statusCode,
+    required this.message,
     required this.httpCode,
     this.data,
   });
@@ -26,6 +28,7 @@ class RequestResponse {
         domain: json['domain'],
         success: json['success'],
         statusCode: json['statusCode'],
+        message: json['message'],
         httpCode: json['httpCode'],
         data: json['data'] != null ? Data.fromJson(json['data']) : null,
       );

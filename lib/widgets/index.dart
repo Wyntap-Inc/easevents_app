@@ -5,3 +5,4 @@ export 'divider_widget.dart';
 export 'ev_bottom_navigation.dart';
 export 'ev_search_bar_delegate.dart';
 export 'text_formatter_widget.dart';
+export 'error_message_builder.dart';

@@ -4,17 +4,22 @@ import 'package:http/http.dart' as http;
 class LoginService {
   final LocalStorageManager storageManager = LocalStorageManager();
 
-  Future<void> userLogin(String email, String password) async {
+  Future<RequestResponse> userLogin(String email, String password) async {
     final response = await http.post(
       Uri.parse(ApiEndpoints.signInEndpoint),
       headers: {},
       body: {
         "emailAddress": email,
         "password": password,
-        "test": "1234567890",
       },
     );
+
+    final decodedResponse = json.decode(response.body);
+    final RequestResponse data = RequestResponse.fromJson(decodedResponse);
+
     handleResponse(response);
+
+    return data;
   }
 
   Future<void> handleResponse(http.Response response) async {
@@ -22,6 +27,11 @@ class LoginService {
       if (response.statusCode == 200 && response.body.isNotEmpty) {
         final Map<String, dynamic> jsonResponse = json.decode(response.body);
         RequestResponse responseData = RequestResponse.fromJson(jsonResponse);
+
+        if (responseData.httpCode == 409 &&
+            responseData.statusCode == 'notfound') {
+          //handle error
+        }
 
         if (responseData.httpCode == 202 && responseData.data != null) {
           storageManager.saveLoginToken(responseData.data!.accessToken!);

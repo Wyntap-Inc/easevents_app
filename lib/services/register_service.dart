@@ -41,6 +41,7 @@ class RegisterService {
           storageManager.saveVerificationToken(responseData.data!.accessToken!);
         } else if (responseData.httpCode == 409 &&
             responseData.statusCode == 'already-exists') {
+          //handle error
         } else {
           throw Exception(
             '${responseData.httpCode} && ${responseData.statusCode}',

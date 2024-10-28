@@ -19,6 +19,7 @@ void main() async {
             create: (_) => ConsumerLoginAccountProvider(tokenStorage)),
         ChangeNotifierProvider(
             create: (_) => GoogleSigninRedirectURLProvider()),
+        ChangeNotifierProvider(create: (_) => ResponseProvider()),
       ],
       child: MyApp(initialRoute: userIsLoggedIn ? 'evBottomNav' : '/'),
     ),

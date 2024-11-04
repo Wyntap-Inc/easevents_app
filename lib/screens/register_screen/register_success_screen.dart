@@ -37,7 +37,7 @@ class RegisterSuccessScreen extends StatelessWidget {
               ),
               const SizedBox(height: 13),
               Text(
-                'Congratulations your account has fully verified, you can now login to your account.',
+                'Congratulations your account has fully verify, you can now login to your account.',
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.bodySmall!.copyWith(
                       height: 1.5,

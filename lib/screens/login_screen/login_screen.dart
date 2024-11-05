@@ -151,7 +151,14 @@ class _LoginScreenState extends State<LoginScreen> {
                                       fontSize: 11,
                                     ),
                                 recognizer: TapGestureRecognizer()
-                                  ..onTap = () {},
+                                  ..onTap = () {
+                                    Navigator.of(context).push(
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            const ForgotPasswordScreen(),
+                                      ),
+                                    );
+                                  },
                               ),
                             ),
                             const Padding(

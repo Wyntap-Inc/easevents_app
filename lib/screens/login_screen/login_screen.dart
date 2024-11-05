@@ -95,7 +95,9 @@ class _LoginScreenState extends State<LoginScreen> {
 
                               if (value.getResponse != 'not-found' &&
                                   value.getResponse != 'pending-verification' &&
-                                  value.getResponse != 'request-denied') {
+                                  value.getResponse != 'request-denied' &&
+                                  value.getResponse !=
+                                      'internal-server-error') {
                                 if (context.mounted) {
                                   ScaffoldMessenger.of(context)
                                       .showSnackBar(const SnackBar(
@@ -119,12 +121,13 @@ class _LoginScreenState extends State<LoginScreen> {
                           onTap: () async {
                             await googleSignInProvider.fetchRedirectString();
                             if (context.mounted) {
-                              Navigator.of(context).push(
+                              Navigator.of(context).pushAndRemoveUntil(
                                 MaterialPageRoute(
                                   builder: (context) {
                                     return const LoginWebView();
                                   },
                                 ),
+                                (route) => false,
                               );
                             }
                           },

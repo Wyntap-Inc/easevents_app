@@ -9,7 +9,7 @@ class LoginWebView extends StatelessWidget {
         Provider.of<GoogleSigninRedirectURLProvider>(context).redirectUrl;
 
     WebViewController webController =
-        _createWebViewController(redirectUrlProvider);
+        _createWebViewController(redirectUrlProvider, context);
 
     return Scaffold(
       body: SafeArea(
@@ -18,7 +18,8 @@ class LoginWebView extends StatelessWidget {
     );
   }
 
-  WebViewController _createWebViewController(String redirectUrl) {
+  WebViewController _createWebViewController(
+      String redirectUrl, BuildContext context) {
     return WebViewController()
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
       ..getUserAgent()
@@ -28,7 +29,7 @@ class LoginWebView extends StatelessWidget {
       ..setNavigationDelegate(
         NavigationDelegate(
           onPageFinished: (String url) async {
-            await _handlePageFinished(url);
+            await _handlePageFinished(url, context);
           },
           onHttpError: (HttpResponseError error) {
             _handleHttpError(error);
@@ -43,17 +44,28 @@ class LoginWebView extends StatelessWidget {
       );
   }
 
-  Future<void> _handlePageFinished(String url) async {
+  Future<void> _handlePageFinished(String url, BuildContext context) async {
     if (url.startsWith('https://easevents.app/social-login-redirect')) {
       Uri uri = Uri.parse(url);
 
       String? code = uri.queryParameters['code'];
       String? state = uri.queryParameters['state'];
 
-      if (code != null) {
-        await Future.delayed(const Duration(seconds: 2));
-        print('The Code! $code');
-        print('The State! $state');
+      if (code != null && state != null) {
+        final signInChecker =
+            await GoogleSigninAuthenticateService().googleAuth(code, state);
+
+        await Future.delayed(const Duration(milliseconds: 1500));
+
+        if (signInChecker) {
+          if (context.mounted) {
+            Navigator.of(context).pushAndRemoveUntil(
+              MaterialPageRoute(
+                  builder: (context) => const EVBottomNavigationBar()),
+              (Route<dynamic> route) => false,
+            );
+          }
+        }
       } else {
         throw Exception();
       }

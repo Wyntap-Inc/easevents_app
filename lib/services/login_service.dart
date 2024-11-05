@@ -28,16 +28,27 @@ class LoginService {
         final Map<String, dynamic> jsonResponse = json.decode(response.body);
         RequestResponse responseData = RequestResponse.fromJson(jsonResponse);
 
+        print(jsonResponse);
+
+        // print(responseData.httpCode);
+        // print(responseData.statusCode);
+        // print(responseData.message);
+
         if (responseData.httpCode == 409 &&
             responseData.statusCode == 'notfound') {
           //handle error
         }
+
+        //handle 401 && request-denied
 
         if (responseData.httpCode == 202 && responseData.data != null) {
           storageManager.saveLoginToken(responseData.data!.accessToken!);
 
           storageManager.saveUserAccountInfo(
               ConsumerAccount.fromJson(jsonResponse['data']['account']));
+        } else if (responseData.httpCode == 200 &&
+            responseData.statusCode == 'internal-server-error') {
+          print('User is registered but/...');
         } else {
           throw Exception(
             '${responseData.httpCode} && ${responseData.statusCode}',

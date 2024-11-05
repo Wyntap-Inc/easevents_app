@@ -150,12 +150,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           onTap: () async {
                             await googleSignInProvider.fetchRedirectString();
                             if (context.mounted) {
-                              Navigator.of(context).push(
+                              Navigator.of(context).pushAndRemoveUntil(
                                 MaterialPageRoute(
                                   builder: (context) {
                                     return const LoginWebView();
                                   },
                                 ),
+                                (route) => false,
                               );
                             }
                           },

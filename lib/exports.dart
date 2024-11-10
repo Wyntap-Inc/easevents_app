@@ -13,6 +13,7 @@ export 'package:webview_flutter/webview_flutter.dart';
 export 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 export 'package:lottie/lottie.dart';
 export 'package:flutter_secure_storage/flutter_secure_storage.dart';
+export 'package:flutter/rendering.dart';
 
 export './constants/index.dart';
 export './models/index.dart';

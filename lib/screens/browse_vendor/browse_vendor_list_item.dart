@@ -1,138 +1,186 @@
 import 'package:easevents_app/exports.dart';
 
 class BrowseVendorScreenListItem extends StatelessWidget {
-  const BrowseVendorScreenListItem(this.evProvider, {super.key});
+  const BrowseVendorScreenListItem(this.evVendor, {super.key});
 
-  final EvVendor evProvider;
+  final EvVendor evVendor;
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (context) => EvVendorProfileScreen(evProvider),
-          ),
-        );
-      },
-      child: Card(
-        margin: EdgeInsets.zero,
-        elevation: 2,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Stack(
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        double responsiveSize = (constraints.maxWidth / 20).clamp(8, 30);
+
+        return GestureDetector(
+          onTap: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => EvVendorProfileScreen(evVendor),
+              ),
+            );
+          },
+          child: Card(
+            margin: EdgeInsets.zero,
+            elevation: 2,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
-                  height: 150,
-                  clipBehavior: Clip.antiAlias,
-                  decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(8),
-                      topRight: Radius.circular(8),
+                Stack(
+                  children: [
+                    vendorImageBuilder(),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 8).add(
+                        const EdgeInsets.symmetric(horizontal: 8),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: vendorLocationInfoBuilder(
+                                context, responsiveSize),
+                          ),
+                          const Spacer(),
+                          Align(
+                            alignment: Alignment.centerRight,
+                            child:
+                                bookMarkVendorBuilder(context, responsiveSize),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                  width: double.infinity,
-                  child: Hero(
-                    tag: evProvider.name,
-                    child: FadeInImage(
-                      fit: BoxFit.cover,
-                      placeholder: MemoryImage(kTransparentImage),
-                      image: AssetImage(evProvider.image),
-                    ),
-                  ),
+                  ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 8, left: 8, right: 8),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                const SizedBox(height: 8),
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      Container(
-                        padding: const EdgeInsets.all(5),
-                        decoration: BoxDecoration(
-                          color: EVStyles.primaryWhite,
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Wrap(
-                          children: [
-                            Icon(
-                              PhosphorIcons.mapPinArea(),
-                              size: 12,
-                            ),
-                            const SizedBox(width: 2),
-                            Text(
-                              evProvider.location,
-                              style: const TextStyle(
-                                fontSize: 8,
-                                color: EVStyles.primaryColor,
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Container(
-                        padding: const EdgeInsets.all(5),
-                        decoration: BoxDecoration(
-                          color: EVStyles.primaryWhite,
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Icon(
-                          PhosphorIcons.bookmarkSimple(),
-                          size: 12,
-                        ),
-                      ),
+                      vendorNameBuilder(context),
+                      const SizedBox(height: 5),
+                      vendorTagsBuilder(context, responsiveSize),
                     ],
                   ),
                 ),
               ],
             ),
-            const SizedBox(height: 8),
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 8),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Text(
-                    evProvider.name,
-                    style: const TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  const SizedBox(height: 5),
-                  Wrap(
-                    children: [
-                      ...evProvider.tags.map(
-                        (tag) => Container(
-                          margin: const EdgeInsets.only(
-                            top: 2,
-                            bottom: 2,
-                            right: 4,
-                          ),
-                          padding: const EdgeInsets.all(4),
-                          decoration: BoxDecoration(
-                            color: EVStyles.primaryWhite,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Text(
-                            tag,
-                            style: const TextStyle(
-                              fontSize: 8,
-                              color: EVStyles.primaryColor,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          ],
+          ),
+        );
+      },
+    );
+  }
+
+  Widget vendorImageBuilder() {
+    return AspectRatio(
+      aspectRatio: 4 / 3,
+      child: Container(
+        clipBehavior: Clip.antiAlias,
+        decoration: const BoxDecoration(
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(8),
+            topRight: Radius.circular(8),
+          ),
+        ),
+        width: double.infinity,
+        child: Hero(
+          tag: evVendor.name,
+          child: FadeInImage(
+            fit: BoxFit.cover,
+            placeholder: MemoryImage(kTransparentImage),
+            image: AssetImage(evVendor.image),
+          ),
         ),
       ),
+    );
+  }
+
+  Widget vendorLocationInfoBuilder(BuildContext context, double fontSize) {
+    double textScaleFactor = MediaQuery.textScalerOf(context).scale(0.8);
+
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+      decoration: BoxDecoration(
+        color: EVStyles.primaryWhite,
+        borderRadius:
+            BorderRadius.circular(MediaQuery.of(context).size.width * 0.0244),
+      ),
+      child: Row(
+        children: [
+          Icon(
+            PhosphorIcons.mapPinArea(),
+            size: fontSize,
+          ),
+          SizedBox(width: MediaQuery.of(context).size.width * 0.0122),
+          Text(
+            evVendor.location,
+            style: TextStyle(
+              fontSize: fontSize,
+              color: EVStyles.primaryColor,
+              overflow: TextOverflow.ellipsis,
+            ),
+            textScaler: TextScaler.linear(textScaleFactor),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget bookMarkVendorBuilder(BuildContext context, double responsiveSize) {
+    return Container(
+      padding: const EdgeInsets.all(5),
+      decoration: BoxDecoration(
+        color: EVStyles.primaryWhite,
+        borderRadius:
+            BorderRadius.circular(MediaQuery.of(context).size.width * 0.0244),
+      ),
+      child: Icon(
+        PhosphorIcons.bookmarkSimple(),
+        size: responsiveSize,
+      ),
+    );
+  }
+
+  Widget vendorNameBuilder(BuildContext context) {
+    return Text(
+      evVendor.name,
+      style: TextStyle(
+        fontSize: MediaQuery.of(context).size.width * 0.0366,
+        fontWeight: FontWeight.bold,
+      ),
+      overflow: TextOverflow.ellipsis,
+    );
+  }
+
+  Widget vendorTagsBuilder(BuildContext context, double fontSize) {
+    return Wrap(
+      children: [
+        ...evVendor.tags.map(
+          (tag) => Container(
+            margin: EdgeInsets.only(
+              top: MediaQuery.of(context).size.width * 0.0048,
+              bottom: MediaQuery.of(context).size.width * 0.0048,
+              right: MediaQuery.of(context).size.width * 0.0097,
+            ),
+            padding: EdgeInsets.all(
+              MediaQuery.of(context).size.width * 0.0097,
+            ),
+            decoration: BoxDecoration(
+              color: EVStyles.primaryWhite,
+              borderRadius: BorderRadius.circular(
+                MediaQuery.of(context).size.width * 0.0244,
+              ),
+            ),
+            child: Text(
+              tag,
+              style: TextStyle(
+                fontSize: fontSize,
+                color: EVStyles.primaryColor,
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

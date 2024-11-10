@@ -3,6 +3,9 @@ import 'package:easevents_app/exports.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
+  //uncomment when debugging layout
+  // debugPaintSizeEnabled = true;
+
   final tokenStorage = LocalStorageManager();
 
   bool userIsLoggedIn = await tokenStorage.isUserLoggedIn();

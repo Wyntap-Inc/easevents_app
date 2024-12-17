@@ -104,7 +104,7 @@ class BrowseVendorScreen extends StatelessWidget {
           'Checkout our Vendors & Services',
           textAlign: TextAlign.start,
           style: TextStyle(
-            fontSize: MediaQuery.of(context).size.width * 0.0316,
+            fontSize: 8.sp,
             fontWeight: FontWeight.w600,
             color: EVStyles.primaryColor,
           ),
@@ -114,7 +114,7 @@ class BrowseVendorScreen extends StatelessWidget {
           'View All',
           textAlign: TextAlign.start,
           style: TextStyle(
-            fontSize: MediaQuery.of(context).size.width * 0.0316,
+            fontSize: 8.sp,
             fontWeight: FontWeight.w500,
             color: EVStyles.primaryColor,
           ),
@@ -242,8 +242,11 @@ class BrowseVendorScreen extends StatelessWidget {
                               bottom: 8,
                             ),
                             gridDelegate:
-                                const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 2,
+                                SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount:
+                                  MediaQuery.of(context).size.width >= 600
+                                      ? 4
+                                      : 2,
                               childAspectRatio: 0.7,
                               mainAxisSpacing: 16,
                               crossAxisSpacing: 16,

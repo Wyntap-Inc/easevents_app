@@ -9,7 +9,8 @@ class BrowseVendorScreenListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        double responsiveSize = (constraints.maxWidth / 20).clamp(8, 30);
+        double responsiveSize =
+            (constraints.maxWidth / 20).clamp(8, 30); //check this
 
         return GestureDetector(
           onTap: () {
@@ -57,7 +58,7 @@ class BrowseVendorScreenListItem extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      vendorNameBuilder(context),
+                      vendorNameBuilder(context, responsiveSize),
                       const SizedBox(height: 5),
                       vendorTagsBuilder(context, responsiveSize),
                     ],
@@ -102,8 +103,7 @@ class BrowseVendorScreenListItem extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
       decoration: BoxDecoration(
         color: EVStyles.primaryWhite,
-        borderRadius:
-            BorderRadius.circular(MediaQuery.of(context).size.width * 0.0244),
+        borderRadius: BorderRadius.circular(8.sp),
       ),
       child: Row(
         children: [
@@ -111,7 +111,7 @@ class BrowseVendorScreenListItem extends StatelessWidget {
             PhosphorIcons.mapPinArea(),
             size: fontSize,
           ),
-          SizedBox(width: MediaQuery.of(context).size.width * 0.0122),
+          SizedBox(width: 4.sp),
           Text(
             evVendor.location,
             style: TextStyle(
@@ -131,8 +131,7 @@ class BrowseVendorScreenListItem extends StatelessWidget {
       padding: const EdgeInsets.all(5),
       decoration: BoxDecoration(
         color: EVStyles.primaryWhite,
-        borderRadius:
-            BorderRadius.circular(MediaQuery.of(context).size.width * 0.0244),
+        borderRadius: BorderRadius.circular(8.sp),
       ),
       child: Icon(
         PhosphorIcons.bookmarkSimple(),
@@ -141,11 +140,11 @@ class BrowseVendorScreenListItem extends StatelessWidget {
     );
   }
 
-  Widget vendorNameBuilder(BuildContext context) {
+  Widget vendorNameBuilder(BuildContext context, double fontSize) {
     return Text(
       evVendor.name,
       style: TextStyle(
-        fontSize: MediaQuery.of(context).size.width * 0.0366,
+        fontSize: fontSize,
         fontWeight: FontWeight.bold,
       ),
       overflow: TextOverflow.ellipsis,
@@ -153,23 +152,21 @@ class BrowseVendorScreenListItem extends StatelessWidget {
   }
 
   Widget vendorTagsBuilder(BuildContext context, double fontSize) {
+    double textScaleFactor = MediaQuery.textScalerOf(context).scale(0.8);
+
     return Wrap(
       children: [
         ...evVendor.tags.map(
           (tag) => Container(
             margin: EdgeInsets.only(
-              top: MediaQuery.of(context).size.width * 0.0048,
-              bottom: MediaQuery.of(context).size.width * 0.0048,
-              right: MediaQuery.of(context).size.width * 0.0097,
+              top: 2.sp,
+              bottom: 2.sp,
+              right: 4.sp,
             ),
-            padding: EdgeInsets.all(
-              MediaQuery.of(context).size.width * 0.0097,
-            ),
+            padding: EdgeInsets.all(4.sp),
             decoration: BoxDecoration(
               color: EVStyles.primaryWhite,
-              borderRadius: BorderRadius.circular(
-                MediaQuery.of(context).size.width * 0.0244,
-              ),
+              borderRadius: BorderRadius.circular(8.sp),
             ),
             child: Text(
               tag,
@@ -177,6 +174,8 @@ class BrowseVendorScreenListItem extends StatelessWidget {
                 fontSize: fontSize,
                 color: EVStyles.primaryColor,
               ),
+              overflow: TextOverflow.ellipsis,
+              textScaler: TextScaler.linear(textScaleFactor),
             ),
           ),
         ),

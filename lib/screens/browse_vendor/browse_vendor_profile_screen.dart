@@ -47,25 +47,7 @@ class EvVendorProfileScreen extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  AspectRatio(
-                    aspectRatio: 16 / 9,
-                    child: PageView.builder(
-                      itemCount: 10,
-                      itemBuilder: (context, pagePosition) => Card(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(16),
-                        ),
-                        elevation: 1,
-                        margin: const EdgeInsets.symmetric(horizontal: 16),
-                        clipBehavior: Clip.antiAlias,
-                        child: Image.asset(
-                          evProvider.image,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      pageSnapping: true,
-                    ),
-                  ),
+                  buildImageSlider(),
                   Padding(
                     padding: const EdgeInsets.symmetric(
                       horizontal: 16,
@@ -74,43 +56,43 @@ class EvVendorProfileScreen extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const SizedBox(height: 30),
+                        SizedBox(height: 25.sp),
                         Text(
                           evProvider.name,
-                          style: const TextStyle(
-                            fontSize: 20,
+                          style: TextStyle(
+                            fontSize: 20.sp,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        const SizedBox(height: 4),
+                        SizedBox(height: 4.sp),
                         buildLocationInfo(),
-                        const SizedBox(height: 16),
+                        SizedBox(height: 12.sp),
                         buildTags(),
-                        const Padding(
-                          padding: EdgeInsets.symmetric(vertical: 8),
-                          child: Divider(),
+                        Padding(
+                          padding: EdgeInsets.symmetric(vertical: 8.sp),
+                          child: const Divider(),
                         ),
                         Text(
                           evProvider.intro,
-                          style: const TextStyle(
-                            fontSize: 13,
+                          style: TextStyle(
+                            fontSize: 13.sp,
                             fontWeight: FontWeight.normal,
                             height: 2,
                           ),
                           textAlign: TextAlign.center,
                         ),
-                        const Padding(
-                          padding: EdgeInsets.symmetric(vertical: 8),
-                          child: Divider(),
+                        Padding(
+                          padding: EdgeInsets.symmetric(vertical: 8.sp),
+                          child: const Divider(),
                         ),
-                        const Text(
+                        Text(
                           'Services',
                           style: TextStyle(
-                            fontSize: 13,
+                            fontSize: 13.sp,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        const SizedBox(height: 8),
+                        SizedBox(height: 8.sp),
                         SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
                           child: Row(
@@ -118,20 +100,20 @@ class EvVendorProfileScreen extends StatelessWidget {
                                 .map(
                                   (data) => Container(
                                     clipBehavior: Clip.antiAlias,
-                                    margin: const EdgeInsets.only(
-                                      right: 8,
+                                    margin: EdgeInsets.only(
+                                      right: 8.sp,
                                     ),
                                     decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(8),
+                                      borderRadius: BorderRadius.circular(8.sp),
                                       border: Border.all(
                                         color: EVStyles.primaryColor,
                                       ),
                                     ),
-                                    padding: const EdgeInsets.all(8),
+                                    padding: EdgeInsets.all(8.sp),
                                     child: Text(
                                       data,
-                                      style: const TextStyle(
-                                        fontSize: 8,
+                                      style: TextStyle(
+                                        fontSize: 8.sp,
                                         color: EVStyles.primaryColor,
                                       ),
                                     ),
@@ -140,32 +122,7 @@ class EvVendorProfileScreen extends StatelessWidget {
                                 .toList(),
                           ),
                         ),
-                        const SizedBox(height: 12),
-                        // SizedBox(
-                        //   height: 380,
-                        //   width: MediaQuery.of(context).size.width,
-                        //   child: GridView.builder(
-                        //     itemCount: 15,
-                        //     gridDelegate:
-                        //         const SliverGridDelegateWithFixedCrossAxisCount(
-                        //       crossAxisCount: 3,
-                        //       childAspectRatio: 1,
-                        //       crossAxisSpacing: 4,
-                        //       mainAxisSpacing: 4,
-                        //     ),
-                        //     itemBuilder: (context, index) => Container(
-                        //       clipBehavior: Clip.antiAlias,
-                        //       decoration: BoxDecoration(
-                        //         color: EVStyles.primaryColor,
-                        //         borderRadius: BorderRadius.circular(8),
-                        //       ),
-                        //       child: Image.asset(
-                        //         evProvider.image,
-                        //         fit: BoxFit.cover,
-                        //       ),
-                        //     ),
-                        //   ),
-                        // ),
+                        SizedBox(height: 12.sp),
                         ...items.map(
                           (item) => Container(
                             clipBehavior: Clip.antiAlias,
@@ -201,14 +158,14 @@ class EvVendorProfileScreen extends StatelessWidget {
                             ),
                           ),
                         ),
-                        const Padding(
-                          padding: EdgeInsets.symmetric(vertical: 8),
-                          child: Divider(),
+                        Padding(
+                          padding: EdgeInsets.symmetric(vertical: 8.sp),
+                          child: const Divider(),
                         ),
-                        const Text(
+                        Text(
                           'Testimonials',
                           style: TextStyle(
-                            fontSize: 13,
+                            fontSize: 13.sp,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -222,25 +179,25 @@ class EvVendorProfileScreen extends StatelessWidget {
                                 CircleAvatar(
                                   backgroundImage: AssetImage(evProvider.image),
                                 ),
-                                const SizedBox(width: 8),
+                                SizedBox(width: 8.sp),
                                 Expanded(
                                   child: Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      const Text(
+                                      Text(
                                         'John Doe',
                                         style: TextStyle(
-                                          fontSize: 12,
+                                          fontSize: 12.sp,
                                           fontWeight: FontWeight.bold,
                                         ),
                                       ),
                                       const SizedBox(height: 4),
                                       Text(
                                         testimonial,
-                                        style: const TextStyle(
+                                        style: TextStyle(
                                           overflow: TextOverflow.ellipsis,
-                                          fontSize: 10,
+                                          fontSize: 10.sp,
                                         ),
                                         maxLines: 3,
                                         softWrap: true,
@@ -257,21 +214,7 @@ class EvVendorProfileScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              const Positioned(
-                top: 170,
-                // bottom: 50,
-                left: 36,
-                // right: 0,
-                child: CircleAvatar(
-                  backgroundColor: EVStyles.primaryWhite,
-                  radius: 50,
-                  child: CircleAvatar(
-                    backgroundImage: AssetImage('assets/images/default.png'),
-                    radius: 48,
-                    backgroundColor: EVStyles.primaryColor,
-                  ),
-                ),
-              ),
+              buildVendorDisplayPhoto(),
               buildCustomAppBar(context),
             ],
           ),
@@ -280,12 +223,54 @@ class EvVendorProfileScreen extends StatelessWidget {
     );
   }
 
+  Widget buildImageSlider() {
+    return AspectRatio(
+      aspectRatio: 16 / 9,
+      child: PageView.builder(
+        itemCount: 10,
+        itemBuilder: (context, pagePosition) => Card(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16.sp),
+          ),
+          elevation: 1,
+          margin: const EdgeInsets.symmetric(horizontal: 16),
+          clipBehavior: Clip.antiAlias,
+          child: Image.asset(
+            evProvider.image,
+            fit: BoxFit.cover,
+          ),
+        ),
+        pageSnapping: true,
+      ),
+    );
+  }
+
+  Widget buildVendorDisplayPhoto() {
+    return Positioned(
+      top: 170.sp,
+      // bottom: 50,
+      left: 36,
+      // right: 0,
+      child: CircleAvatar(
+        backgroundColor: EVStyles.primaryWhite,
+        radius: 30.sp,
+        child: CircleAvatar(
+          backgroundImage: const AssetImage('assets/images/default.png'),
+          radius: 48.sp,
+          backgroundColor: EVStyles.primaryColor,
+        ),
+      ),
+    );
+  }
+
   Widget buildCustomAppBar(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+
     return Container(
-      padding: const EdgeInsets.only(
-        left: 16,
-        right: 24,
-        top: 8,
+      padding: EdgeInsets.only(
+        left: 16.sp,
+        right: width >= 600 ? 16.sp : 24,
+        top: 8.sp,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
@@ -293,15 +278,16 @@ class EvVendorProfileScreen extends StatelessWidget {
           InkWell(
             onTap: () {},
             child: Container(
-              width: 50,
-              height: 50,
+              width: 40.sp,
+              height: 40.sp,
               decoration: BoxDecoration(
                 color: EVStyles.primaryWhite,
-                borderRadius: BorderRadius.circular(30),
+                borderRadius: BorderRadius.circular(20.sp),
               ),
               child: Icon(
                 PhosphorIcons.bookmarkSimple(),
                 color: EVStyles.primaryColor,
+                size: 20.sp,
               ),
             ),
           ),
@@ -313,16 +299,10 @@ class EvVendorProfileScreen extends StatelessWidget {
   Widget buildLocationInfo() {
     return Row(
       children: [
-        // Icon(
-        //   opticalSize: 30,
-        //   PhosphorIcons.mapPinArea(),
-        //   size: 30,
-        // ),
-        // const SizedBox(width: 8),
         Text(
           evProvider.location,
-          style: const TextStyle(
-            fontSize: 15,
+          style: TextStyle(
+            fontSize: 15.sp,
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -332,24 +312,24 @@ class EvVendorProfileScreen extends StatelessWidget {
 
   Widget buildTags() {
     return Wrap(
-      spacing: 8,
+      spacing: 8.sp,
       runAlignment: WrapAlignment.spaceBetween,
-      runSpacing: 8,
+      runSpacing: 8.sp,
       direction: Axis.horizontal,
       children: [
         ...evProvider.tags.map(
           (tag) => Container(
-            padding: const EdgeInsets.all(8),
+            padding: EdgeInsets.all(8.sp),
             decoration: BoxDecoration(
               color: EVStyles.primaryColor,
-              borderRadius: BorderRadius.circular(15),
+              borderRadius: BorderRadius.circular(15.sp),
             ),
             child: FittedBox(
               fit: BoxFit.fitWidth,
               child: Text(
                 tag,
-                style: const TextStyle(
-                  fontSize: 10,
+                style: TextStyle(
+                  fontSize: 10.sp,
                   color: EVStyles.primaryWhite,
                 ),
               ),

@@ -36,17 +36,22 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: EvAppTheme.lightTheme,
-      initialRoute: initialRoute,
-      routes: {
-        '/': (context) => const WelcomeScreen(),
-        'evBottomNav': (context) => const EVBottomNavigationBar(),
-        'success': (context) => const RegisterSuccessScreen(),
-        'otp': (context) => RegisterOtpScreen(),
-        'profile': (context) => const ConsumerProfileScreen(),
+    return ScreenUtilInit(
+      designSize: const Size(360, 568),
+      builder: (context, child) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'Flutter Demo',
+          theme: EvAppTheme.lightTheme,
+          initialRoute: initialRoute,
+          routes: {
+            '/': (context) => const WelcomeScreen(),
+            'evBottomNav': (context) => const EVBottomNavigationBar(),
+            'success': (context) => const RegisterSuccessScreen(),
+            'otp': (context) => RegisterOtpScreen(),
+            'profile': (context) => const ConsumerProfileScreen(),
+          },
+        );
       },
     );
   }

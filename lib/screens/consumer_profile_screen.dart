@@ -31,77 +31,211 @@ class ConsumerProfileScreen extends StatelessWidget {
               child: CircularProgressIndicator(),
             );
           } else {
-            return Center(
+            return SafeArea(
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 24),
+                padding: const EdgeInsets.only(left: 24, top: 10, right: 24),
                 child: Column(
                   children: [
-                    Align(
-                      alignment: Alignment.center,
-                      child: Column(
-                        children: [
-                          CircleAvatar(
-                            radius: 80,
-                            backgroundImage:
-                                value.accountGetter!.profilePhoto == null
-                                    ? const NetworkImage(
-                                        'assets/images/default.png',
-                                      )
-                                    : NetworkImage(
-                                        value.accountGetter!.profilePhoto!,
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Stack(
+                          clipBehavior: Clip.none,
+                          children: [
+                            CircleAvatar(
+                              radius: 50,
+                              backgroundImage:
+                                  value.accountGetter!.profilePhoto == null
+                                      ? const NetworkImage(
+                                          'assets/images/default.png')
+                                      : NetworkImage(
+                                          value.accountGetter!.profilePhoto!),
+                            ),
+                            Positioned(
+                              top: 70,
+                              right: 5,
+                              child: CircleAvatar(
+                                radius: 17,
+                                backgroundColor: Colors.grey.shade100,
+                                child: PhosphorIcon(
+                                  size: 24,
+                                  PhosphorIcons.camera(),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(width: 20),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              ' ${value.accountGetter!.firstName} ${value.accountGetter!.lastName}',
+                              style: Theme.of(context).textTheme.titleMedium,
+                            ),
+                            Text(
+                              'Johndoe@gmail.com',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleSmall!
+                                  .copyWith(
+                                    color: Colors.grey,
+                                  ),
+                            ),
+                            const SizedBox(height: 5),
+                            Container(
+                              padding: const EdgeInsets.symmetric(
+                                vertical: 3,
+                                horizontal: 30,
+                              ),
+                              decoration: BoxDecoration(
+                                color: const Color(0xFF0A3C26),
+                                borderRadius:
+                                    BorderRadiusDirectional.circular(4),
+                              ),
+                              child: InkWell(
+                                child: Text(
+                                  'Edit',
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodyMedium!
+                                      .copyWith(
+                                        color: Colors.white,
                                       ),
-                          ),
-                          const SizedBox(height: 12),
-                          Text(
-                            '${value.accountGetter!.firstName} ${value.accountGetter!.lastName}',
-                            style: Theme.of(context).textTheme.titleLarge,
-                          ),
-                        ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 40),
+                    ListTile(
+                      contentPadding: EdgeInsets.zero,
+                      horizontalTitleGap: 12,
+                      onTap: () {},
+                      leading: PhosphorIcon(
+                        PhosphorIcons.user(),
+                        size: 24,
+                        color: const Color(0xFF0A3C26),
+                      ),
+                      minTileHeight: 30,
+                      titleTextStyle: Theme.of(context).textTheme.bodyMedium,
+                      title: const Text('Personal Information'),
+                      trailing: PhosphorIcon(
+                        size: 18,
+                        PhosphorIcons.caretRight(),
                       ),
                     ),
-                    const SizedBox(height: 50),
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          TextButton.icon(
-                            onPressed: () {},
-                            label: const Text('Privacy'),
-                            icon: const Icon(Icons.account_circle),
-                          ),
-                          TextButton.icon(
-                            onPressed: () {},
-                            label: const Text('Settings'),
-                            icon: const Icon(Icons.alternate_email_rounded),
-                          ),
-                          TextButton.icon(
-                            onPressed: () {},
-                            label: const Text('Help & Support'),
-                            icon: const Icon(Icons.circle_notifications),
-                          ),
-                          TextButton.icon(
-                            onPressed: () {},
-                            label: const Text('Invite a Friend'),
-                            icon: const Icon(Icons.help),
-                          ),
-                          TextButton.icon(
-                            onPressed: () async {
-                              await loader.loader();
-
-                              final token = LocalStorageManager();
-                              await token.clearUserData();
-
-                              if (context.mounted) {
-                                Navigator.of(context).popAndPushNamed('/');
-                              }
-                            },
-                            label: const Text('Signout'),
-                            icon: const Icon(Icons.help),
-                          ),
-                        ],
+                    ListTile(
+                      contentPadding: EdgeInsets.zero,
+                      horizontalTitleGap: 12,
+                      onTap: () {},
+                      minTileHeight: 30,
+                      titleTextStyle: Theme.of(context).textTheme.bodyMedium,
+                      trailing: PhosphorIcon(
+                        size: 18,
+                        PhosphorIcons.caretRight(),
                       ),
+                      leading: PhosphorIcon(
+                        PhosphorIcons.bell(),
+                        size: 26,
+                        color: const Color(0xFF0A3C26),
+                      ),
+                      title: const Text('Notifications'),
                     ),
+                    ListTile(
+                      contentPadding: EdgeInsets.zero,
+                      onTap: () {},
+                      trailing: PhosphorIcon(
+                        size: 18,
+                        PhosphorIcons.caretRight(),
+                      ),
+                      minTileHeight: 30,
+                      titleTextStyle: Theme.of(context).textTheme.bodyMedium,
+                      leading: PhosphorIcon(
+                        PhosphorIcons.shield(),
+                        size: 26,
+                        color: const Color(0xFF0A3C26),
+                      ),
+                      title: const Text('Login and Security'),
+                    ),
+                    ListTile(
+                      onTap: () {},
+                      contentPadding: EdgeInsets.zero,
+                      minTileHeight: 30,
+                      titleTextStyle: Theme.of(context).textTheme.bodyMedium,
+                      trailing: PhosphorIcon(
+                        size: 18,
+                        PhosphorIcons.caretRight(),
+                      ),
+                      leading: PhosphorIcon(
+                        PhosphorIcons.headset(),
+                        size: 26,
+                        color: const Color(0xFF0A3C26),
+                      ),
+                      title: const Text('Customer Support'),
+                    ),
+                    ListTile(
+                      onTap: () {},
+                      contentPadding: EdgeInsets.zero,
+                      minTileHeight: 30,
+                      titleTextStyle: Theme.of(context).textTheme.bodyMedium,
+                      trailing: PhosphorIcon(
+                        size: 18,
+                        PhosphorIcons.caretRight(),
+                      ),
+                      leading: PhosphorIcon(
+                        PhosphorIcons.translate(),
+                        size: 26,
+                        color: const Color(0xFF0A3C26),
+                      ),
+                      title: const Text('Language'),
+                    ),
+                    ListTile(
+                      onTap: () {},
+                      contentPadding: EdgeInsets.zero,
+                      minTileHeight: 30,
+                      titleTextStyle: Theme.of(context).textTheme.bodyMedium,
+                      trailing: PhosphorIcon(
+                        size: 18,
+                        PhosphorIcons.caretRight(),
+                      ),
+                      leading: PhosphorIcon(
+                        PhosphorIcons.gear(),
+                        size: 26,
+                        color: const Color(0xFF0A3C26),
+                      ),
+                      title: const Text('Setting'),
+                    ),
+                    ListTile(
+                      onTap: () async {
+                        await loader.loader();
+
+                        final token = LocalStorageManager();
+                        await token.clearUserData();
+
+                        if (context.mounted) {
+                          Navigator.of(context).popAndPushNamed('/');
+                        }
+                      },
+                      contentPadding: EdgeInsets.zero,
+                      minTileHeight: 30,
+                      titleTextStyle: Theme.of(context).textTheme.bodyMedium,
+                      leading: PhosphorIcon(
+                        PhosphorIcons.signOut(),
+                        size: 26,
+                        color: const Color(0xFF0A3C26),
+                      ),
+                      title: const Text('Logout'),
+                    ),
+                    const Spacer(),
+                    Text(
+                      'App Version...',
+                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                            color: Colors.grey.shade500,
+                          ),
+                    )
                   ],
                 ),
               ),

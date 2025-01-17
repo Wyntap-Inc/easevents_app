@@ -15,6 +15,7 @@ class ConsumerProfileActionScreen extends StatelessWidget {
       'Privacy and Policy': PhosphorIcons.info(),
       'Log out': PhosphorIcons.signOut(),
     };
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Column(

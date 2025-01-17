@@ -46,9 +46,11 @@ class ConsumerProfileScreen extends StatelessWidget {
                               backgroundImage:
                                   value.accountGetter!.profilePhoto == null
                                       ? const NetworkImage(
-                                          'assets/images/default.png')
+                                          'assets/images/default.png',
+                                        )
                                       : NetworkImage(
-                                          value.accountGetter!.profilePhoto!),
+                                          value.accountGetter!.profilePhoto!,
+                                        ),
                             ),
                           ),
                         ),

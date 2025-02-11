@@ -1,47 +1,38 @@
 import 'package:easevents_app/exports.dart';
 import 'package:http/http.dart' as http;
 
-class RegisterService {
+class VerifyRegistration {
   final storageManager = LocalStorageManager();
 
-  Future<RequestResponse> userRegistration({
-    String? firstName,
-    String? lastName,
-    String? emailAddress,
-    String? password,
-  }) async {
+  Future<void> verifyUserRegistration(String verificationCode) async {
+    final String? verificationToken =
+        await storageManager.getVerificationToken();
+
     final response = await http.post(
-      Uri.parse(ApiEndpoints.signUpEndpoint),
+      Uri.parse(EvSsoApiEndpoints.verifySignUpEndpoint),
       headers: {
+        // "Authorization": "Bearer $verificationToken",
         "Content-Type": "application/json",
+        "Accept": "application/json",
       },
       body: json.encode({
-        "firstName": firstName,
-        "lastName": lastName,
-        "emailAddress": emailAddress,
-        "password": password,
+        "code": verificationCode,
+        "token": verificationToken,
       }),
     );
 
-    final decodedResponse = json.decode(response.body);
-    final RequestResponse data = RequestResponse.fromJson(decodedResponse);
-
     handleResponse(response);
-
-    return data;
   }
 
   void handleResponse(http.Response response) {
     try {
-      if (response.statusCode == 201 && response.body.isNotEmpty) {
+      if (response.statusCode == 200 && response.body.isNotEmpty) {
         final Map<String, dynamic> jsonResponse = json.decode(response.body);
-        RequestResponse responseData = RequestResponse.fromJson(jsonResponse);
+        SsoResponse responseData = SsoResponse.fromJson(jsonResponse);
 
         if (responseData.httpCode == 200 && responseData.data != null) {
-          storageManager.saveVerificationToken(responseData.data!.accessToken!);
-        } else if (responseData.httpCode == 409 &&
-            responseData.statusCode == 'already-exists') {
-          //handle error
+          storageManager.saveLoginToken(responseData.data!.accessToken!);
+          // manage deleting verificationKey after user is verified
         } else {
           throw Exception(
             '${responseData.httpCode} && ${responseData.statusCode}',

@@ -1,7 +1,4 @@
-export 'local_storage_manager.dart';
-export 'login_service.dart';
-export 'register_service.dart';
-export 'vendor_service.dart';
-export 'verify_registration.dart';
-export 'google_signin_redirect_service.dart';
-export 'google_signin_authenticate_service.dart';
+export './consumer_service/index.dart';
+export './messaging_service/index.dart';
+export './sso_service/index.dart';
+export './vendor_service/index.dart';

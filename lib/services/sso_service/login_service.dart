@@ -4,9 +4,9 @@ import 'package:http/http.dart' as http;
 class LoginService {
   final LocalStorageManager storageManager = LocalStorageManager();
 
-  Future<RequestResponse> userLogin(String email, String password) async {
+  Future<SsoResponse> userLogin(String email, String password) async {
     final response = await http.post(
-      Uri.parse(ApiEndpoints.signInEndpoint),
+      Uri.parse(EvSsoApiEndpoints.signInEndpoint),
       headers: {},
       body: {
         "emailAddress": email,
@@ -15,7 +15,7 @@ class LoginService {
     );
 
     final decodedResponse = json.decode(response.body);
-    final RequestResponse data = RequestResponse.fromJson(decodedResponse);
+    final SsoResponse data = SsoResponse.fromJson(decodedResponse);
 
     handleResponse(response);
 
@@ -26,7 +26,7 @@ class LoginService {
     try {
       if (response.statusCode == 200 && response.body.isNotEmpty) {
         final Map<String, dynamic> jsonResponse = json.decode(response.body);
-        RequestResponse responseData = RequestResponse.fromJson(jsonResponse);
+        SsoResponse responseData = SsoResponse.fromJson(jsonResponse);
 
         print(jsonResponse);
 

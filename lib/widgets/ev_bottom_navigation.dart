@@ -1,4 +1,5 @@
 import 'package:easevents_app/exports.dart';
+import 'package:easevents_app/screens/browse_vendor/browse_vendors_screen.dart';
 
 class EVBottomNavigationBar extends StatefulWidget {
   const EVBottomNavigationBar({super.key});
@@ -21,7 +22,7 @@ class _EVBottomNavigationBarState extends State<EVBottomNavigationBar> {
   @override
   Widget build(BuildContext context) {
     final List pages = [
-      const BrowseVendorScreen(),
+      const BrowseVendorsScreen(),
       const ComingSoonScreen(),
       const ConversationListScreen(),
       const ConsumerProfileScreen(),

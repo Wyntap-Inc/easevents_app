@@ -23,6 +23,7 @@ void main() async {
         ChangeNotifierProvider(
             create: (_) => GoogleSigninRedirectURLProvider()),
         ChangeNotifierProvider(create: (_) => ResponseProvider()),
+        ChangeNotifierProvider(create: (_) => VendorProvider())
       ],
       child: MyApp(initialRoute: userIsLoggedIn ? 'evBottomNav' : '/'),
     ),

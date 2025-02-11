@@ -1,4 +1,5 @@
 import 'package:easevents_app/exports.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 class LoginWebView extends StatelessWidget {
   const LoginWebView({super.key});

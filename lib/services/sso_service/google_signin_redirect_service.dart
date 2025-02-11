@@ -2,11 +2,11 @@ import 'package:http/http.dart' as http;
 import 'package:easevents_app/exports.dart';
 
 class GoogleSigninRedirectService {
-  String? redirectUri;
+  String redirectUri = '';
 
-  Future<String?> googleSignInService() async {
+  Future<String> googleSignInService() async {
     final response = await http.post(
-      Uri.parse(ApiEndpoints.googleSigninEndpoint),
+      Uri.parse(EvSsoApiEndpoints.googleSigninEndpoint),
       headers: {},
       body: {
         'provider': 'google',
@@ -24,10 +24,12 @@ class GoogleSigninRedirectService {
     try {
       if (response.statusCode == 200 && response.body.isNotEmpty) {
         final Map<String, dynamic> jsonResponse = json.decode(response.body);
-        RequestResponse responseData = RequestResponse.fromJson(jsonResponse);
+        SsoResponse responseData = SsoResponse.fromJson(jsonResponse);
 
         if (responseData.httpCode == 200 && responseData.data != null) {
-          redirectUri = responseData.data!.redirectUri!;
+          redirectUri = responseData.data!.redirectURI!;
+
+          print(responseData.domain);
         } else {
           throw Exception(
             '${responseData.httpCode} && ${responseData.statusCode}',

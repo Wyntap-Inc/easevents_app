@@ -1,4 +1,4 @@
-class ApiEndpoints {
+class EvSsoApiEndpoints {
   static const String _baseUrl = 'https://sso-api.easevents.app/api/v1/auth';
 
   static const String _signInEndpoint = '$_baseUrl/login';

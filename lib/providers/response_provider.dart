@@ -6,7 +6,7 @@ class ResponseProvider with ChangeNotifier {
   String? get getResponse => _myResponse;
 
   Future<void> login(String email, String password) async {
-    final RequestResponse response = await LoginService().userLogin(
+    final SsoResponse response = await LoginService().userLogin(
       email,
       password,
     );
@@ -21,22 +21,14 @@ class ResponseProvider with ChangeNotifier {
     String email,
     String password,
   ) async {
-    print(firstName);
-    print(lastName);
-    print(email);
-    print(password);
-    final RequestResponse response = await RegisterService().userRegistration(
+    final SsoResponse response = await RegisterService().userRegistration(
       firstName: firstName,
       lastName: lastName,
       emailAddress: email,
       password: password,
     );
 
-    print(response.statusCode);
-
     _myResponse = response.statusCode;
-
-    print('MY RESPONSE IN RES PROV $_myResponse');
     notifyListeners();
   }
 

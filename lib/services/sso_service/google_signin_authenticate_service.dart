@@ -6,7 +6,7 @@ class GoogleSigninAuthenticateService {
 
   Future<bool> googleAuth(String code, String state) async {
     final response = await http.post(
-      Uri.parse(ApiEndpoints.googleSigninAuthEndpoint),
+      Uri.parse(EvSsoApiEndpoints.googleSigninAuthEndpoint),
       headers: {},
       body: {
         "code": code,
@@ -16,7 +16,7 @@ class GoogleSigninAuthenticateService {
     );
 
     final Map<String, dynamic> jsonResponse = json.decode(response.body);
-    RequestResponse responseData = RequestResponse.fromJson(jsonResponse);
+    SsoResponse responseData = SsoResponse.fromJson(jsonResponse);
 
     handleResponse(response);
 
@@ -27,7 +27,9 @@ class GoogleSigninAuthenticateService {
     try {
       if (response.statusCode == 200 && response.body.isNotEmpty) {
         final Map<String, dynamic> jsonResponse = json.decode(response.body);
-        RequestResponse responseData = RequestResponse.fromJson(jsonResponse);
+        SsoResponse responseData = SsoResponse.fromJson(jsonResponse);
+
+        print('HERE YA GO $jsonResponse');
 
         if (responseData.httpCode == 202 && responseData.data != null) {
           storageManager.saveLoginToken(responseData.data!.accessToken!);

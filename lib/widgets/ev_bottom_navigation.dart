@@ -1,5 +1,4 @@
 import 'package:easevents_app/exports.dart';
-import 'package:easevents_app/screens/browse_vendor/browse_vendors_screen.dart';
 
 class EVBottomNavigationBar extends StatefulWidget {
   const EVBottomNavigationBar({super.key});
@@ -13,15 +12,9 @@ class EVBottomNavigationBar extends StatefulWidget {
 class _EVBottomNavigationBarState extends State<EVBottomNavigationBar> {
   int selectedIndex = 0;
 
-  void onSelectedIndex(int index) {
-    setState(() {
-      selectedIndex = index;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
-    final List pages = [
+    final List<Widget> pages = [
       const BrowseVendorsScreen(),
       const ComingSoonScreen(),
       const ConversationListScreen(),
@@ -29,44 +22,51 @@ class _EVBottomNavigationBarState extends State<EVBottomNavigationBar> {
     ];
 
     return Scaffold(
-      bottomNavigationBar: ClipRRect(
-        borderRadius: const BorderRadius.only(
-          topRight: Radius.circular(16),
-          topLeft: Radius.circular(16),
-        ),
-        child: BottomNavigationBar(
-          elevation: 2,
-          onTap: onSelectedIndex,
-          currentIndex: selectedIndex,
-          items: [
-            BottomNavigationBarItem(
-              icon: Icon(
-                PhosphorIcons.house(),
-              ),
-              label: 'Home',
+      bottomNavigationBar: NavigationBar(
+        selectedIndex: selectedIndex,
+        elevation: 1,
+        height: 60,
+        onDestinationSelected: (index) {
+          setState(() {
+            selectedIndex = index;
+          });
+        },
+        destinations: const [
+          NavigationDestination(
+            icon: Icon(
+              PhosphorIconsRegular.house,
+              color: EVStyles.primaryColor,
+              size: 20,
             ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                PhosphorIcons.bookmarks(),
-              ),
-              label: 'Bookmarks',
+            label: 'Home',
+          ),
+          NavigationDestination(
+            icon: Icon(
+              PhosphorIconsRegular.bookmarks,
+              color: EVStyles.primaryColor,
+              size: 20,
             ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                PhosphorIcons.chatCircleText(),
-              ),
-              label: 'Messages',
+            label: 'Bookmarks',
+          ),
+          NavigationDestination(
+            icon: Icon(
+              PhosphorIconsRegular.chatCircleDots,
+              color: EVStyles.primaryColor,
+              size: 20,
             ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                PhosphorIcons.user(),
-              ),
-              label: 'Profile',
+            label: 'Home',
+          ),
+          NavigationDestination(
+            icon: Icon(
+              PhosphorIconsRegular.user,
+              color: EVStyles.primaryColor,
+              size: 20,
             ),
-          ],
-        ),
+            label: 'Profile',
+          ),
+        ],
       ),
-      body: pages.elementAt(selectedIndex),
+      body: pages[selectedIndex],
     );
   }
 }

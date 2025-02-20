@@ -1,5 +1,4 @@
 import 'package:easevents_app/exports.dart';
-import 'package:easevents_app/models/browse_filter/index.dart';
 
 part 'pricing.g.dart';
 

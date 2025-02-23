@@ -17,7 +17,7 @@ _$ItemImpl _$$ItemImplFromJson(Map<String, dynamic> json) => _$ItemImpl(
           (json['tags'] as List<dynamic>?)?.map((e) => e as String).toList() ??
               const [],
       status: json['status'] as String?,
-      type: json['type'] as String?,
+      type: json['type'] as String,
       rental: json['rental'] as bool?,
       pricing: json['pricing'] == null
           ? null

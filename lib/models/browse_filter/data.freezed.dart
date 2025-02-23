@@ -51,7 +51,7 @@ mixin _$Data {
             List<Media>? media,
             List<String> tags,
             String? status,
-            String? type,
+            String type,
             bool? rental,
             Pricing? pricing,
             String createdBy,
@@ -95,7 +95,7 @@ mixin _$Data {
             List<Media>? media,
             List<String> tags,
             String? status,
-            String? type,
+            String type,
             bool? rental,
             Pricing? pricing,
             String createdBy,
@@ -139,7 +139,7 @@ mixin _$Data {
             List<Media>? media,
             List<String> tags,
             String? status,
-            String? type,
+            String type,
             bool? rental,
             Pricing? pricing,
             String createdBy,
@@ -325,7 +325,7 @@ abstract class _$$ItemImplCopyWith<$Res> implements $DataCopyWith<$Res> {
       List<Media>? media,
       List<String> tags,
       String? status,
-      String? type,
+      String type,
       bool? rental,
       Pricing? pricing,
       String createdBy,
@@ -358,7 +358,7 @@ class __$$ItemImplCopyWithImpl<$Res>
     Object? media = freezed,
     Object? tags = null,
     Object? status = freezed,
-    Object? type = freezed,
+    Object? type = null,
     Object? rental = freezed,
     Object? pricing = freezed,
     Object? createdBy = null,
@@ -397,10 +397,10 @@ class __$$ItemImplCopyWithImpl<$Res>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as String?,
-      type: freezed == type
+      type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       rental: freezed == rental
           ? _value.rental
           : rental // ignore: cast_nullable_to_non_nullable
@@ -463,7 +463,7 @@ class _$ItemImpl implements _Item {
       final List<Media>? media,
       final List<String> tags = const [],
       this.status,
-      this.type,
+      required this.type,
       this.rental,
       this.pricing,
       required this.createdBy,
@@ -510,7 +510,7 @@ class _$ItemImpl implements _Item {
   @override
   final String? status;
   @override
-  final String? type;
+  final String type;
   @override
   final bool? rental;
   @override
@@ -618,7 +618,7 @@ class _$ItemImpl implements _Item {
             List<Media>? media,
             List<String> tags,
             String? status,
-            String? type,
+            String type,
             bool? rental,
             Pricing? pricing,
             String createdBy,
@@ -684,7 +684,7 @@ class _$ItemImpl implements _Item {
             List<Media>? media,
             List<String> tags,
             String? status,
-            String? type,
+            String type,
             bool? rental,
             Pricing? pricing,
             String createdBy,
@@ -750,7 +750,7 @@ class _$ItemImpl implements _Item {
             List<Media>? media,
             List<String> tags,
             String? status,
-            String? type,
+            String type,
             bool? rental,
             Pricing? pricing,
             String createdBy,
@@ -857,7 +857,7 @@ abstract class _Item implements Data {
       final List<Media>? media,
       final List<String> tags,
       final String? status,
-      final String? type,
+      required final String type,
       final bool? rental,
       final Pricing? pricing,
       required final String createdBy,
@@ -882,7 +882,7 @@ abstract class _Item implements Data {
   List<String> get tags;
   @override
   String? get status;
-  String? get type;
+  String get type;
   bool? get rental;
   Pricing? get pricing;
   @override
@@ -1198,7 +1198,7 @@ class _$SiteImpl implements _Site {
             List<Media>? media,
             List<String> tags,
             String? status,
-            String? type,
+            String type,
             bool? rental,
             Pricing? pricing,
             String createdBy,
@@ -1262,7 +1262,7 @@ class _$SiteImpl implements _Site {
             List<Media>? media,
             List<String> tags,
             String? status,
-            String? type,
+            String type,
             bool? rental,
             Pricing? pricing,
             String createdBy,
@@ -1326,7 +1326,7 @@ class _$SiteImpl implements _Site {
             List<Media>? media,
             List<String> tags,
             String? status,
-            String? type,
+            String type,
             bool? rental,
             Pricing? pricing,
             String createdBy,

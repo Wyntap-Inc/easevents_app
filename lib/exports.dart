@@ -17,6 +17,7 @@ export 'package:flutter_screenutil/flutter_screenutil.dart';
 export 'package:dio/dio.dart';
 export 'package:json_annotation/json_annotation.dart';
 export 'package:freezed_annotation/freezed_annotation.dart';
+export 'package:hugeicons/hugeicons.dart';
 
 export './constants/index.dart';
 export './models/index.dart';

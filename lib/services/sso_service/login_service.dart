@@ -28,12 +28,6 @@ class LoginService {
         final Map<String, dynamic> jsonResponse = json.decode(response.body);
         SsoResponse responseData = SsoResponse.fromJson(jsonResponse);
 
-        print(jsonResponse);
-
-        // print(responseData.httpCode);
-        // print(responseData.statusCode);
-        // print(responseData.message);
-
         if (responseData.httpCode == 409 &&
             responseData.statusCode == 'notfound') {
           //handle error
@@ -48,7 +42,7 @@ class LoginService {
               ConsumerAccount.fromJson(jsonResponse['data']['account']));
         } else if (responseData.httpCode == 200 &&
             responseData.statusCode == 'internal-server-error') {
-          print('User is registered but/...');
+          // print('User is registered but/...');
         } else {
           throw Exception(
             '${responseData.httpCode} && ${responseData.statusCode}',

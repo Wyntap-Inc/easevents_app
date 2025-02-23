@@ -16,7 +16,7 @@ class EvAppTheme {
         colorScheme: ColorScheme.fromSeed(seedColor: EVStyles.primaryColor)
             .copyWith(primary: EVStyles.primaryColor),
         primaryColorLight: EVStyles.primaryColor,
-        fontFamily: GoogleFonts.poppins().fontFamily,
+        fontFamily: 'CustomFont',
         textTheme: const TextTheme(
           titleSmall: TextStyle(
             color: EVStyles.textPrimary,

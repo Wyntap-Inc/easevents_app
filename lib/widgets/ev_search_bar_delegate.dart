@@ -19,8 +19,10 @@ class EVSearchBarDelegate extends SliverPersistentHeaderDelegate {
             borderSide: BorderSide.none,
           ),
           hintText: 'Search for providers or events',
-          prefixIcon: Icon(
-            PhosphorIcons.magnifyingGlass(),
+          prefixIcon: const HugeIcon(
+            icon: HugeIcons.strokeRoundedSearch01,
+            color: EVStyles.primaryColor,
+            size: 20.0,
           ),
         ),
       ),

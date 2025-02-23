@@ -25,42 +25,52 @@ class _EVBottomNavigationBarState extends State<EVBottomNavigationBar> {
       bottomNavigationBar: NavigationBar(
         selectedIndex: selectedIndex,
         elevation: 1,
-        height: 60,
+        height: 70,
         onDestinationSelected: (index) {
           setState(() {
             selectedIndex = index;
           });
         },
+        labelTextStyle:
+            WidgetStateProperty.resolveWith((Set<WidgetState> states) {
+          if (states.contains(WidgetState.selected)) {
+            return const TextStyle(
+              fontWeight: FontWeight.bold,
+              color: EVStyles.primaryColor,
+            );
+          }
+          return const TextStyle(fontWeight: FontWeight.normal);
+        }),
         destinations: const [
           NavigationDestination(
-            icon: Icon(
-              PhosphorIconsRegular.house,
+            icon: HugeIcon(
+              icon: HugeIcons.strokeRoundedHome01,
               color: EVStyles.primaryColor,
               size: 20,
             ),
             label: 'Home',
           ),
           NavigationDestination(
-            icon: Icon(
-              PhosphorIconsRegular.bookmarks,
+            icon: HugeIcon(
+              icon: HugeIcons.strokeRoundedAllBookmark,
               color: EVStyles.primaryColor,
-              size: 20,
+              size: 20.0,
             ),
             label: 'Bookmarks',
           ),
           NavigationDestination(
-            icon: Icon(
-              PhosphorIconsRegular.chatCircleDots,
+            icon: HugeIcon(
+              icon: HugeIcons.strokeRoundedBubbleChat,
               color: EVStyles.primaryColor,
-              size: 20,
+              size: 22.0,
             ),
-            label: 'Home',
+            label: 'Messages',
           ),
           NavigationDestination(
-            icon: Icon(
-              PhosphorIconsRegular.user,
+            icon: HugeIcon(
+              icon: HugeIcons.strokeRoundedUserCircle02,
               color: EVStyles.primaryColor,
-              size: 20,
+              size: 24.0,
             ),
             label: 'Profile',
           ),

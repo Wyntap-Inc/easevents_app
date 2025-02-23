@@ -28,7 +28,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   Widget build(BuildContext context) {
     final loader = Provider.of<LoaderProvider>(context);
     final googleSignInProvider =
-        Provider.of<GoogleSigninRedirectURLProvider>(context);
+        Provider.of<GoogleSigninRedirectUrlProvider>(context);
     final responseProvider = Provider.of<ResponseProvider>(context);
 
     return PopScope(

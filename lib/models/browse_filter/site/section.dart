@@ -1,5 +1,3 @@
-import 'package:easevents_app/models/browse_filter/site/items.dart';
-
 import 'package:easevents_app/exports.dart';
 
 part 'section.g.dart';

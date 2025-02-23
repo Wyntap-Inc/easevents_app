@@ -24,7 +24,7 @@ class _LoginScreenState extends State<LoginScreen> {
     final loader = Provider.of<LoaderProvider>(context);
 
     final googleSignInProvider =
-        Provider.of<GoogleSigninRedirectURLProvider>(context, listen: false);
+        Provider.of<GoogleSigninRedirectUrlProvider>(context, listen: false);
     final responseProvider = Provider.of<ResponseProvider>(context);
 
     return PopScope(

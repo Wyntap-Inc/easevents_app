@@ -7,7 +7,7 @@ class LoginWebView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final String redirectUrlProvider =
-        Provider.of<GoogleSigninRedirectURLProvider>(context).redirectUrl;
+        Provider.of<GoogleSigninRedirectUrlProvider>(context).redirectUrl;
 
     WebViewController webController =
         _createWebViewController(redirectUrlProvider, context);

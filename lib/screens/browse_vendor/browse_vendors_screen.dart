@@ -28,6 +28,10 @@ class BrowseVendorsScreen extends StatelessWidget {
                 return NestedScrollView(
                   headerSliverBuilder: (context, indexBoxIsScrolled) => [
                     SliverAppBar(
+                      titleTextStyle: const TextStyle(
+                        fontFamily: 'CustomFont',
+                        color: Colors.black,
+                      ),
                       automaticallyImplyLeading: false,
                       title: Row(
                         children: [
@@ -85,8 +89,10 @@ class BrowseVendorsScreen extends StatelessWidget {
                                 }
                               });
                             },
-                            icon: const PhosphorIcon(
-                              PhosphorIconsRegular.bell,
+                            icon: const HugeIcon(
+                              icon: HugeIcons.strokeRoundedNotification03,
+                              color: EVStyles.primaryColor,
+                              size: 20,
                             ),
                           ),
                         ),

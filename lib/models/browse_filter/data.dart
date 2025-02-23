@@ -12,7 +12,7 @@ class Data with _$Data {
     List<Media>? media,
     @Default([]) List<String> tags,
     String? status,
-    String? type,
+    required String type,
     bool? rental,
     Pricing? pricing,
     required String createdBy,

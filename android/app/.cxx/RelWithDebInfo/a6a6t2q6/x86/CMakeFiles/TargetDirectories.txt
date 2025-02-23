@@ -1,0 +1,2 @@
+/Users/webeights/Desktop/Projects/easevents_app/android/app/.cxx/RelWithDebInfo/a6a6t2q6/x86/CMakeFiles/edit_cache.dir
+/Users/webeights/Desktop/Projects/easevents_app/android/app/.cxx/RelWithDebInfo/a6a6t2q6/x86/CMakeFiles/rebuild_cache.dir

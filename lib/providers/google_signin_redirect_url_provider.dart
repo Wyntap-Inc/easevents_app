@@ -1,6 +1,6 @@
 import 'package:easevents_app/exports.dart';
 
-class GoogleSigninRedirectURLProvider with ChangeNotifier {
+class GoogleSigninRedirectUrlProvider with ChangeNotifier {
   String? _redirectUrl;
 
   final GoogleSigninRedirectService googleSigninService =

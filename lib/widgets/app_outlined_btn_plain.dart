@@ -24,7 +24,8 @@ class AppOutlinedButtonPlain extends StatelessWidget {
         side: const BorderSide(
           color: EVStyles.enabledBorderSideColor,
         ),
-        disabledBackgroundColor: EVStyles.primaryColor.withOpacity(0.9),
+        disabledBackgroundColor:
+            EVStyles.primaryColor.withAlpha((255 * 0.9).toInt()),
         backgroundColor: bgColor,
         foregroundColor: fgColor,
         textStyle: const TextStyle(

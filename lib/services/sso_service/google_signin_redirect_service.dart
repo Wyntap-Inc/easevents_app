@@ -28,8 +28,6 @@ class GoogleSigninRedirectService {
 
         if (responseData.httpCode == 200 && responseData.data != null) {
           redirectUri = responseData.data!.redirectURI!;
-
-          print(responseData.domain);
         } else {
           throw Exception(
             '${responseData.httpCode} && ${responseData.statusCode}',

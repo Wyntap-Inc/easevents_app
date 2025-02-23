@@ -11,6 +11,8 @@ class EVStyles {
   static const Color textSecondary = Color(0xFF919191);
   static const Color enabledBorderSideColor = Color(0xFFD2D2D2);
   static const Color errorBorderSideColor = Color(0xFFFF0000);
+  static const Color primaryBlack = Color(0xFF484C52);
+  static const Color blackDark = Color(0xFF000000);
 
   static double getUsableHeight(BuildContext context) {
     final double screenHeight = MediaQuery.of(context).size.height;

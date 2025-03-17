@@ -37,8 +37,8 @@ class RegisterService {
         final Map<String, dynamic> jsonResponse = json.decode(response.body);
         SsoResponse responseData = SsoResponse.fromJson(jsonResponse);
 
-        if (responseData.httpCode == 200 && responseData.data != null) {
-          storageManager.saveVerificationToken(responseData.data!.accessToken!);
+        if (responseData.httpCode == 200) {
+          storageManager.saveVerificationToken(responseData.data.accessToken!);
         } else if (responseData.httpCode == 409 &&
             responseData.statusCode == 'already-exists') {
           //handle error

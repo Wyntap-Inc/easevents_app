@@ -5,8 +5,9 @@ part 'sso_data.g.dart';
 @JsonSerializable()
 class SsoData {
   final String? accessToken;
-  final ConsumerAccount? account;
+  final ConsumerAccount account;
   final String? redirectURI;
+
   SsoData({
     required this.accessToken,
     required this.account,

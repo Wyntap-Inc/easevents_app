@@ -16,6 +16,7 @@ class GoogleSigninAuthenticateService {
     );
 
     final Map<String, dynamic> jsonResponse = json.decode(response.body);
+
     SsoResponse responseData = SsoResponse.fromJson(jsonResponse);
 
     handleResponse(response);
@@ -29,8 +30,8 @@ class GoogleSigninAuthenticateService {
         final Map<String, dynamic> jsonResponse = json.decode(response.body);
         SsoResponse responseData = SsoResponse.fromJson(jsonResponse);
 
-        if (responseData.httpCode == 202 && responseData.data != null) {
-          storageManager.saveLoginToken(responseData.data!.accessToken!);
+        if (responseData.httpCode == 202) {
+          storageManager.saveLoginToken(responseData.data.accessToken!);
 
           storageManager.saveUserAccountInfo(
               ConsumerAccount.fromJson(jsonResponse['data']['account']));

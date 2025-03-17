@@ -30,8 +30,8 @@ class VerifyRegistration {
         final Map<String, dynamic> jsonResponse = json.decode(response.body);
         SsoResponse responseData = SsoResponse.fromJson(jsonResponse);
 
-        if (responseData.httpCode == 200 && responseData.data != null) {
-          storageManager.saveLoginToken(responseData.data!.accessToken!);
+        if (responseData.httpCode == 200) {
+          storageManager.saveLoginToken(responseData.data.accessToken!);
           // manage deleting verificationKey after user is verified
         } else {
           throw Exception(

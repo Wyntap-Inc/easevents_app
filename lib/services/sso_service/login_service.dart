@@ -14,8 +14,7 @@ class LoginService {
       },
     );
 
-    final Map<String, dynamic> decodedResponse = json.decode(response.body);
-
+    final decodedResponse = json.decode(response.body);
     final SsoResponse data = SsoResponse.fromJson(decodedResponse);
 
     handleResponse(response);
@@ -36,8 +35,8 @@ class LoginService {
 
         //handle 401 && request-denied
 
-        if (responseData.httpCode == 202) {
-          storageManager.saveLoginToken(responseData.data.accessToken!);
+        if (responseData.httpCode == 202 && responseData.data != null) {
+          storageManager.saveLoginToken(responseData.data!.accessToken!);
 
           storageManager.saveUserAccountInfo(
               ConsumerAccount.fromJson(jsonResponse['data']['account']));

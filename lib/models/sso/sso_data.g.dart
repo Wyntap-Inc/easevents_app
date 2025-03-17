@@ -8,8 +8,9 @@ part of 'sso_data.dart';
 
 SsoData _$SsoDataFromJson(Map<String, dynamic> json) => SsoData(
       accessToken: json['accessToken'] as String?,
-      account:
-          ConsumerAccount.fromJson(json['account'] as Map<String, dynamic>),
+      account: json['account'] == null
+          ? null
+          : ConsumerAccount.fromJson(json['account'] as Map<String, dynamic>),
       redirectURI: json['redirectURI'] as String?,
     );
 

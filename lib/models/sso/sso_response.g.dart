@@ -14,7 +14,9 @@ SsoResponse _$SsoResponseFromJson(Map<String, dynamic> json) => SsoResponse(
       statusCode: json['statusCode'] as String,
       message: json['message'] as String?,
       httpCode: (json['httpCode'] as num).toInt(),
-      data: SsoData.fromJson(json['data'] as Map<String, dynamic>),
+      data: json['data'] == null
+          ? null
+          : SsoData.fromJson(json['data'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$SsoResponseToJson(SsoResponse instance) =>

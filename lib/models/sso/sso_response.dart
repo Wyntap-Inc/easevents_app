@@ -11,7 +11,7 @@ class SsoResponse {
   final int httpCode;
   final String statusCode;
   final String? message;
-  final SsoData data;
+  final SsoData? data;
 
   SsoResponse({
     required this.timeRequested,

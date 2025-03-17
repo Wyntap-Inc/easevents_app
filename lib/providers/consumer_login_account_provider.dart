@@ -1,4 +1,5 @@
 import 'package:easevents_app/exports.dart';
+import 'package:easevents_app/models/user/consumer_account.dart';
 
 class ConsumerLoginAccountProvider with ChangeNotifier {
   ConsumerAccount? _accountInfo;

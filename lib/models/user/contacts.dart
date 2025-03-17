@@ -1,5 +1,3 @@
-import 'package:easevents_app/exports.dart';
-
 class Contacts {
   final String id;
   final String ordinal;

@@ -16,6 +16,7 @@ class GoogleSigninAuthenticateService {
     );
 
     final Map<String, dynamic> jsonResponse = json.decode(response.body);
+
     SsoResponse responseData = SsoResponse.fromJson(jsonResponse);
 
     handleResponse(response);

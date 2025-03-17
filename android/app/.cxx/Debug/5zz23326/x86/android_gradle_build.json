@@ -1,0 +1,28 @@
+{
+  "buildFiles": [
+    "/Users/webeights/Documents/SDK/flutter/packages/flutter_tools/gradle/src/main/groovy/CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "/Users/webeights/Library/Android/sdk/cmake/3.22.1/bin/ninja",
+      "-C",
+      "/Users/webeights/Desktop/Projects/easevents_app/android/app/.cxx/Debug/5zz23326/x86",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "/Users/webeights/Library/Android/sdk/cmake/3.22.1/bin/ninja",
+    "-C",
+    "/Users/webeights/Desktop/Projects/easevents_app/android/app/.cxx/Debug/5zz23326/x86",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {},
+  "toolchains": {
+    "toolchain": {
+      "cCompilerExecutable": "/Users/webeights/Library/Android/sdk/ndk/28.0.13004108/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang.lld",
+      "cppCompilerExecutable": "/Users/webeights/Library/Android/sdk/ndk/28.0.13004108/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++.lld"
+    }
+  },
+  "cFileExtensions": [],
+  "cppFileExtensions": []
+}

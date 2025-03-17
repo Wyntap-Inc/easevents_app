@@ -14,7 +14,8 @@ class LoginService {
       },
     );
 
-    final decodedResponse = json.decode(response.body);
+    final Map<String, dynamic> decodedResponse = json.decode(response.body);
+
     final SsoResponse data = SsoResponse.fromJson(decodedResponse);
 
     handleResponse(response);

@@ -26,8 +26,8 @@ class GoogleSigninRedirectService {
         final Map<String, dynamic> jsonResponse = json.decode(response.body);
         SsoResponse responseData = SsoResponse.fromJson(jsonResponse);
 
-        if (responseData.httpCode == 200 && responseData.data != null) {
-          redirectUri = responseData.data!.redirectURI!;
+        if (responseData.httpCode == 200) {
+          redirectUri = responseData.data.redirectURI!;
         } else {
           throw Exception(
             '${responseData.httpCode} && ${responseData.statusCode}',

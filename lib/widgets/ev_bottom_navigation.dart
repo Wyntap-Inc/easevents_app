@@ -41,37 +41,57 @@ class _EVBottomNavigationBarState extends State<EVBottomNavigationBar> {
           }
           return const TextStyle(fontWeight: FontWeight.normal);
         }),
-        destinations: const [
+        destinations: [
           NavigationDestination(
-            icon: HugeIcon(
-              icon: HugeIcons.strokeRoundedHome01,
+            icon: Image.asset(
+              selectedIndex == 0
+                  ? 'assets/icons/home_filled.png'
+                  : 'assets/icons/home_outlined.png',
+              width: 20,
+              height: 20,
               color: EVStyles.primaryColor,
-              size: 20,
             ),
+            // color: EVStyles.primaryColor,
+            // size: 20,
             label: 'Home',
           ),
           NavigationDestination(
-            icon: HugeIcon(
-              icon: HugeIcons.strokeRoundedAllBookmark,
+            icon: Image.asset(
+              selectedIndex == 1
+                  ? 'assets/icons/bookmarks_filled.png'
+                  : 'assets/icons/bookmarks_outlined.png',
+              width: 20,
+              height: 20,
               color: EVStyles.primaryColor,
-              size: 20.0,
             ),
+            // color: EVStyles.primaryColor,
+            // size: 20,
             label: 'Bookmarks',
           ),
           NavigationDestination(
-            icon: HugeIcon(
-              icon: HugeIcons.strokeRoundedBubbleChat,
+            icon: Image.asset(
+              selectedIndex == 2
+                  ? 'assets/icons/message_filled.png'
+                  : 'assets/icons/message_outlined.png',
+              width: 22,
+              height: 22,
               color: EVStyles.primaryColor,
-              size: 22.0,
             ),
+            // color: EVStyles.primaryColor,
+            // size: 20,
             label: 'Messages',
           ),
           NavigationDestination(
-            icon: HugeIcon(
-              icon: HugeIcons.strokeRoundedUserCircle02,
+            icon: Image.asset(
+              selectedIndex == 3
+                  ? 'assets/icons/user_filled.png'
+                  : 'assets/icons/user_outlined.png',
+              width: 22,
+              height: 22,
               color: EVStyles.primaryColor,
-              size: 24.0,
             ),
+            // color: EVStyles.primaryColor,
+            // size: 20,
             label: 'Profile',
           ),
         ],

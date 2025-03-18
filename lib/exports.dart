@@ -18,6 +18,7 @@ export 'package:dio/dio.dart';
 export 'package:json_annotation/json_annotation.dart';
 export 'package:freezed_annotation/freezed_annotation.dart';
 export 'package:hugeicons/hugeicons.dart';
+export 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 export './constants/index.dart';
 export './models/index.dart';

@@ -22,6 +22,7 @@ class _EVBottomNavigationBarState extends State<EVBottomNavigationBar> {
     ];
 
     return Scaffold(
+      appBar: AppBar(toolbarHeight: 0),
       bottomNavigationBar: NavigationBar(
         selectedIndex: selectedIndex,
         elevation: 1,

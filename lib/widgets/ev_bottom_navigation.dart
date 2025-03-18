@@ -25,7 +25,7 @@ class _EVBottomNavigationBarState extends State<EVBottomNavigationBar> {
       bottomNavigationBar: NavigationBar(
         selectedIndex: selectedIndex,
         elevation: 1,
-        height: 70,
+        height: 80,
         onDestinationSelected: (index) {
           setState(() {
             selectedIndex = index;

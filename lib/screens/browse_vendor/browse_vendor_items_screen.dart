@@ -19,6 +19,8 @@ class _BrowseVendorItemsScreenState extends State<BrowseVendorItemsScreen> {
     final size = MediaQuery.sizeOf(context);
 
     return Scaffold(
+      // extendBody: true,
+      bottomNavigationBar: BottomAppBar(child: bottomButtonsBuilder()),
       appBar: AppBar(
         centerTitle: true,
         title: Text(widget.item.name),
@@ -34,96 +36,93 @@ class _BrowseVendorItemsScreenState extends State<BrowseVendorItemsScreen> {
         ],
       ),
       body: SizedBox(
-        height: EVStyles.getUsableHeight(context),
+        height: MediaQuery.sizeOf(context).height,
         child: widget.item.mapOrNull(
           item: (item) {
             return Stack(
               children: [
-                SizedBox(
-                  height: EVStyles.getUsableHeight(context) - 80,
-                  child: SingleChildScrollView(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Stack(
-                          children: [
-                            SizedBox(
-                              height: 300,
-                              child: PageView.builder(
-                                scrollDirection: Axis.horizontal,
-                                physics: const PageScrollPhysics(),
-                                itemCount: item.media!.length,
-                                onPageChanged: (index) {
-                                  setState(() {
-                                    _currentIndex = index;
-                                  });
-                                },
-                                itemBuilder: (context, index) {
-                                  return customImageSliderBuilder(
-                                    item.media![index].url!,
-                                  );
-                                },
+                SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Stack(
+                        children: [
+                          SizedBox(
+                            height: 300,
+                            child: PageView.builder(
+                              scrollDirection: Axis.horizontal,
+                              physics: const PageScrollPhysics(),
+                              itemCount: item.media!.length,
+                              onPageChanged: (index) {
+                                setState(() {
+                                  _currentIndex = index;
+                                });
+                              },
+                              itemBuilder: (context, index) {
+                                return customImageSliderBuilder(
+                                  item.media![index].url!,
+                                );
+                              },
+                            ),
+                          ),
+                          Positioned(
+                            right: 16,
+                            bottom: 16,
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 12,
+                                vertical: 2,
+                              ),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(4),
+                                color: EVStyles.blackDark.withAlpha(
+                                  (255 * 0.5).toInt(),
+                                ),
+                              ),
+                              child: Text(
+                                '${(_currentIndex + 1).toString()} / ${item.media!.length}',
+                                style: const TextStyle(
+                                  color: EVStyles.primaryWhite,
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 13,
+                                ),
                               ),
                             ),
-                            Positioned(
-                              right: 16,
-                              bottom: 16,
-                              child: Container(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 12,
-                                  vertical: 2,
-                                ),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(4),
-                                  color: EVStyles.blackDark.withAlpha(
-                                    (255 * 0.5).toInt(),
-                                  ),
-                                ),
-                                child: Text(
-                                  '${(_currentIndex + 1).toString()} / ${item.media!.length}',
-                                  style: const TextStyle(
-                                    color: EVStyles.primaryWhite,
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 13,
-                                  ),
-                                ),
-                              ),
+                          ),
+                        ],
+                      ),
+                      Container(
+                        width: size.width,
+                        margin: const EdgeInsets.only(
+                          top: 16,
+                          left: 16,
+                          right: 16,
+                          bottom: 8,
+                        ),
+                        child: Row(
+                          children: [
+                            informationBuilder(
+                              type: item.type,
+                              name: item.name,
+                              size: size.width,
+                            ),
+                            const Spacer(),
+                            const CircleAvatar(
+                              backgroundColor: EVStyles.primaryLiteColor,
+                              minRadius: 30,
                             ),
                           ],
                         ),
-                        Container(
-                          width: size.width,
-                          margin: const EdgeInsets.only(
-                            top: 16,
-                            left: 16,
-                            right: 16,
-                            bottom: 8,
-                          ),
-                          child: Row(
-                            children: [
-                              informationBuilder(
-                                type: item.type,
-                                name: item.name,
-                                size: size.width,
-                              ),
-                              const Spacer(),
-                              const CircleAvatar(
-                                backgroundColor: EVStyles.primaryLiteColor,
-                                minRadius: 30,
-                              ),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          margin: const EdgeInsets.symmetric(horizontal: 16),
-                          child: const Divider(),
-                        ),
-                        descriptionBuilder(item.description!),
-                      ],
-                    ),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.symmetric(horizontal: 16),
+                        child: const Divider(),
+                      ),
+                      descriptionBuilder(item.description!),
+                    ],
                   ),
                 ),
-                bottomButtonsBuilder(),
+                // bottomButtonsBuilder(),
               ],
             );
           },
@@ -290,63 +289,41 @@ class _BrowseVendorItemsScreenState extends State<BrowseVendorItemsScreen> {
   }
 
   Widget bottomButtonsBuilder() {
-    return Positioned(
-      bottom: 0,
-      right: 0,
-      left: 0,
-      child: Container(
-        decoration: const BoxDecoration(
-          color: Colors.white,
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black,
-              offset: Offset(0, 1),
-              spreadRadius: 0.1,
-              blurRadius: 1,
+    return Row(
+      children: [
+        Expanded(
+          child: OutlinedButton(
+            onPressed: () {},
+            style: OutlinedButton.styleFrom(
+              minimumSize: const Size(80, 44),
+              backgroundColor: EVStyles.primaryWhite,
+              foregroundColor: EVStyles.primaryColor,
             ),
-          ],
-        ),
-        padding: const EdgeInsets.symmetric(
-          horizontal: 16,
-          vertical: 16,
-        ),
-        child: Row(
-          children: [
-            Expanded(
-              child: OutlinedButton(
-                onPressed: () {},
-                style: OutlinedButton.styleFrom(
-                  minimumSize: const Size(80, 44),
-                  backgroundColor: EVStyles.primaryWhite,
-                  foregroundColor: EVStyles.primaryColor,
-                ),
-                child: const Text(
-                  'Inquire',
-                  style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
+            child: const Text(
+              'Inquire',
+              style: TextStyle(
+                fontWeight: FontWeight.w500,
               ),
             ),
-            const SizedBox(width: 16),
-            Expanded(
-              child: ElevatedButton(
-                onPressed: () {},
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: EVStyles.primaryColor,
-                  foregroundColor: EVStyles.primaryWhite,
-                ),
-                child: const Text(
-                  'Book Now',
-                  style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
+          ),
+        ),
+        const SizedBox(width: 16),
+        Expanded(
+          child: ElevatedButton(
+            onPressed: () {},
+            style: ElevatedButton.styleFrom(
+              backgroundColor: EVStyles.primaryColor,
+              foregroundColor: EVStyles.primaryWhite,
+            ),
+            child: const Text(
+              'Book Now',
+              style: TextStyle(
+                fontWeight: FontWeight.w500,
               ),
             ),
-          ],
+          ),
         ),
-      ),
+      ],
     );
   }
 }

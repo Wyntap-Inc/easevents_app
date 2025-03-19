@@ -89,25 +89,12 @@ class ConsumerProfileScreen extends StatelessWidget {
                           ),
                     ),
                     for (var contact in value.accountGetter!.contacts)
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 6, vertical: 2),
-                        decoration: BoxDecoration(
-                            color: Colors.lightGreen,
-                            borderRadius: BorderRadius.circular(
-                              16,
+                      Text(
+                        contact.value,
+                        style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                              color: EVStyles.primaryColor,
+                              fontWeight: FontWeight.bold,
                             ),
-                            border: Border.all(
-                                color:
-                                    const Color.fromARGB(255, 228, 255, 229))),
-                        child: Text(
-                          contact.ordinal.toUpperCase(),
-                          style:
-                              Theme.of(context).textTheme.bodySmall!.copyWith(
-                                    color: EVStyles.primaryColor,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                        ),
                       ),
                     const SizedBox(height: 10),
                     ElevatedButton(
